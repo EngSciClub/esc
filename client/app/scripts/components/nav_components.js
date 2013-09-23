@@ -40,7 +40,8 @@ App.NavLinkComponent = Ember.Component.extend({
   },
 
   click: function() {
-    if (this.get('expandable') && (this.get('active') || !this.get('expanded'))) {
+    if (this.get('expandable') && !Ember.isEmpty(this.get('route.routes')) &&
+        (this.get('active') || !this.get('expanded'))) {
       this.toggleProperty('expanded');
     } else {
       this.sendAction('action', this.get('route.route'));
