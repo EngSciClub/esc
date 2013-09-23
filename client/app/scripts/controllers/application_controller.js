@@ -1,4 +1,6 @@
-App.ApplicationController = Ember.Controller.extend({
+require('scripts/controllers/base_controllers');
+
+App.ApplicationController = App.Controller.extend({
   sidebarExpanded: false,
 
   actions: {
