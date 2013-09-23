@@ -9,11 +9,11 @@
                 <h1>EngSci Club</h1>
                 <nav>
                     {{nav-bar routes=App.routes
-                    currentPath=currentPath
-                    expandable=true
-                    expanded=true
-                    class="primary"
-                    action="selectRoute"}}
+                              currentPath=currentPath
+                              expandable=true
+                              expanded=true
+                              class="primary"
+                              action="selectRoute"}}
                 </nav>
                 <footer>
                     Brought to you with <i class="icon-heart"></i> by your friendly local discipline club. <br>
@@ -22,6 +22,7 @@
             {{/view}}
 
             <div class="main col">
+                <h1>{{currentRoute.name}}</h1>
                 {{outlet}}
             </div>
         </div>
