@@ -41,20 +41,32 @@ body {
   background-color: rgba($color-blue, 50%);
   border-radius: 50%;
   cursor: pointer;
+  color: $color-white;
   display: block, none, none;
   width: 2em;
   height: 2em;
+  line-height: 2em;
   position: fixed;
   top: 1em;
   left: 0%;
   margin-left: 1em;
   z-index: 10;
   transition: 0.5s;
+  text-align: center;
+
+  &:active {
+    color: $color-black;
+  }
 
   &.expanded {
     background-color: rgba($color-white, 100%);
+    color: $color-black;
     left: 100%;
     transform: translateX(-4em);
+
+    &:active {
+      color: $color-white;
+    }
   }
 }
 
@@ -126,9 +138,17 @@ nav ul {
         border-width: 0;
         border-bottom-width: 1px;
         padding: 0.5em 1em;
+        padding-left: 2.5em;
+        position: relative;
 
         &:active {
           background-color: $color-blue-light;
+        }
+
+        i {
+          position: absolute;
+          left: 1em;
+          line-height: 1.6;
         }
       }
 

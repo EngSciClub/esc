@@ -1,7 +1,9 @@
 <div class="container">
     <div class="content">
         <div class="row">
-            <div {{bind-attr class=":side-toggler sidebarExpanded:expanded"}} {{action toggleSidebar}}></div>
+            <div {{bind-attr class=":side-toggler sidebarExpanded:expanded"}} {{action toggleSidebar}}>
+                <i class="icon-reorder"></i>
+            </div>
             {{#view "App.SidebarView" classNameBindings=":side :col sidebarExpanded:expanded"}}
                 {{#link-to "index"}}<div class="logo"></div>{{/link-to}}
                 <h1>EngSci Club</h1>

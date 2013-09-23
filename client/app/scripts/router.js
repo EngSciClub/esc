@@ -1,29 +1,30 @@
-var r = function(route, name, path, routes) {
+var r = function(route, name, icon, path, routes) {
   return {
     route: route,
     path: Ember.isNone(path) ? route : path,
     name: name,
+    icon: icon,
     routes: routes
   };
 };
 
 App.routes = [
-  r('index', 'Announcements', '/'),
-  r('about', 'About'),
-  r('events', 'Events', null, [
-    r('socials', 'Weekly Socials'),
-    r('smoker', 'Book Smoker'),
-    r('dance', 'Dinner Dance', 'dinnerdance', [
-      r('register', 'Registration'),
-      r('sponsors', 'Sponsors')
+  r('index', 'Announcements', 'icon-bullhorn', '/'),
+  r('about', 'About', 'icon-info-sign'),
+  r('events', 'Events', 'icon-calendar', null, [
+    r('socials', 'Weekly Socials', ''),
+    r('smoker', 'Book Smoker', null),
+    r('dance', 'Dinner Dance', null, 'dinnerdance', [
+      r('register', 'Registration', null),
+      r('sponsors', 'Sponsors', null)
     ]),
-    r('foosball', 'Foosball Ladder'),
-    r('smash', 'Smash Ladder')
+    r('foosball', 'Foosball Ladder', null),
+    r('smash', 'Smash Ladder', null)
   ]),
-  r('sports', 'Intramural Sports'),
-  r('merchandise', 'Merchandise'),
-  r('suggestions', 'Suggestions'),
-  r('courses', 'Anti-Calendar')
+  r('sports', 'Intramural Sports', 'icon-trophy'),
+  r('merchandise', 'Merchandise', 'icon-tag'),
+  r('suggestions', 'Suggestions', 'icon-pencil'),
+  r('courses', 'Anti-Calendar', 'icon-book')
 ];
 
 App.Router.map(function() {

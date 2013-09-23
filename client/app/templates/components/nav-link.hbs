@@ -1,4 +1,9 @@
-<a {{bind-attr href=route.path}}>{{route.name}}</a>
+<a {{bind-attr href=route.path}}>
+    {{#if route.icon}}
+        <i {{bind-attr class=route.icon}}></i>
+    {{/if}}
+    {{route.name}}
+</a>
 
 {{! Recursively build routes if they're expandable. }}
 {{#if expandable}}
