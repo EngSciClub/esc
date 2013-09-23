@@ -1,3 +1,11 @@
-<div class="content">
-    Hello world!
-</div>
+<h1>Announcements</h1>
+{{#each announcement in content}}
+    <h2>{{announcement.title}}</h2>
+    {{announcement.body}}
+
+    {{#each comment in announcement.comments}}
+        <div>
+            {{comment.body}}
+        </div>
+    {{/each}}
+{{/each}}

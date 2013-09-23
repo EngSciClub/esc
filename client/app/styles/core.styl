@@ -4,18 +4,27 @@
  */
 
 @import 'nib'
+@import 'fonts'
 @import 'lib'
 
 $color-white = #FFFFFF
+$color-black = #232323
+$color-blue = #05244C
+$color-blue-light = lighten($color-blue, 10%)
+$color-blue-lighter = lighten($color-blue, 20%)
+$color-blue-dark = darken($color-blue, 40%)
 
-$weight-light = lighter
+$weight-lighter = 200
+$weight-light = 300
 $weight-normal = normal
 $weight-bold = bold
 
+/* Layout */
+
 body {
   anti-aliasing();
-  background-color: $color-white;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: $color-black;
+  font-family: 'Bariol', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: $weight-normal;
   font-size: 62.5%;
   margin: 0;
@@ -24,6 +33,195 @@ body {
 .container {
   margin: 0 auto;
   width: 100%;
-  font-size: 1.6em, 1.4em, 1.6em;
+  font-size: 1.6em, 1.4em, 1.8em;
   line-height: 1.6;
+}
+
+.side-toggler {
+  background-color: rgba($color-blue, 50%);
+  border-radius: 50%;
+  cursor: pointer;
+  display: block, none, none;
+  width: 2em;
+  height: 2em;
+  position: fixed;
+  top: 1em;
+  left: 0%;
+  margin-left: 1em;
+  z-index: 10;
+  transition: 0.5s;
+
+  &.expanded {
+    background-color: rgba($color-white, 100%);
+    left: 100%;
+    transform: translateX(-4em);
+  }
+}
+
+.side {
+  box-sizing: content-box, border-box, border-box;
+  background-color: $color-blue;
+  border-right-width: 0.5em;
+  border-right-color: $color-blue-dark;
+  border-right-style: solid;
+  color: $color-white;
+  width: 100%, 40%, 25%;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed, static, static;
+  left: -100%, 0, 0;
+  transition: 0.5s;
+  -webkit-transform: translateZ(0);
+  -webkit-overflow-scrolling: touch;
+
+  &.expanded {
+    left: 0;
+  }
+
+  .logo {
+    background-image: url('../images/logo.svg');
+    background-color: $color-blue-light;
+    background-size: 70%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: $color-white;
+    border-width: 0.25em, 0.5em, 0.5em;
+    margin: 2em auto;
+    width: 8em, 12em, 10em;
+    height: 8em, 12em, 10em;
+  }
+}
+
+.main {
+  width: 100%, 60%, 75%;
+  padding: 2em;
+}
+
+footer {
+  font-size: 1em, 1em, 0.8em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  text-transform: uppercase;
+
+  &.primary {
+    background-color: $color-blue;
+    border-top-color: $color-blue-dark;
+    border-top-width: 1px;
+    border-top-style: solid;
+
+    & > li {
+      & > a {
+        background-color: $color-blue;
+        border-color: $color-blue-dark;
+        border-style: solid;
+        border-width: 0;
+        border-bottom-width: 1px;
+        padding: 0.5em 1em;
+
+        &:active {
+          background-color: $color-blue-light;
+        }
+      }
+
+      &.active > a {
+        border-left-width: 0.5em;
+        background-color: $color-blue-light;
+      }
+    }
+  }
+
+  &.secondary {
+    background-color: $color-blue-dark;
+    border-bottom-color: $color-blue-dark;
+    border-bottom-width: 0;
+    border-bottom-style: solid;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s, border-bottom-width 0s;
+    -webkit-transform: translateZ(0);
+
+    & > li {
+      & > a {
+        background-color: $color-blue-dark;
+        padding: 0.25em 1.5em;
+
+        &:active {
+          background-color: $color-blue-light;
+        }
+      }
+
+      &.active > a {
+        background-color: $color-blue-light;
+      }
+    }
+
+    &.expanded {
+      border-bottom-width: 1px;
+      max-height: 11em, 11em, 8em;
+    }
+  }
+
+  li {
+    position: relative;
+
+    a {
+      box-sizing: border-box;
+      font-weight: $weight-bold;
+      font-size: 1em, 1em, 0.8em;
+      display: block;
+      width: 100%;
+      transition: all 0.5s, background-color 0s;
+      -webkit-transform: translateZ(0);
+    }
+
+    .chevron {
+      background-clip: content-box;
+      background-size: 60%;
+      background-position: center;
+      background-image: url('../images/chevron-down.svg');
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.5em;
+      height: 1em * 1.6, 1em * 1.6, 0.8em * 1.6;
+      width: 1em * 1.6, 1em * 1.6, 0.8em * 1.6;
+    }
+
+    &.expanded .chevron {
+      background-image: url('../images/chevron-up.svg');
+    }
+  }
+}
+
+
+/* Typography */
+
+a {
+  color: $color-white;
+  font-weight: $weight-bold;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+
+/* Misc */
+
+::-webkit-scrollbar {
+  display: none;
 }

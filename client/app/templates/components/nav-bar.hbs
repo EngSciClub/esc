@@ -1,0 +1,7 @@
+{{#each route in routes}}
+    {{nav-link route=route
+               currentPath=currentPath
+               expandable=expandable
+               action="selectRoute"
+               expand="expand"}}
+{{/each}}

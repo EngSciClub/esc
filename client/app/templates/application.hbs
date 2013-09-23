@@ -1,3 +1,27 @@
 <div class="container">
-    {{outlet}}
+    <div class="content">
+        <div class="row">
+            <div {{bind-attr class=":side-toggler sidebarExpanded:expanded"}} {{action toggleSidebar}}></div>
+            {{#view "App.SidebarView" classNameBindings=":side :col sidebarExpanded:expanded"}}
+                {{#link-to "index"}}<div class="logo"></div>{{/link-to}}
+                <h1>EngSci Club</h1>
+                <nav>
+                    {{nav-bar routes=App.routes
+                    currentPath=currentPath
+                    expandable=true
+                    expanded=true
+                    class="primary"
+                    action="selectRoute"}}
+                </nav>
+                <footer>
+                    Brought to you with <i class="icon-heart"></i> by your friendly local discipline club. <br>
+                    Maintained by the Engineering Science Club.
+                </footer>
+            {{/view}}
+
+            <div class="main col">
+                {{outlet}}
+            </div>
+        </div>
+    </div>
 </div>
