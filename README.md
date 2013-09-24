@@ -3,6 +3,16 @@ EngSci Club
 
 Server and client code for EngSci Club site.
 
+## Development setup
+1. `cd client`
+1. `npm install`
+1. `bower install`
+1. `cd ..`
+1. `bundle`
+1. `rake client`
+1. `bundle exec rake db:create`
+1. `foreman start`
+
 ## Deploy procedure
 1. Branch onto `deploy/<ISO 8601 date>_<rev #>`. For example, the branches for the first and second deploy of February 28, 2010 would be `deploy/2010-02-28` and `deploy/2010-02-28_2`, respectively.
 1. Remove `/public` from `.gitignore`

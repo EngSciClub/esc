@@ -17,3 +17,5 @@
 
 # Ignore built client files
 /public
+
+.env
