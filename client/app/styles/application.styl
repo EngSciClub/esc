@@ -1,0 +1,84 @@
+/* Application, for top level styles.
+ * author: John Liu
+ */
+
+.content > .row {
+  & > .side {
+    background-color: $color-blue;
+    border-width: 0;
+    border-color: $color-blue-dark;
+    border-style: solid;
+    border-right-width: 0.5em;
+    color: $color-white;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: fixed, static, static;
+    width: (sidebar-width = 80%), 40%, 25%;
+    z-index: 5;
+
+    transition: 0.5s;
+    transform: translateX(-100%), translateX(0), translateX(0);
+    -webkit-overflow-scrolling: touch;
+
+    &.expanded {
+      transform: translateX(0);
+    }
+
+    a {
+      color: $color-white;
+    }
+
+    .logo {
+      background-image: url('../images/logo.svg');
+      background-color: $color-blue-light;
+      background-size: 70%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      border-width: 0.25em, 0.5em, 0.5em;
+      border-style: solid;
+      border-color: $color-white;
+      margin: 2em auto;
+      width: 8em, 12em, 10em;
+      height: 8em, 12em, 10em;
+    }
+
+    footer {
+      font-size: 1em, 1em, 0.8em;
+      margin: 1em, 0.5em, 0.5em;
+    }
+  }
+
+  & > .main {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 1em, 2em, 2em;
+
+    transition: 0.5s;
+    transform: translateX(0);
+    -webkit-overflow-scrolling: touch;
+
+    &.expanded {
+      transform: translateX(80%), translate(0), translate(0);
+    }
+
+    header {
+      @extends $card;
+
+      margin-top: -1em, 0, 0;
+      border-top-left-radius: 0, 3px, 3px;
+      border-top-right-radius: 0, 3px, 3px;
+
+      h1 {
+        font-size: 1em;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      .breakable {
+        display: block, inline, inline;
+      }
+    }
+  }
+}

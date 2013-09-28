@@ -1,0 +1,107 @@
+/* Responsive Properties.
+ * author: John Liu.
+ * requires: nib
+ */
+
+// Default size boundaries (from smallest to largest).
+responsive-boundaries = (38em 54em);
+
+// Helper to generate a media query given the string, property and argument.
+responsive-media(str, prop, arg, only, vendor-property) {
+  @media str {
+    vendor(prop, arg, only, vendor-property);
+  }
+}
+
+// Wraps the css property in responsive media queries if necessary.
+// Arguments to a responsive property should be passed from smallest to largest.
+responsive(prop, args, only = (official), vendor-property = true) {
+  count = length(split(',', '' + args));
+
+  // Get the right number of arguments.
+  len = length(responsive-boundaries);
+  if (count == len + 1 && prop != 'transition') {
+    responsive-media('only screen', prop, pop(args), only, vendor-property);
+
+    for i in (1..len) {
+      boundary = responsive-boundaries[len - i];
+      str = 'only screen and (max-width: ' + boundary + ')'
+      responsive-media(str, prop, pop(args), only, vendor-property);
+    }
+  } else {
+    vendor(prop, args, only, vendor-property);
+  }
+}
+
+border-top-left-radius() {
+  responsive('border-top-left-radius', arguments, vendor: true, only: webkit official);
+}
+
+border-top-right-radius() {
+  responsive('border-top-right-radius', arguments, vendor: true, only: webkit official);
+}
+
+border-width() {
+  responsive('border-width', arguments);
+}
+
+border-right-width() {
+  responsive('border-right-width', arguments);
+}
+
+box-sizing() {
+  responsive('box-sizing', arguments, only: webkit moz official);
+}
+
+display() {
+  responsive('display', arguments);
+}
+
+font-size() {
+  responsive('font-size', arguments);
+}
+
+left() {
+  responsive('left', arguments);
+}
+
+width() {
+  responsive('width', arguments);
+}
+
+height() {
+  responsive('height', arguments);
+}
+
+max-height() {
+  responsive('max-height', arguments);
+}
+
+position() {
+  responsive('position', arguments);
+}
+
+margin-top() {
+  responsive('margin-top', arguments);
+}
+
+margin() {
+  responsive('margin', arguments);
+}
+
+padding() {
+  responsive('padding', arguments);
+}
+
+padding-left() {
+  responsive('padding-left', arguments);
+}
+
+padding-right() {
+  responsive('padding-right', arguments);
+}
+
+transform() {
+  responsive('transform', arguments, only: null);
+}
+

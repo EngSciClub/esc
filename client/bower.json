@@ -5,7 +5,8 @@
     "ember": "1.0.0",
     "components-font-awesome": "git://github.com/johnliu/font-awesome.git#ba10c12d68483e43afcfb027c5a412a2b35396b0",
     "ember-model": "git://github.com/ebryn/ember-model.git#e2a1ffeacdebc0e1d1ed6f3da8ffe5c8399f3352",
-    "fastclick": "~0.6.10"
+    "fastclick": "~0.6.10",
+    "marked": "~0.2.9"
   },
   "devDependencies": {
     "ember-mocha-adapter": "0.1.2"

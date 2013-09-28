@@ -1,10 +1,12 @@
 {{#each announcement in content}}
-    <h2>{{announcement.title}}</h2>
-    {{announcement.body}}
+    {{#base-card}}
+        <h2>{{announcement.title}}</h2>
+        {{announcement.body}}
 
-    {{#each comment in announcement.comments}}
-        <div>
-            {{comment.body}}
-        </div>
-    {{/each}}
+        {{#each comment in announcement.comments}}
+            <div>
+                {{comment.body}}
+            </div>
+        {{/each}}
+    {{/base-card}}
 {{/each}}

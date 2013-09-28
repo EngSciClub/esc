@@ -31,5 +31,65 @@ App.Announcement.FIXTURES = [
         body: 'this is another comment!'
       }
     ]
-  }
+  },
+  {
+    id: 2,
+    title: 'Hello World!',
+    body: 'Just a basic sample announcement.',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    owner: {
+      id: 1
+    },
+    comments: [
+      {
+        id: 1,
+        body: 'this is a comment'
+      },
+      {
+        id: 2,
+        body: 'this is another comment!'
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: 'Hello World!',
+    body: 'Just a basic sample announcement.',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    owner: {
+      id: 1
+    },
+    comments: [
+      {
+        id: 1,
+        body: 'this is a comment'
+      },
+      {
+        id: 2,
+        body: 'this is another comment!'
+      }
+    ]
+  },
+  {
+    id: 4,
+    title: 'Hello World!',
+    body: 'Just a basic sample announcement.',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    owner: {
+      id: 1
+    },
+    comments: [
+      {
+        id: 1,
+        body: 'this is a comment'
+      },
+      {
+        id: 2,
+        body: 'this is another comment!'
+      }
+    ]
+  },
 ];

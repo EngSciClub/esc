@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         tasks: ['emberTemplates']
       },
       stylus: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.styl'],
+        files: ['<%= yeoman.app %>/styles/**/*.styl'],
         tasks: ['stylus:dist']
       },
       neuter: {
@@ -165,7 +165,8 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/styles',
-          src: '{,*/}*.styl',
+          // src: '**/*.styl',
+          src: 'app.styl',
           dest: '.tmp/styles',
           ext: '.css'
         }]

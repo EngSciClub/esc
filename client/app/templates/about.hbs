@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="full col">
+        {{#base-card tagName="section" class="only-heading"}}
+            <h1>The Engineering Science Club is your friendly neighbourhood discipline club.</h1>
+        {{/base-card}}
+    </div>
+
+    <div class="half col left">
+        {{#base-card tagName="section"}}
+            <h2>Who are we?</h2>
+            <p>
+                EngSci Club is one of the several engineering discipline clubs representing Engineering
+                Science students. Think of us as a <em>mini</em> student body, in-between EngSci students
+                and the <a href="http://skule.ca" target="_blank">Engineering Society</a>.
+            </p>
+            <h3>Team</h3>
+            <p>
+                The team is comprised of five executives, four class reps and the EngSci Board of Directors
+                representative. Say hi to any one of us when you see us around. We promise we won't bite!
+            </p>
+            <div class="people">
+                {{person-box position="Chair" name="Stuti Rungee"}}
+                {{person-box position="Vice-Chair" name="John Liu"}}
+                {{person-box position="Student Life" name="Sharon Ravindran"}}
+                {{person-box position="Finance" name="David Belvedere"}}
+                {{person-box position="Communications" name="Brian To"}}
+                {{person-box position="1st Year Class Rep" name="Rossdan Craig"}}
+                {{person-box position="2nd Year Class Rep" name="Kenny Kim"}}
+                {{person-box position="3rd Year Class Rep" name="Oliver Liang"}}
+                {{person-box position="4th Year Class Rep" name="Kurtis Martin-Sturmey"}}
+                {{person-box position="EngSci BoD Rep" name="Pierre Harfourche"}}
+                <div class="clear"></div>
+            </div>
+            <p>
+                Have any questions or concerns? Email us at
+                <a href="mailto:engsci@skule.ca" target="_blank">engsci@skule.ca</a> or
+                head to the {{#link-to "suggestions"}}suggestions{{/link-to}} page.
+            </p>
+        {{/base-card}}
+    </div>
+
+    <div class="half col right">
+        {{#base-card tagName="section"}}
+            <h2>Where are we located?</h2>
+            <p>
+                Come find us in the Engineering Science Club office! It's located inside the Common Room,
+                beside the T.V. Most of the execs can commonly be found in the Common Room
+                throughout the day.
+            </p>
+        {{/base-card}}
+        {{#base-card tagName="section"}}
+            <h2>What do we do?</h2>
+            <p>
+                EngSci Club does a couple things to make your experience at EngSci just a little bit better.
+                We run several {{#link-to "events"}}events{{/link-to}} throughout the year, including:
+            </p>
+            <ul>
+                <li>{{#link-to "events.dance"}}The Annual Engineering Science Dinner Dance{{/link-to}}</li>
+                <li>{{#link-to "events.nocturne"}}Nocturne, The Engineering Science Coffee House{{/link-to}}</li>
+                <li>{{#link-to "events.smoker"}}The Fall and Winter Book Smokers{{/link-to}}</li>
+                {{!--<li>{{#link-to "events.foosball"}}The Foosball Ladder{{/link-to}}</li>--}}
+                {{!--<li>{{#link-to "events.smash"}}The Smash Bros Ladder{{/link-to}}</li>--}}
+                <li>{{#link-to "events.socials"}}Games and Movie Nights{{/link-to}}</li>
+            </ul>
+            <p>
+                We are also your point of contact between you and the Engineering Science division in terms of
+                academic problems, taking part in deciding which projects the
+                <a href="http://skule.ca/skule-academic-levy-fund">Academic Levy Fund</a> goes towards.
+            </p>
+            <p>
+                Lastly we provide various other services and utilities such as the pop machine in the
+                Common Room, the microwaves, selling you EngSci t-shirts, patches and other
+                {{#link-to "merchandise"}}merchandise{{/link-to}}.
+            </p>
+        {{/base-card}}
+    </div>
+</div>
+

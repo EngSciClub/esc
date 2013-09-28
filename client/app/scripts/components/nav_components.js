@@ -1,3 +1,5 @@
+require('scripts/mixins/animations');
+
 App.NavBarComponent = Ember.Component.extend({
   tagName: 'ul',
   classNameBindings: ['expanded'],
@@ -10,7 +12,7 @@ App.NavBarComponent = Ember.Component.extend({
   }
 });
 
-App.NavLinkComponent = Ember.Component.extend({
+App.NavLinkComponent = Ember.Component.extend(App.Collapsable, {
   tagName: 'li',
   classNameBindings: ['active', 'expanded'],
 
@@ -40,7 +42,7 @@ App.NavLinkComponent = Ember.Component.extend({
   },
 
   click: function() {
-    if (this.get('expandable') && !Ember.isEmpty(this.get('route.routes')) &&
+    if (this.get('route.expandable') && !Ember.isEmpty(this.get('route.routes')) &&
         (this.get('active') || !this.get('expanded'))) {
       this.toggleProperty('expanded');
     } else {

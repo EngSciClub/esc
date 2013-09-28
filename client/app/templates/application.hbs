@@ -1,10 +1,7 @@
 <div class="container">
     <div class="content">
         <div class="row">
-            <div {{bind-attr class=":side-toggler sidebarExpanded:expanded"}} {{action toggleSidebar}}>
-                <i class="icon-reorder"></i>
-            </div>
-            {{#view "App.SidebarView" classNameBindings=":side :col sidebarExpanded:expanded"}}
+            {{#view "App.FullHeightView" classNameBindings=":side :col sidebarExpanded:expanded"}}
                 {{#link-to "index"}}<div class="logo"></div>{{/link-to}}
                 <h1>EngSci Club</h1>
                 <nav>
@@ -16,15 +13,34 @@
                               action="selectRoute"}}
                 </nav>
                 <footer>
-                    Brought to you with <i class="icon-heart"></i> by your friendly local discipline club. <br>
-                    Maintained by the Engineering Science Club.
+                    <p>
+                        Brought to you by your friendly local discipline club. <br>
+                        Maintained by the Engineering Science Club.
+                    </p>
+                    <p>
+                        Key contributors:
+                        <a href="http://www.twitter.com/og">@og</a>,
+                        <a href="http://www.twitter.com/amandeep">@amandeep</a>.
+                        <a href="http://www.github.com/engsciclub/website">Contribute.</a>
+                    </p>
                 </footer>
             {{/view}}
 
-            <div class="main col">
-                <h1>{{currentRoute.name}}</h1>
+            {{#view "App.FullHeightView" classNameBindings=":main :col sidebarExpanded:expanded"}}
+                <header>
+                    <h1>
+                        {{#each route in routeHierarchy}}
+                            <span class="breakable">{{route.name}} //</span>
+                        {{/each}}
+                    </h1>
+                </header>
+
                 {{outlet}}
-            </div>
+            {{/view}}
+
+            <button {{bind-attr class=":side-toggler sidebarExpanded:expanded"}} {{action toggleSidebar}}>
+                <i class="icon-reorder"></i>
+            </button>
         </div>
     </div>
 </div>

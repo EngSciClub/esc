@@ -6,12 +6,11 @@
 </a>
 
 {{! Recursively build routes if they're expandable. }}
-{{#if expandable}}
+{{#if route.expandable}}
     {{#if route.routes}}
         <div class="chevron" {{action "expand" route bubbles=false}}></div>
         {{nav-bar routes=route.routes
                   currentPath=currentPath
-                  expandable=false
                   expanded=expanded
                   class="secondary"
                   action="selectRoute"}}
