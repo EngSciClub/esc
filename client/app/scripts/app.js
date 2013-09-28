@@ -1,6 +1,6 @@
 $(function() {
   FastClick.attach(document.body);
-})
+});
 
 var App = window.App = Ember.Application.create();
 
