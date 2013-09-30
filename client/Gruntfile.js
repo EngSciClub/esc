@@ -59,7 +59,7 @@ module.exports = function(grunt) {
         hostname: '0.0.0.0'
       },
       proxies: [{
-        context: '/',
+        context: '/api',
         host: '0.0.0.0',
         port: 5000
       }],
