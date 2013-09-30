@@ -34,7 +34,9 @@ App.routes = [
   r('merchandise', 'Merchandise', { icon: 'icon-tag', hidden: true }),
   r('suggestions', 'Suggestions', { icon: 'icon-pencil', hidden: true }),
   r('found', 'Lost and Found', { icon: 'icon-archive', hidden: true }),
-  r('courses', 'Anti-Calendar', { icon: 'icon-book', hidden: true })
+  r('courses', 'Anti-Calendar', { icon: 'icon-book', hidden: true }),
+
+  r('none', '404', { path: '*path', hidden: true })
 ];
 
 App.Router.map(function() {
@@ -64,9 +66,6 @@ App.Router.map(function() {
     }, self);
   };
   buildRoutes(this, App.routes);
-
-  // Catch-all for 404 handling.
-  this.route('none', { path: '*path' });
 });
 
 App.Router.reopen({
