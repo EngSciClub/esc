@@ -5,6 +5,7 @@ $(function() {
 var App = window.App = Ember.Application.create();
 
 /* Order and include as you please. */
+require('scripts/plugins/*');
 require('scripts/controllers/*');
 require('scripts/models/*');
 require('scripts/routes/*');

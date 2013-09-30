@@ -14,26 +14,27 @@ var r = function(route, name, options) {
 
 App.routes = [
   // Redirects
+  r('redirect', '', { hidden: true }),
   r('redirect.dance', '', { path: '/dinnerdance', hidden: true }),
 
   r('index', 'Announcements', { icon: 'icon-bullhorn', path: '/' }),
   r('about', 'About', { icon: 'icon-info-sign' }),
   r('events', 'Events', { icon: 'icon-calendar', routes: [
     r('socials', 'Friday Night Socials'),
-    r('smoker', 'Book Smoker'),
+    r('smoker', 'Book Smoker', { hidden: true }),
     r('dance', 'Dinner Dance', { path: 'dinnerdance', expand: false, routes: [
       r('register', 'Registration'),
       r('sponsors', 'Sponsors')
     ]}),
-    r('nocturne', 'Nocturne'),
-    r('foosball', 'Foosball Ladder'),
-    r('smash', 'Smash Ladder')
+    r('nocturne', 'Nocturne', { hidden: true }),
+    r('foosball', 'Foosball Ladder', { hidden: true }),
+    r('smash', 'Smash Ladder', { hidden: true })
   ]}),
-  r('sports', 'Intramural Sports', { icon: 'icon-trophy' }),
-  r('merchandise', 'Merchandise', { icon: 'icon-tag' }),
-  r('suggestions', 'Suggestions', { icon: 'icon-pencil' }),
-  r('found', 'Lost and Found', { icon: 'icon-archive' }),
-  r('courses', 'Anti-Calendar', { icon: 'icon-book' })
+  r('sports', 'Intramural Sports', { icon: 'icon-trophy', hidden: true }),
+  r('merchandise', 'Merchandise', { icon: 'icon-tag', hidden: true }),
+  r('suggestions', 'Suggestions', { icon: 'icon-pencil', hidden: true }),
+  r('found', 'Lost and Found', { icon: 'icon-archive', hidden: true }),
+  r('courses', 'Anti-Calendar', { icon: 'icon-book', hidden: true })
 ];
 
 App.Router.map(function() {
@@ -66,4 +67,8 @@ App.Router.map(function() {
 
   // Catch-all for 404 handling.
   this.route('none', { path: '*path' });
+});
+
+App.Router.reopen({
+  location: 'auto'
 });
