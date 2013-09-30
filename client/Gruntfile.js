@@ -1,6 +1,7 @@
 // Generated on 2013-09-15 using generator-ember 0.6.2
 'use strict';
 var LIVERELOAD_PORT = 35730;
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
 var mountFolder = function(connect, dir) {
   return connect.static(require('path').resolve(dir));
@@ -57,10 +58,16 @@ module.exports = function(grunt) {
         port: 9000,
         hostname: '0.0.0.0'
       },
+      proxies: [{
+        context: '/',
+        host: '0.0.0.0',
+        port: 5000
+      }],
       livereload: {
         options: {
           middleware: function(connect) {
             return [
+              proxySnippet,
               lrSnippet,
               mountFolder(connect, '.tmp'),
               mountFolder(connect, yeomanConfig.app)
@@ -308,6 +315,7 @@ module.exports = function(grunt) {
       'clean:server',
       'concurrent:server',
       'neuter:app',
+      'configureProxies',
       'connect:livereload',
       'open',
       'watch'
