@@ -3,7 +3,7 @@
         <div class="row">
             {{#view "App.FullHeightView" classNameBindings=":side :col sidebarExpanded:expanded"}}
                 {{#link-to "index"}}<div class="logo"></div>{{/link-to}}
-                <h1>EngSci Club</h1>
+                <h1>{{#link-to "index"}}EngSci Club{{/link-to}}</h1>
                 <nav>
                     {{nav-bar routes=App.routes
                               currentPath=currentPath
@@ -14,8 +14,7 @@
                 </nav>
                 <footer>
                     <p>
-                        Brought to you by your friendly local discipline club. <br>
-                        Maintained by the Engineering Science Club.
+                        Brought to you by your friendly local discipline club.
                     </p>
                     <p>
                         Key contributors:

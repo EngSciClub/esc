@@ -28,18 +28,30 @@ App.NavLinkComponent = Ember.Component.extend(App.Collapsable, {
     }
   },
 
-  active: function() {
+  hierarchyActive: function() {
     var current = this.get('currentPath');
     var linkRoute = this.get('route.route');
     return current.indexOf(linkRoute) === 0;
   }.property('currentPath'),
 
+  active: function() {
+    var current = this.get('currentPath');
+    var linkRoute = this.get('route.route');
+    return current === linkRoute || current === linkRoute + '.index';
+  }.property('currentPath'),
+
   init: function() {
     this._super.apply(this, arguments);
-    if (this.get('active')) {
+    if (this.get('hierarchyActive')) {
       this.set('expanded', true);
     }
   },
+
+  onChangedRoute: function() {
+    if (this.get('hierarchyActive')) {
+      this.set('expanded', true);
+    }
+  }.observes('hierarchyActive'),
 
   click: function() {
     if (this.get('route.expandable') && !Ember.isEmpty(this.get('route.routes')) &&
