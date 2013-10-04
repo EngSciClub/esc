@@ -75,5 +75,15 @@ App.Router.map(function() {
 });
 
 App.Router.reopen({
-  location: 'auto'
+  location: 'auto',
+  didTransition: function() {
+    this._super.apply(this, arguments);
+    if (!Ember.isNone(window._gaq)) {
+      Ember.run.next(function() {
+        var page = window.location.hash.length > 0 ? window.location.hash.substring(1) : window.location.pathname;
+        window._gaq.push(['_trackPageview'], page);
+        console.log('page track');
+      });
+    }
+  }.observes('currentPath')
 });
