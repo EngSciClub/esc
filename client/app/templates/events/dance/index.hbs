@@ -32,9 +32,12 @@
             Looking to register your ticket? Click below to register your ticket or change your
             preferences.
         </p>
-        {{#link-to "events.dance.register"}}
-            <button type="button" class="primary big register-button">Registration & Seating</button>
-        {{/link-to}}
+        <p>
+            <em>Registration will be available sometime next week. Stay tuned.</em>
+        </p>
+        {{!--{{#link-to "events.dance.register"}}--}}
+            <button type="button" class="alt big register-button" disabled>Registration & Seating</button>
+        {{!--{{/link-to}}--}}
     {{/base-card}}
 </div>
 
@@ -73,12 +76,12 @@
     {{#base-card tagName="section"}}
         <h2><i class="icon-ticket icon-fixed-width"></i>How do I buy a ticket?</h2>
         <p>
-            You can purchase a ticket from any of the EngSci Club execs, class reps or dinner dance directors.
-            ({{#link-to "about"}}See photos{{/link-to}}).
+            You can purchase a ticket from any of the EngSci Club execs, class reps or dinner dance directors
+            ({{#link-to "about"}}see photos{{/link-to}}), starting on Monday October 7th.
         </p>
         <h3>Pricing</h3>
         <p>
-            First 200 tickets are early bird. There are YY early bird tickets remaining.
+            First 200 tickets are early bird. {{! There are YY early bird tickets remaining. }}
         </p>
         <div class="row">
             <div class="pricing col left">
