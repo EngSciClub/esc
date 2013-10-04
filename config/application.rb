@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'google/api_client'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -19,5 +20,22 @@ module App
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    config.autoload_paths += %W(#{config.root}/lib)
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+
+    ActiveRecord::Base.send(:include, ActiveModel::ForbiddenAttributesProtection)
+
+    config.hostname = ENV['HOSTNAME']
+
+    config.google_api_client = Google::APIClient.new
+    config.google_api_client.authorization.client_id = ENV['GOOGLE_API_CLIENT_ID']
+    config.google_api_client.authorization.client_secret = ENV['GOOGLE_API_CLIENT_SECRET']
+    config.google_api_client.authorization.scope = 'https://www.googleapis.com/auth/userinfo.email'
+
+    config.oauth2_api = config.google_api_client.discovered_api('oauth2', 'v2')
+
   end
 end
