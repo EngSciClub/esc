@@ -1,0 +1,66 @@
+<div class="full col">
+    {{#base-card tagName="section" class="register"}}
+        <h2><i class="icon-pencil icon-fixed-width"></i>Register your ticket!</h2>
+        <p>
+            Register your ticket if you haven't done so already. Otherwise, log in to change your information.
+        </p>
+        <form class="centered">
+            <span class="checkbox" {{action toggleRegistered}} tabindex="0">
+                <label class="inline">Already registered?</label><i {{bind-attr class="registered:icon-check:icon-unchecked"}}></i>
+            </span>
+
+            <label {{bind-attr for="view.email.elementId"}}>Your email address</label>
+            {{input type="text" placeholder="someone@mail.utoronto.ca" viewName="email"}}
+            <div class="description-wrapper" tabindex="-1">
+                <div class="description">
+                    Use the email address that you provided when buying your ticket.
+                    Don't remember which email address you used? Email
+                    <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                    with your ticket number for help.
+                </div>
+            </div>
+
+            {{#unless registered}}
+                <label {{bind-attr for="view.ticketNumber.elementId"}}>Your ticket number</label>
+                {{input type="tel" placeholder="232" viewName="ticketNumber"}}
+            {{else}}
+                <label {{bind-attr for="view.password.elementId"}}>Your password</label>
+                {{input type="password" viewName="password"}}
+            {{/unless}}
+
+            <div class="button-wrapper">
+                <button {{action activateUser}} type="submit" {{bind-attr class=":primary loading" disabled=loading}}>
+                    {{#unless registered}}
+                        Register Ticket
+                    {{else}}
+                        Make Changes
+                    {{/unless}}
+                </button>
+            </div>
+            <div {{bind-attr class=":info-wrapper errors.has:active"}}>
+                <div class="info error">
+                    {{#if errors.invalid}}
+                        <h3>Oops! We couldn't find a valid registrant under those credentials.</h3>
+                        Has your ticket been activated yet? It may take up to 24 hours to
+                        activate your ticket. If you've waited over 24 hours and you still
+                        cannot register, contact
+                        <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                        with your information for help.
+                    {{/if}}
+                    {{#if errors.exists}}
+                        <h3>Oops! This ticket has already been registered.</h3>
+                        Is this an error? If so, contact
+                        <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                        with your information for help.
+                    {{/if}}
+                    {{#if errors.credentials}}
+                        <h3>Oops, your username and password are incorrect.</h3>
+                        Please check again. If you can't login, we can reset your password. Contact
+                        <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                        with your information for help.
+                    {{/if}}
+                </div>
+            </div>
+        </form>
+    {{/base-card}}
+</div>

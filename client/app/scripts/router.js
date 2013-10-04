@@ -19,14 +19,16 @@ App.routes = [
 
   r('index', 'Announcements', { icon: 'icon-bullhorn', path: '/' }),
   r('about', 'About', { icon: 'icon-info-sign' }),
+  r('history', 'History', { icon: 'icon-time', hidden: true }),
   r('events', 'Events', { icon: 'icon-calendar', routes: [
     r('socials', 'Friday Night Socials'),
     r('smoker', 'Book Smoker', { hidden: true }),
     r('dance', 'Dinner Dance', { path: 'dinnerdance', expand: false, routes: [
-      r('register', 'Registration'),
-      r('sponsors', 'Sponsors')
+      r('register', 'Registration')
     ]}),
+    r('skitrip', 'Ski Trip', { hidden: true }),
     r('nocturne', 'Nocturne', { hidden: true }),
+    r('kart', 'Mario Kart Ladder', { hidden: true }),
     r('foosball', 'Foosball Ladder', { hidden: true }),
     r('smash', 'Smash Ladder', { hidden: true })
   ]}),
@@ -35,6 +37,9 @@ App.routes = [
   r('suggestions', 'Suggestions', { icon: 'icon-pencil', hidden: true }),
   r('found', 'Lost and Found', { icon: 'icon-archive', hidden: true }),
   r('courses', 'Anti-Calendar', { icon: 'icon-book', hidden: true }),
+  r('admin', 'Exec Login', { icon: 'icon-key', expand: false, routes: [
+    r('dance', 'Dinner Dance', { path: 'dinnerdance' })
+  ]}),
 
   r('none', '404', { path: '*path', hidden: true })
 ];

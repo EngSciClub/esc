@@ -2,15 +2,88 @@
  * author: John Liu
  */
 
-.calendar {
-  iframe {
-    border: 0;
-    height: 20em, 30em, 30em;
-    width: 100%;
-    display: none, block, block;
+$embed {
+  border: 0;
+  height: 20em, 30em, 30em;
+  width: 100%;
+}
 
-    &.mobile {
-      display: block, none, none;
+iframe.calendar {
+  @extends $embed;
+  display: none, block, block;
+
+  &.mobile {
+    display: block, none, none;
+  }
+}
+
+iframe.map {
+  @extends $embed;
+}
+
+.map-wrapper {
+  position: relative;
+
+  a {
+    @extends $embed;
+    position: absolute;
+    display: block;
+  }
+}
+
+.pricing {
+  @extends .half;
+
+  width: 50%;
+  text-align: center;
+  padding-bottom: 1em;
+
+  .price {
+    font-size: 3em;
+    font-weight: $weight-bold;
+    line-height: 1;
+  }
+}
+
+.register-button {
+  display: block;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+
+.menu {
+  text-align: center;
+
+  p {
+    font-style: italic;
+  }
+
+  hr {
+    width: 10%;
+    margin: 2em auto;
+  }
+}
+
+.sponsors {
+  .logos {
+    text-align: center;
+    vertical-align: middle;
+
+    img {
+      height: 3em, 4em, 4em;
+      max-width: 100%;
+
+      &.primary {
+        height: 8em, 12em, 12em;
+      }
+    }
+  }
+}
+
+.register {
+  form {
+    .info-wrapper.active {
+      max-height: 20em;
     }
   }
 }

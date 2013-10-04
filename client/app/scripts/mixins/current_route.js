@@ -1,4 +1,4 @@
-App.ControllerCurrentRoute = Ember.Mixin.create({
+App.CurrentRoute = Ember.Mixin.create({
   concatenatedProperties: ['needs'],
   needs: ['application'],
 

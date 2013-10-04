@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="full col">
+        {{#base-card tagName="section" class="only-heading"}}
+            <h1>Manage Dinner Dance registrants.</h1>
+        {{/base-card}}
+    </div>
+    <div class="full col">
+        {{#base-card tagName="section"}}
+            <h2>Activate a ticket.</h2>
+            <form class="centered">
+                <label {{bind-attr for="view.name.elementId"}}>Registrant's name</label>
+                {{input value=name class=errors.name.css type="text" placeholder="Harry Potter" viewName="name"}}
+
+                <label {{bind-attr for="view.email.elementId"}}>Registrant's email address</label>
+                {{input value=email class=errors.email.css type="text" placeholder="someone@mail.utoronto.ca" viewName="email"}}
+
+                <label {{bind-attr for="view.ticketNumber.elementId"}}>Ticket number to sell</label>
+                {{input value=ticketNumber class=errors.ticketNumber.css type="tel" placeholder="232" viewName="ticketNumber"}}
+
+                <label {{bind-attr for="view.year.elementId"}}>Registrant's year</label>
+                {{view Ember.Select contentBinding=App.DanceRegistrant.yearList
+                                    valueBinding=year
+                                    viewName="year"}}
+
+                <div class="button-wrapper">
+                    <button {{action checkOrActivate}} type="submit" {{bind-attr class=":primary loading" disabled=loading}}>
+                        {{#if registrantChanged}}
+                            Check Ticket Pricing
+                        {{else}}
+                            Activate Ticket
+                        {{/if}}
+                    </button>
+                </div>
+                <div {{bind-attr class=":info-wrapper errors.has:active"}}>
+                    <div class="info">
+                        <h3>Oops! We couldn't find a valid registrant under those credentials.</h3>
+                        Has your ticket been activated yet? It may take up to 24 hours to
+                        activate your ticket. If you've waited over 24 hours and you still
+                        cannot register, contact
+                        <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                        with your information for help.
+                    </div>
+                </div>
+            </form>
+        {{/base-card}}
+    </div>
+</div>

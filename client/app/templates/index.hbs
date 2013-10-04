@@ -1,3 +1,29 @@
+{{!-- Static data until Announcements is ready --}}
+{{#base-card}}
+    <h2>Welcome to the new EngSci Club Website!</h2>
+    <p>
+        Welcome to the new EngSci Club Website. While this is still a work in progress,
+        you can current check out the {{#link-to "events"}}events calendar{{/link-to}},
+        some information on {{#link-to "events.socials"}}our friday night socials{{/link-to}},
+        and the {{#link-to "events.dance"}}dinner dance{{/link-to}}.
+    </p>
+    <p>
+        Below is a list of features to be added to the site in the future.
+    </p>
+    <ul>
+        <li>Merchandise preorder.</li>
+        <li>More event information.</li>
+        <li>Intramural sports information.</li>
+        <li>Lost and found page.</li>
+        <li>Anti-calendar.</li>
+        <li>Suggestions page.</li>
+    </ul>
+    <p>
+        Sincerely, <br>
+        <b>Your-excited-for-the-school-year-engsci-club-exec</b>
+    </p>
+{{/base-card}}
+
 {{#each announcement in content}}
     {{#base-card}}
         <h2>{{announcement.title}}</h2>

@@ -1,0 +1,128 @@
+<div class="half left col">
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-calendar icon-fixed-width"></i>Save the date!</h2>
+        <p>
+            The dinner dance will take place on <strong>Friday, November 22nd, 2013</strong>. Doors open at 6:30pm.
+        </p>
+    {{/base-card}}
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-map-marker icon-fixed-width"></i>How do I get there?</h2>
+        <p>
+            The event is taking place at the <strong><a href="http://goo.gl/maps/v7YjT" target="_blank">Grand Baccus Banquet Hall</a></strong> at 2155 McNicoll Avenue.
+        </p>
+        <ul class="icons-ul icons-list">
+            <li>
+                <i class="icon-li icon-arrow-right"></i>
+                Busing will be provided from Convocation Hall to the venue at 5:45pm, 6:00pm, 6:30pm.
+            </li>
+            <li>
+                <i class="icon-li icon-arrow-left"></i>
+                Busing will be provided from the venue back to campus starting at midnight until 1:30am.
+            </li>
+        </ul>
+        {{!-- This is a custom embed map, go to mapsengine using the EngSci Club login to edit --}}
+        <div class="map-wrapper">
+            <a href="http://goo.gl/maps/v7YjT" target="_blank"></a>
+            <iframe src="http://mapsengine.google.com/map/u/1/embed?mid=zib6vN748d-Y.k2PTIaGz5e_Y" class="map"></iframe>
+        </div>
+    {{/base-card}}
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
+        <p>
+            Looking to register your ticket? Click below to register your ticket or change your
+            preferences.
+        </p>
+        {{#link-to "events.dance.register"}}
+            <button type="button" class="primary big register-button">Registration & Seating</button>
+        {{/link-to}}
+    {{/base-card}}
+</div>
+
+<div class="half right col">
+    {{#base-card tagName="section" class="sponsors"}}
+        <h2><i class="icon-food icon-fixed-width"></i>Menu</h2>
+        <div class="menu">
+            <h3>Salad</h3>
+            <p>
+                Baby Spinach & Fris&eacute;e Lettuce with Dried Cranberries, Mandarin Orange & Toasted Almonds Drizzled with a Citrus Poppyseed Dressing
+            </p>
+            <hr>
+            <h3>Entr&eacute;e</h3>
+            <p>
+                (MAIN) <br>
+                Grilled Beef Tenderloin Medallion with Portobello Peppercorn Sauce*
+            </p>
+            <p>
+                (VEGAN) <br>
+                Vegetable Ratatouille: Variety of fresh vegetables stewed in tomato sauce and served over warm flakey puff pastry
+            </p>
+            <hr>
+            <h3>Dessert</h3>
+            <p>
+                Apple Caramel Cheesecake served with Warm Vanilla Cream Sauce
+            </p>
+        </div>
+        <div class="footnote">
+            <h3>Notes</h3>
+            <p>
+                Dietary restrictions can be accomodated. The beef is halal and may also be served without the
+                Portobello sauce as a gluten-free option. Please let us know when registering your ticket.
+            </p>
+        </div>
+    {{/base-card}}
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-ticket icon-fixed-width"></i>How do I buy a ticket?</h2>
+        <p>
+            You can purchase a ticket from any of the EngSci Club execs, class reps or dinner dance directors.
+            ({{#link-to "about"}}See photos{{/link-to}}).
+        </p>
+        <h3>Pricing</h3>
+        <p>
+            First 200 tickets are early bird. There are YY early bird tickets remaining.
+        </p>
+        <div class="row">
+            <div class="pricing col left">
+                <span class="price">$60</span> <br>
+                for F!rosh <br>
+                (Early Bird)
+            </div>
+            <div class="pricing col right">
+                <span class="price">$65</span> <br>
+                for others <br>
+                (Early Bird)
+            </div>
+        </div>
+        <div class="row">
+            <div class="pricing col left">
+                <span class="price">$65</span> <br>
+                for F!rosh <br>
+                (Regular)
+            </div>
+            <div class="pricing col right">
+                <span class="price">$70</span> <br>
+                for others <br>
+                (Regular)
+            </div>
+        </div>
+    {{/base-card}}
+</div>
+
+<div class="full col">
+    {{#base-card tagName="section" class="sponsors"}}
+        <h2><i class="icon-star icon-fixed-width"></i>Presented by</h2>
+        <div class="logos">
+            <a href="http://www.orbis.com" target="_blank">
+                <img src="/images/events/dance/orbis.jpg" class="primary">
+            </a>
+        </div>
+        <hr>
+        <div class="logos">
+            <a href="http://ibbme.utoronto.ca/" target="_blank">
+                <img src="/images/events/dance/ibbme.png">
+            </a>
+            <a href="http://ece.utoronto.ca" target="_blank">
+                <img src="/images/events/dance/ece.png">
+            </a>
+        </div>
+    {{/base-card}}
+</div>
