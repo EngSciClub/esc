@@ -5,10 +5,7 @@ module AdminAuthorization
 
     render json: { status: :denied } and return unless !admin.blank?
 
-    ap request.original_fullpath
     admin.authorized_routes.each do |route|
-      ap route
-      ap (Globber.new(route) =~ request.original_fullpath)
       return if Globber.new(route) =~ request.original_fullpath
     end
 
