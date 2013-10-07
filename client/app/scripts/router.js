@@ -25,7 +25,7 @@ App.routes = [
 //    r('smoker', 'Book Smoker', { hidden: true }),
     r('dance', 'Dinner Dance', { path: 'dinnerdance', expand: false, routes: [
       r('index', '', { path: '/' }),
-//      r('register', 'Registration')
+      r('register', 'Registration')
     ]}),
 //    r('skitrip', 'Ski Trip', { hidden: true }),
 //    r('nocturne', 'Nocturne', { hidden: true }),
@@ -38,9 +38,9 @@ App.routes = [
   r('suggestions', 'Suggestions', { icon: 'icon-pencil', hidden: true }),
 //  r('found', 'Lost and Found', { icon: 'icon-archive', hidden: true }),
 //  r('courses', 'Anti-Calendar', { icon: 'icon-book', hidden: true }),
-//  r('admin', 'Exec Login', { icon: 'icon-key', expand: false, routes: [
-//    r('dance', 'Dinner Dance', { path: 'dinnerdance' })
-//  ]}),
+  r('admin', 'Exec Login', { icon: 'icon-key', expand: false, routes: [
+    r('dance', 'Dinner Dance', { path: 'dinnerdance' })
+  ]}),
 
   r('none', '404', { path: '*path', hidden: true })
 ];
@@ -82,7 +82,6 @@ App.Router.reopen({
       Ember.run.next(function() {
         var page = window.location.hash.length > 0 ? window.location.hash.substring(1) : window.location.pathname;
         window._gaq.push(['_trackPageview'], page);
-        console.log('page track');
       });
     }
   }.observes('currentPath')
