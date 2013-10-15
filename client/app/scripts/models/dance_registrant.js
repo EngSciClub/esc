@@ -104,6 +104,7 @@ App.DanceRegistrant.reopenClass({
 
 App.DanceRegistrant.url = '/api/dance_registrants';
 App.DanceRegistrant.rootKey = 'dance_registrant';
+App.DanceRegistrant.collectionKey = 'dance_registrants';
 App.DanceRegistrant.adapter = Ember.RESTAdapter.create();
 App.DanceRegistrant.camelizeKeys = true;
 

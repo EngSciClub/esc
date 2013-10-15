@@ -27,5 +27,6 @@ App.Admin.reopenClass({
 
 App.Admin.url = '/api/admins';
 App.Admin.rootKey = 'admin';
+App.Admin.collectionKey = 'admins';
 App.Admin.adapter = Ember.RESTAdapter.create();
 App.Admin.camelizeKeys = true;
