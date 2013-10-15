@@ -54,7 +54,7 @@ class DanceRegistrant < ActiveRecord::Base
   end
 
   def eligible_for_early_bird?
-    DanceRegistrant.count < EARLY_BIRD_DISCOUNT
+    DanceRegistrant.count < EARLY_BIRD_TOTAL
   end
 
   def ticket_number_unique
