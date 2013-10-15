@@ -36,18 +36,7 @@ App.AdminDanceController = App.ObjectController.extend({
 
   oldModel: null,
 
-  number: 1,
-
   actions: {
-    fill: function() {
-      this.set('model.name', 'John Liu');
-      this.set('model.email', 'yuhan.liu@mail.utoronto.ca');
-      this.set('model.year', '1T7');
-      this.set('model.ticketNumber', this.get('number'));
-
-      this.incrementProperty('number');
-    },
-
     checkOrActivate: function() {
       var self = this;
       var model = self.get('model');
