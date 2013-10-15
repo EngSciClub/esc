@@ -17,7 +17,9 @@ module AdminAuthorization
     # which allows us to use a shared API client.
     @authorization ||= (
       auth = Rails.application.config.google_api_client.authorization.dup
-      auth.redirect_uri = (Rails.env.development? ? 'http://' : 'https://') + Rails.application.config.hostname + '/auth'
+      # TODO(johnliu): Production doesn't currently use SSL, but add this back later.
+      #auth.redirect_uri = (Rails.env.development? ? 'http://' : 'https://') + Rails.application.config.hostname + '/auth'
+      auth.redirect_uri = 'http://' + Rails.application.config.hostname + '/auth'
       auth.update_token!(session.to_hash)
       if auth.refresh_token && auth.expired?
         auth.fetch_access_token!
