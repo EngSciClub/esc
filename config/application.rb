@@ -1,7 +1,7 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path("../boot", __FILE__)
 
-require 'rails/all'
-require 'google/api_client'
+require "rails/all"
+require "google/api_client"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -28,14 +28,14 @@ module App
 
     ActiveRecord::Base.send(:include, ActiveModel::ForbiddenAttributesProtection)
 
-    config.hostname = ENV['HOSTNAME']
+    config.hostname = ENV["HOSTNAME"]
 
     config.google_api_client = Google::APIClient.new
-    config.google_api_client.authorization.client_id = ENV['GOOGLE_API_CLIENT_ID']
-    config.google_api_client.authorization.client_secret = ENV['GOOGLE_API_CLIENT_SECRET']
-    config.google_api_client.authorization.scope = 'https://www.googleapis.com/auth/userinfo.email'
+    config.google_api_client.authorization.client_id = ENV["GOOGLE_API_CLIENT_ID"]
+    config.google_api_client.authorization.client_secret = ENV["GOOGLE_API_CLIENT_SECRET"]
+    config.google_api_client.authorization.scope = "https://www.googleapis.com/auth/userinfo.email"
 
-    config.oauth2_api = config.google_api_client.discovered_api('oauth2', 'v2')
+    config.oauth2_api = config.google_api_client.discovered_api("oauth2", "v2")
 
   end
 end

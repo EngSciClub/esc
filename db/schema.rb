@@ -11,13 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131003235619) do
+ActiveRecord::Schema.define(version: 20131015073737) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
     t.text     "authorized_routes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  create_table "dance_registrants", force: true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "year"
+    t.string   "password"
+    t.integer  "registered_by_id"
+    t.integer  "ticket_number"
+    t.text     "dietary_restrictions"
+    t.boolean  "is_over_19"
+    t.string   "entree_choice"
+    t.integer  "table_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "is_early_bird"
+    t.float    "amount_paid"
   end
 
 end
