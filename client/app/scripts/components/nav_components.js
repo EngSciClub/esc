@@ -28,6 +28,10 @@ App.NavLinkComponent = Ember.Component.extend(App.Collapsable, {
     }
   },
 
+  fixedPath: function() {
+    return '/' + this.get('route.path');
+  }.property('route.path'),
+
   hierarchyActive: function() {
     var current = this.get('currentPath');
     var linkRoute = this.get('route.route');
