@@ -22,8 +22,8 @@
         </ul>
         {{!-- This is a custom embed map, go to mapsengine using the EngSci Club login to edit --}}
         <div class="map-wrapper">
-            <a href="http://goo.gl/maps/v7YjT" target="_blank"></a>
-            <iframe src="http://mapsengine.google.com/map/u/1/embed?mid=zib6vN748d-Y.k2PTIaGz5e_Y" class="map"></iframe>
+            <a href="http://goo.gl/NuUHiE" target="_blank"></a>
+            <iframe src='http://a.tiles.mapbox.com/v3/engsci.map-jhdb0o05.html#15/43.813627362530575/-79.29455280303955' class="map"></iframe>
         </div>
     {{/base-card}}
     {{#base-card tagName="section"}}
@@ -33,7 +33,7 @@
             preferences.
         </p>
         <p>
-            <em>Registration will be available sometime next week. Stay tuned.</em>
+            <em>Registration will be available soon. Stay tuned.</em>
         </p>
         {{!--{{#link-to "events.dance.register"}}--}}
             <button type="button" class="alt big register-button" disabled>Registration & Seating</button>
@@ -80,31 +80,33 @@
             ({{#link-to "about"}}see photos{{/link-to}}), starting on Monday October 7th.
         </p>
         <h3>Pricing</h3>
-        <p>
-            First 200 tickets are early bird. {{! There are YY early bird tickets remaining. }}
-        </p>
+        {{#if remaining}}
+            <p>
+                First 200 tickets are early bird. There are {{remaining}} early bird tickets remaining.
+            </p>
+            <div class="row">
+                <div class="pricing col left">
+                    <span class="price">$60</span> <br>
+                    for F!rosh <br>
+                    (Early Bird)
+                </div>
+                <div class="pricing col right">
+                    <span class="price">$65</span> <br>
+                    for others <br>
+                    (Early Bird)
+                </div>
+            </div>
+        {{/if}}
         <div class="row">
             <div class="pricing col left">
-                <span class="price">$60</span> <br>
-                for F!rosh <br>
-                (Early Bird)
-            </div>
-            <div class="pricing col right">
-                <span class="price">$65</span> <br>
-                for others <br>
-                (Early Bird)
-            </div>
-        </div>
-        <div class="row">
-            <div class="pricing col left">
                 <span class="price">$65</span> <br>
                 for F!rosh <br>
-                (Regular)
+                {{#if remaining}}(Regular){{/if}}
             </div>
             <div class="pricing col right">
                 <span class="price">$70</span> <br>
                 for others <br>
-                (Regular)
+                {{#if remaining}}(Regular){{/if}}
             </div>
         </div>
     {{/base-card}}

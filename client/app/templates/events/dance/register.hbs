@@ -41,23 +41,29 @@
                 <div class="info error">
                     {{#if errors.invalid}}
                         <h3>Oops! We couldn't find a valid registrant under those credentials.</h3>
-                        Has your ticket been activated yet? It may take up to 24 hours to
-                        activate your ticket. If you've waited over 24 hours and you still
-                        cannot register, contact
-                        <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
-                        with your information for help.
+                        <p>
+                            Has your ticket been activated yet? It may take up to 24 hours to
+                            activate your ticket. If you've waited over 24 hours and you still
+                            cannot register, contact
+                            <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                            with your information for help.
+                        </p>
                     {{/if}}
                     {{#if errors.exists}}
                         <h3>Oops! This ticket has already been registered.</h3>
-                        Is this an error? If so, contact
-                        <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
-                        with your information for help.
+                        <p>
+                            Is this an error? If so, contact
+                            <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                            with your information for help.
+                        </p>
                     {{/if}}
                     {{#if errors.credentials}}
                         <h3>Oops, your username and password are incorrect.</h3>
-                        Please check again. If you can't login, we can reset your password. Contact
-                        <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
-                        with your information for help.
+                        <p>
+                            Please check again. If you can't login, we can reset your password. Contact
+                            <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                            with your information for help.
+                        </p>
                     {{/if}}
                 </div>
             </div>

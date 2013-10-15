@@ -13,6 +13,8 @@ $color-blue-lighter = lighten($color-blue, 20%)
 $color-blue-dark = darken($color-blue, 40%)
 $color-red = #9F001F;
 $color-red-light = lighten($color-red, 15%);
+$color-green = #009F1F;
+$color-green-light = lighten($color-green, 10%);
 
 $weight-lighter = 200
 $weight-light = 300
@@ -108,6 +110,10 @@ $card {
   outline: none;
 
   transition: 0.5s;
+
+  &.active {
+    max-height: 30em;
+  }
 }
 
 .info {
@@ -117,6 +123,8 @@ $card {
   margin: 1em 0;
   padding: 0.5em 1em;
 
+  transition: 0.5s;
+
   &.error {
     background-color: $color-red-light;
     color: $color-white;
@@ -124,6 +132,19 @@ $card {
     a {
       color: $color-white;
     }
+  }
+
+  &.good {
+    background-color: $color-green-light;
+    color: $color-white;
+
+    a {
+      color: $color-white;
+    }
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
   }
 }
 
@@ -293,7 +314,7 @@ $input {
     box-shadow: 0 0 2px 1px $color-blue-lighter !important;
 
     & + .description-wrapper {
-      max-height: 15em;
+      max-height: 20em;
     }
   }
 

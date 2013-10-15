@@ -1,4 +1,19 @@
 require('scripts/controllers/base_controllers');
+require('scripts/models/base_controllers');
+
+App.EventsDanceIndexController = App.Controller.extend({
+  remaining: null,
+
+  init: function() {
+    this._super.apply(this, arguments);
+
+    // Set the number of early bird tickets.
+    var self = this;
+    App.DanceRegistrant.getEarlyBirdRemaining().then(function(remaining) {
+      self.set('remaining', remaining > 0 ? remaining : null);
+    });
+  }
+});
 
 App.EventsDanceRegisterController = App.Controller.extend({
   errors: {},

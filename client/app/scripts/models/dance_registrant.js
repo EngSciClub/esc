@@ -1,3 +1,5 @@
+require('scripts/models/base_model');
+
 App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   id: Ember.attr(),
   createdAt: Ember.attr(Date),
@@ -7,6 +9,10 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
 
   // Full name
   name: Ember.attr(/* String */),
+  validatesName: Ember.validates('name', Ember.Validator.notEmpty),
+
+  // Phone number
+  phone: Ember.attr(/* String */),
 
   // Email address used when signing up.
   email: Ember.attr(/* String */),
@@ -27,16 +33,29 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
 
   // Year (1T7, 1T6, 1T5, 1T4, PEY, 1T3+PEY, Guest)
   year: Ember.attr(/* String */),
+  validatesYear: Ember.validates('year', Ember.Validator.notEmpty),
 
   // Password (not stored on client and not passed from server).
   password: Ember.attr(/* String */),
 
   // The id admin who registered the user.
-  registeredBy: Ember.belongsTo(App.Admin, { key: 'registered_by', embedded: true}),
+  registeredBy: Ember.belongsTo(App.Admin, { key: 'registered_by_id', embedded: false}),
 
   // The ticket number.
   ticketNumber: Ember.attr(Number),
-  validatesTicketNumber: Ember.validates('ticketNumber', Ember.Validator.notEmpty),
+  validatesTicketNumber: Ember.validates('ticketNumber', Ember.Validator.notEmpty, function(property, forced) {
+    var number = this.get('ticketNumber');
+    if (isNaN(window.parseInt(number, 10)) || number <= 0 || number > 350) {
+      this.set('errors.ticketNumber', {
+        message: 'Invalid ticket number.',
+        css: 'error'
+      });
+      return false;
+    }
+
+    this.set('errors.ticketNumber', null);
+    return true;
+  }),
 
 
   /* Registrant Information */
@@ -50,6 +69,9 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   // If the user is early bird (calculated by server).
   isEarlyBird: Ember.attr(/* Boolean */),
 
+  // Amount paid.
+  amountPaid: Ember.attr(Number),
+
   // Which entree the user has chosen.
   entreeChoice: Ember.attr(/* String */),
 
@@ -62,17 +84,29 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   // Gets the ticket price for this user, based on the entered information.
   checkTicketPricing: function() {
     var adapter = this.constructor.adapter;
-    return adapter.ajax(url, this.toJSON(), 'POST');
-  },
+    var url = this.constructor.url;
+    return adapter.ajax(url + '/check_price', this.toJSON());
+  }
+});
+
+
+App.DanceRegistrant.reopenClass({
+  getEarlyBirdRemaining: function() {
+    return this.adapter.ajax(this.url + '/early_bird_remaining').then(function(data) {
+      if (Ember.isNone(data) || Ember.isNone(data.remaining)) {
+        throw 'Cannot fetch remaining count.';
+      }
+
+      return data.remaining;
+    });
+  }
 });
 
 App.DanceRegistrant.url = '/api/dance_registrants';
-App.DanceRegistrant.adapter = Ember.FixtureAdapter.create();
+App.DanceRegistrant.rootKey = 'dance_registrant';
+App.DanceRegistrant.adapter = Ember.RESTAdapter.create();
 App.DanceRegistrant.camelizeKeys = true;
 
 App.DanceRegistrant.yearList = [
   '1T7', '1T6', '1T5', '1T4', 'PEY', '1T3+PEY', 'Guest'
-];
-
-App.DanceRegistrant.FIXTURES = [
 ];

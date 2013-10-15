@@ -9,6 +9,32 @@
     ValidatesModel: Ember.Mixin.create({
       validate: function() {
         this.toggleProperty('_runValidations');
+      },
+
+      // Use this to handle errors from the server. Override this to handle your
+      // own server's response form.
+      applyErrors: function() {
+        var self = this;
+        return function(failureXHR) {
+          var errors;
+          if (!Ember.isNone(failureXHR) &&
+              !Ember.isNone(failureXHR.responseJSON) &&
+              !Ember.isNone(failureXHR.responseJSON.errors)) {
+            errors = failureXHR.responseJSON.errors;
+          }
+
+          for (var key in errors) {
+            if (Ember.isNone(self.get('errors'))) {
+              self.set('errors', {});
+            }
+
+            var fixedKey = self.constructor.camelizeKeys ? Ember.String.camelize(key) : key;
+            self.set('errors.' + fixedKey, {
+              message: errors[key][0],
+              css: 'error'
+            });
+          }
+        };
       }
     }),
 

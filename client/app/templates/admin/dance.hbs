@@ -14,16 +14,21 @@
                 <label {{bind-attr for="view.email.elementId"}}>Registrant's email address</label>
                 {{input value=email class=errors.email.css type="text" placeholder="someone@mail.utoronto.ca" viewName="email"}}
 
+                <label {{bind-attr for="view.phone.elementId"}}>Registrant's phone number</label>
+                {{input value=phone class=errors.phone.css type="tel" placeholder="6471231324" viewName="phone"}}
+
                 <label {{bind-attr for="view.ticketNumber.elementId"}}>Ticket number to sell</label>
                 {{input value=ticketNumber class=errors.ticketNumber.css type="tel" placeholder="232" viewName="ticketNumber"}}
 
                 <label {{bind-attr for="view.year.elementId"}}>Registrant's year</label>
                 {{view Ember.Select contentBinding=App.DanceRegistrant.yearList
                                     valueBinding=year
+                                    classNameBindings=errors.year.css
+                                    prompt="-"
                                     viewName="year"}}
 
                 <div class="button-wrapper">
-                    <button {{action checkOrActivate}} type="submit" {{bind-attr class=":primary loading" disabled=loading}}>
+                    <button {{action checkOrActivate}} type="submit" {{bind-attr class=":primary formButtonLoading:loading" disabled=formButtonDisabled}}>
                         {{#if registrantChanged}}
                             Check Ticket Pricing
                         {{else}}
@@ -31,14 +36,57 @@
                         {{/if}}
                     </button>
                 </div>
-                <div {{bind-attr class=":info-wrapper errors.has:active"}}>
-                    <div class="info">
-                        <h3>Oops! We couldn't find a valid registrant under those credentials.</h3>
-                        Has your ticket been activated yet? It may take up to 24 hours to
-                        activate your ticket. If you've waited over 24 hours and you still
-                        cannot register, contact
-                        <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
-                        with your information for help.
+                <div class="button-wrapper">
+                    <button {{action fill}} type="submit" {{bind-attr class=":primary"}}>
+                        Fill Form
+                    </button>
+                </div>
+                <div {{bind-attr class=":info-wrapper info.visible:active"}}>
+                    <div {{bind-attr class=":info info.good:good info.error:error"}}>
+                        {{#if info.neutral}}
+                            <h3>You should charge {{name}}: ${{ticketPrice}}.</h3>
+                            <p>
+                                As a reminder, F!rosh are limited to a single ticket at F!rosh pricing. They
+                                must also use their @mail.utoronto.ca emails when registering.
+                            </p>
+                            {{#if earlyBirdRemaining}}
+                                <p>
+                                    For your reference, there are: <strong>{{earlyBirdRemaining}}</strong> early bird tickets left.
+                                </p>
+                            {{/if}}
+                        {{/if}}
+
+                        {{#if info.good}}
+                            <h3>Successfully activated ticket {{oldModel.ticketNumber}} for {{oldModel.name}}.</h3>
+                            <p>
+                                Make sure the registrant knows to use {{oldModel.email}} when signing
+                                up for their table.
+                            </p>
+                            {{#if earlyBirdRemaining}}
+                                <p>
+                                    For your reference, there are: <strong>{{earlyBirdRemaining}}</strong> early bird tickets left.
+                                </p>
+                            {{/if}}
+                        {{/if}}
+
+                        {{#if info.error}}
+                            <h3>Oops, something went wrong!</h3>
+                            <p>
+                                Check the above fields highlighted in red. The server indicated that
+                                there were errors with the registrant information:
+                            </p>
+                            <ul>
+                                {{#if errors.name}}
+                                    <li>{{errors.name.message}}</li>
+                                {{/if}}
+                                {{#if errors.email}}
+                                    <li>{{errors.email.message}}</li>
+                                {{/if}}
+                                {{#if errors.ticketNumber}}
+                                    <li>{{errors.ticketNumber.message}}</li>
+                                {{/if}}
+                            </ul>
+                        {{/if}}
                     </div>
                 </div>
             </form>
