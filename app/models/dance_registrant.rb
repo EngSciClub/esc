@@ -49,12 +49,12 @@ class DanceRegistrant < ActiveRecord::Base
   end
 
   def self.early_bird_remaining?
-    remaining = EARLY_BIRD_TOTAL - DanceRegistrant.count
+    remaining = EARLY_BIRD_TOTAL - DanceRegistrant.where(is_early_bird: true).count
     remaining >= 0 ? remaining : 0
   end
 
   def eligible_for_early_bird?
-    DanceRegistrant.count < EARLY_BIRD_TOTAL
+    DanceRegistrant.where(is_early_bird: true).count < EARLY_BIRD_TOTAL
   end
 
   def ticket_number_unique
