@@ -1,10 +1,10 @@
-require 'fileutils'
+require "fileutils"
 
 desc "Build client JS app"
 task :client, :mode do |t, args|
 	FileUtils.rm_rf Rails.root.join("public")
 
-  if args[:mode] == 'link'
+  if args[:mode] == "link"
     puts "Creating symlink to distribution directory."
     FileUtils.symlink Rails.root.join("client", "dist"), Rails.root.join("public")
   end
@@ -15,7 +15,7 @@ task :client, :mode do |t, args|
     puts `grunt build`
   end
 
-  unless args[:mode] == 'link'
+  unless args[:mode] == "link"
     puts "Moving production build to public directory."
     FileUtils.mv Rails.root.join("client", "dist"), Rails.root.join("public")
   end
