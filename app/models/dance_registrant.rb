@@ -23,7 +23,7 @@ class DanceRegistrant < ActiveRecord::Base
                 less_than_or_equal_to: 350,
                 message: "Not a valid ticket number."
             }
-  validate :ticket_number_unique # Use our own method so we can test before on save.
+  validate :ticket_number_unique, on: :create  # Use our own method so we can test before on save.
 
   before_create do
     self.email.downcase!
