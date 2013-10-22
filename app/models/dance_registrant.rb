@@ -26,6 +26,7 @@ class DanceRegistrant < ActiveRecord::Base
   validate :ticket_number_unique # Use our own method so we can test before on save.
 
   before_create do
+    self.email.downcase!
     self.amount_paid = check_price
     self.is_early_bird = eligible_for_early_bird?
     true
