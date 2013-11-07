@@ -7,10 +7,16 @@ class Api::Admin::DanceRegistrantsController < Api::DanceRegistrantsController
     permitted = p.permit(:email, :ticket_number)
 
     if permitted[:email] && !permitted[:email].blank? && permitted[:ticket_number] && !permitted[:ticket_number].blank?
-      render json: {
-        dance_registrants: DanceRegistrant.where("lower(email) = ? AND ticket_number = ?",
-                                                 permitted[:email].downcase, permitted[:ticket_number])
-      }
+      if !permitted[:email].blank? && !permitted[:ticket_number].blank?
+        render json: {
+            dance_registrants: DanceRegistrant.where("lower(email) = ? AND ticket_number = ?",
+                                                     permitted[:email].downcase, permitted[:ticket_number])
+        }
+      else
+        render json: {
+            dance_registrants: []
+        }
+      end
       return
     end
 

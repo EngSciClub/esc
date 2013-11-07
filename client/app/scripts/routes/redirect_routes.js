@@ -5,3 +5,7 @@ App.RedirectRoute = Ember.Route.extend({
 App.RedirectDanceRoute = Ember.Route.extend({
   redirect: function() { this.transitionTo('events.dance'); }
 });
+
+App.RedirectDanceRegisterRoute = Ember.Route.extend({
+  redirect: function() { this.transitionTo('events.dance.register'); }
+});
