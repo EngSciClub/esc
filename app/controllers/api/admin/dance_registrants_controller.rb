@@ -6,7 +6,7 @@ class Api::Admin::DanceRegistrantsController < Api::DanceRegistrantsController
     p = ActionController::Parameters.new params
     permitted = p.permit(:email, :ticket_number)
 
-    if permitted[:email] && !permitted[:email].blank? && permitted[:ticket_number] && !permitted[:ticket_number].blank?
+    if permitted[:email] && permitted[:ticket_number]
       if !permitted[:email].blank? && !permitted[:ticket_number].blank?
         render json: {
             dance_registrants: DanceRegistrant.where("lower(email) = ? AND ticket_number = ?",
