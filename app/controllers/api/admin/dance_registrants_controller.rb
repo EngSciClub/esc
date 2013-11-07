@@ -3,6 +3,17 @@ class Api::Admin::DanceRegistrantsController < Api::DanceRegistrantsController
   before_filter :authorize_admin, only: [:index, :check_price]
 
   def index
+    p = ActionController::Parameters.new params
+    permitted = p.permit(:email, :ticket_number)
+
+    if permitted[:email] && !permitted[:email].blank? && permitted[:ticket_number] && !permitted[:ticket_number].blank?
+      render json: {
+        dance_registrants: DanceRegistrant.where("lower(email) = ? AND ticket_number = ?",
+                                                 permitted[:email].downcase, permitted[:ticket_number])
+      }
+      return
+    end
+
     render json: {
       dance_registrants: DanceRegistrant.all
     }
@@ -22,12 +33,6 @@ class Api::Admin::DanceRegistrantsController < Api::DanceRegistrantsController
     registrant.save!
 
     render json: { dance_registrant: registrant }
-  end
-
-  def early_bird_remaining
-    render json: {
-      remaining: DanceRegistrant.early_bird_remaining?
-    }
   end
 
   def check_price

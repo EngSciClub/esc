@@ -81,9 +81,25 @@ iframe.map {
 }
 
 .register {
-  form {
-    .info-wrapper.active {
-      max-height: 20em;
-    }
+  max-height: 1000em, 500em, 300em;
+  overflow: hidden;
+  transition: 0.5s;
+
+  &.hidden {
+    max-height: 0em;
+  }
+
+  .table {
+    padding: 0.5em;
+  }
+
+  table {
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .save-info-wrapper {
+    margin: 0 auto;
+    width: 100%, 85%, 50%;
   }
 }

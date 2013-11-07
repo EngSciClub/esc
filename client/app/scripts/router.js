@@ -26,7 +26,7 @@ App.routes = [
     r('dance', 'Dinner Dance', { path: 'dinnerdance', expand: false, routes: [
       r('index', '', { path: '/' }),
       r('register', 'Registration')
-    ]}),
+    ]})
 //    r('skitrip', 'Ski Trip', { hidden: true }),
 //    r('nocturne', 'Nocturne', { hidden: true }),
 //    r('kart', 'Mario Kart Ladder', { hidden: true }),

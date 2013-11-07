@@ -89,8 +89,6 @@ App.AdminDanceController = App.ObjectController.extend({
 
         // We're done now so stop loading.
         self.set('formButtonLoading', false);
-      }).fail(function(reason) {
-        console.log('reason ' + reason);
       });
     }
   },

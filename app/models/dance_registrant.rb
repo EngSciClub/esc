@@ -9,10 +9,24 @@ class DanceRegistrant < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_EMAIL_UTORONTO_REGEX = /\A[\w+\-.]+@mail.utoronto.ca\z/i
 
+  TOTAL_TICKETS = 350
+
+  belongs_to :dance_table
+
   validates :name,
-            length: { minimum: 1, too_short: "Name must be present." }
+            length: {
+                minimum: 1,
+                too_short: "Name must be present.",
+                maximum: 100,
+                too_long: "Name is too long."
+            }
   validates :email,
-            length: { minimum: 1, too_short: "Email must be present." },
+            length: {
+                minimum: 1,
+                too_short: "Email must be present.",
+                maximum: 100,
+                too_long: "Email is too long."
+            },
             format: { with: VALID_EMAIL_REGEX, message: "Invalid email address format." }
   validates :year,
             inclusion: { in: %w(1T7 1T6 1T5 1T4 PEY 1T3+PEY Guest), message: "Not a valid year." }
@@ -20,10 +34,35 @@ class DanceRegistrant < ActiveRecord::Base
             numericality: {
                 only_integer: true,
                 greater_than_or_equal_to: 1,
-                less_than_or_equal_to: 350,
+                less_than_or_equal_to: TOTAL_TICKETS,
                 message: "Not a valid ticket number."
             }
+  validates :is_over19,
+            inclusion: { in: [ true, false ], message: "Not a valid option." },
+            on: :update
+  validates :table_number,
+            numericality: {
+                only_integer: true,
+                greater_than_or_equal_to: 1,
+                less_than_or_equal_to: DanceTable.num_tables,
+                message: "Not a valid table number."
+            },
+            on: :update
+  validates :dietary_restrictions,
+            length: {
+                maximum: 8000,
+                too_long: "Your dietary restrictions are too long."
+            },
+            allow_nil: true,
+            on: :update
+  validates :entree_choice,
+            inclusion: {
+                in: ["MAIN - Grilled Beef Tenderloin", "VEGAN - Vegetable Ratatouille"],
+                message: "Not a valid entree choice."
+            },
+            on: :update
   validate :ticket_number_unique, on: :create  # Use our own method so we can test before on save.
+  validate :table_not_full, on: :update
 
   before_create do
     self.email.downcase!
@@ -61,6 +100,13 @@ class DanceRegistrant < ActiveRecord::Base
   def ticket_number_unique
     if DanceRegistrant.find_by ticket_number: ticket_number
       errors.add(:ticket_number, "Ticket number already registered.")
+    end
+  end
+
+  def table_not_full
+    if DanceTable.find(table_number).reserved ||
+        DanceRegistrant.where(table_number: table_number).count >= DanceTable::TABLE_SIZE
+      errors.add(:table_number, "Table number is invalid.")
     end
   end
 

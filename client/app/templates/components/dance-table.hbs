@@ -1,0 +1,13 @@
+<tr>
+    <th>Table {{table.id}}</th>
+</tr>
+{{#each registrant in table.registrants}}
+    <tr>
+        <td>{{registrant.name}}</td>
+    </tr>
+{{/each}}
+{{#each space in spacer}}
+    <tr>
+        <td>-</td>
+    </tr>
+{{/each}}

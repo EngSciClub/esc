@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015073737) do
+ActiveRecord::Schema.define(version: 20131106085208) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -30,13 +30,19 @@ ActiveRecord::Schema.define(version: 20131015073737) do
     t.integer  "registered_by_id"
     t.integer  "ticket_number"
     t.text     "dietary_restrictions"
-    t.boolean  "is_over_19"
+    t.boolean  "is_over19"
     t.string   "entree_choice"
     t.integer  "table_number"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_early_bird"
     t.float    "amount_paid"
+  end
+
+  create_table "dance_tables", force: true do |t|
+    t.boolean  "reserved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

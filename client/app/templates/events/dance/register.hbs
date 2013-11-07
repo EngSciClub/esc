@@ -1,16 +1,18 @@
-<div class="full col">
+<div {{bind-attr class=":full :col :register registrant:hidden"}}>
     {{#base-card tagName="section" class="register"}}
         <h2><i class="icon-pencil icon-fixed-width"></i>Register your ticket!</h2>
         <p>
             Register your ticket if you haven't done so already. Otherwise, log in to change your information.
         </p>
         <form class="centered">
+            {{!--
             <span class="checkbox" {{action toggleRegistered}} tabindex="0">
                 <label class="inline">Already registered?</label><i {{bind-attr class="registered:icon-check:icon-unchecked"}}></i>
             </span>
+            --}}
 
             <label {{bind-attr for="view.email.elementId"}}>Your email address</label>
-            {{input type="text" placeholder="someone@mail.utoronto.ca" viewName="email"}}
+            {{input value=email type="text" placeholder="someone@mail.utoronto.ca" viewName="email"}}
             <div class="description-wrapper" tabindex="-1">
                 <div class="description">
                     Use the email address that you provided when buying your ticket.
@@ -22,24 +24,27 @@
 
             {{#unless registered}}
                 <label {{bind-attr for="view.ticketNumber.elementId"}}>Your ticket number</label>
-                {{input type="tel" placeholder="232" viewName="ticketNumber"}}
+                {{input value=ticketNumber type="tel" placeholder="232" viewName="ticketNumber"}}
             {{else}}
                 <label {{bind-attr for="view.password.elementId"}}>Your password</label>
-                {{input type="password" viewName="password"}}
+                {{input value=password type="password" viewName="password"}}
             {{/unless}}
 
             <div class="button-wrapper">
-                <button {{action activateUser}} type="submit" {{bind-attr class=":primary loading" disabled=loading}}>
+                <button {{action activateUser}} type="submit" {{bind-attr class=":primary loginLoading:loading" disabled=loginLoading}}>
+                    Login
+                    {{!--
                     {{#unless registered}}
                         Register Ticket
                     {{else}}
                         Make Changes
                     {{/unless}}
+                    --}}
                 </button>
             </div>
-            <div {{bind-attr class=":info-wrapper errors.has:active"}}>
+            <div {{bind-attr class=":info-wrapper loginErrors:active"}}>
                 <div class="info error">
-                    {{#if errors.invalid}}
+                    {{!--{{#if loginErrors.invalid}}--}}
                         <h3>Oops! We couldn't find a valid registrant under those credentials.</h3>
                         <p>
                             Has your ticket been activated yet? It may take up to 24 hours to
@@ -48,8 +53,9 @@
                             <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
                             with your information for help.
                         </p>
-                    {{/if}}
-                    {{#if errors.exists}}
+                    {{!--{{/if}}--}}
+                    {{!--
+                    {{#if loginErrors.exists}}
                         <h3>Oops! This ticket has already been registered.</h3>
                         <p>
                             Is this an error? If so, contact
@@ -57,7 +63,7 @@
                             with your information for help.
                         </p>
                     {{/if}}
-                    {{#if errors.credentials}}
+                    {{#if loginErrors.credentials}}
                         <h3>Oops, your username and password are incorrect.</h3>
                         <p>
                             Please check again. If you can't login, we can reset your password. Contact
@@ -65,8 +71,88 @@
                             with your information for help.
                         </p>
                     {{/if}}
+                    --}}
                 </div>
             </div>
         </form>
+    {{/base-card}}
+</div>
+<div {{bind-attr class=":full :col :register registrant::hidden"}}>
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-coffee icon-fixed-width"></i>Complete your registration information.</h2>
+        <p>
+            Hi {{registrant.name}}, we need some more information from you. Please fill out
+            the rest of this form.
+        </p>
+        <form class="centered">
+            <span class="checkbox" {{action toggleOver19}} tabindex="0">
+                <label class="inline">Are you 19 or over?</label><i {{bind-attr class="registrant.isOver19:icon-check:icon-unchecked"}}></i>
+            </span>
+
+            <label {{bind-attr for="view.dietary.elementId"}}>Do you have any dietary restrictions?</label>
+            {{textarea value=registrant.dietaryRestrictions type="text" placeholder="Halal, etc." viewName="dietary"}}
+            <div class="description-wrapper" tabindex="-1">
+                <div class="description">
+                    <p>
+                        Note that the beef entree is halal, and can be made gluten free upon request. If you have any
+                        questions or concerns please email dinnerdance@engsci.skule.ca
+                    </p>
+                    <p>
+                        If you don't like cheesecake, fruit can be served instead for dessert. Please let us know
+                        if you'd like that as alternative.
+                    </p>
+                </div>
+            </div>
+
+            <label {{bind-attr for="view.entree.elementId"}}>Which entree would you like?</label>
+            {{view Ember.Select contentBinding=mealOptions
+                                valueBinding=registrant.entreeChoice
+                                prompt="-"
+                                viewName="entree"}}
+        </form>
+    {{/base-card}}
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-table icon-fixed-width"></i>Select a table.</h2>
+        <p>
+            Please select a table to sit at.
+        </p>
+        <div class="row">
+            {{#each table in tables}}
+                <div class="table quarter col">
+                    {{dance-table table=table registrant=registrant action="changeTable"}}
+                </div>
+            {{/each}}
+        </div>
+    {{/base-card}}
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-save icon-fixed-width"></i>Save your preferences.</h2>
+        <p>
+            Make sure everything above is correct and click save below to save your preferences.
+            Note that you will have until <strong>November 15th 11:59pm</strong> to update your
+            preferences.
+        </p>
+        <div class="button-wrapper">
+            <button {{action savePreferences}} type="submit" {{bind-attr class=":primary :big :register-button preferencesLoading:loading" disabled=preferencesDisabled}}>
+                Save Preferences
+            </button>
+        </div>
+        <div {{bind-attr class=":info-wrapper :save-info-wrapper info.visible:active"}}>
+            <div {{bind-attr class=":info info.good:good info.error:error"}}>
+                {{#if info.good}}
+                    <h3>Success! Your preferences has been saved.</h3>
+                    <p>
+                        Your preferences have been saved. <strong><a {{action logout}}>Click here to logout.</a></strong>
+                    </p>
+                {{/if}}
+
+                {{#if info.error}}
+                    <h3>Oops, something went wrong!</h3>
+                    <p>
+                        Check above to see if you have uncompleted fields. If you are having trouble
+                        email <a href="mailto:engsci@skule.ca" target="_blank">engsci@skule.ca</a> for help.
+                    </p>
+                {{/if}}
+            </div>
+        </div>
     {{/base-card}}
 </div>

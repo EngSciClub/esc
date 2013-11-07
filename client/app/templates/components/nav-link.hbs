@@ -8,7 +8,7 @@
 {{! Recursively build routes if they're expandable. }}
 {{#if route.expandable}}
     {{#if route.routes}}
-        <div class="chevron" {{action "expand" route bubbles=false}}></div>
+        <div class="chevron" {{action "expand" bubbles=false}}></div>
         {{nav-bar routes=route.routes
                   currentPath=currentPath
                   expanded=expanded

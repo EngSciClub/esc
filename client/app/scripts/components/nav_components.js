@@ -18,6 +18,7 @@ App.NavLinkComponent = Ember.Component.extend(App.Collapsable, {
 
   actions: {
     selectRoute: function(route) {
+      // We need this action for sub-routes.
       this.sendAction('action', route);
       return false;
     },

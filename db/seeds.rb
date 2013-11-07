@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+DanceTable.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence! DanceTable.table_name
+
+num_reserved = 9
+for i in (1..DanceTable.num_tables)
+  DanceTable.create(reserved: i > DanceTable.num_tables - num_reserved)
+end

@@ -1,7 +1,7 @@
 require('scripts/models/base_model');
 
 App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
-  id: Ember.attr(),
+  id: Ember.attr(Number),
   createdAt: Ember.attr(Date),
 
 
