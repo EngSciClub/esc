@@ -104,8 +104,9 @@ class DanceRegistrant < ActiveRecord::Base
   end
 
   def table_not_full
+    old_table = DanceRegistrant.find(id).table_number
     if DanceTable.find(table_number).reserved ||
-        DanceRegistrant.where(table_number: table_number).count >= DanceTable::TABLE_SIZE
+        DanceRegistrant.where(table_number: table_number).count + (old_table == table_number ? 0 : 1) > DanceTable::TABLE_SIZE
       errors.add(:table_number, "Table number is invalid.")
     end
   end
