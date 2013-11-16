@@ -3,7 +3,7 @@ App.DanceTableComponent = Ember.Component.extend({
 
   spacer: function() {
     var registrants = this.get('table.registrants');
-    var count = 8;
+    var count = 10;
     if (!Ember.isNone(registrants)) {
       count -= registrants.get('length');
     }
@@ -20,7 +20,7 @@ App.DanceTableComponent = Ember.Component.extend({
     var registrants = this.get('table.registrants');
     var registrant = this.get('registrant');
 
-    if (!registrants.contains(registrant) && !Ember.isEmpty(this.get('spacer'))) {
+    if (!registrants.contains(registrant) && registrants.get('length') < 8) {
       this.sendAction('action', this.get('table.id'));
     }
     return false;

@@ -58,6 +58,7 @@ App.EventsDanceRegisterController = App.Controller.extend({
   },
 
   preferencesDisabled: function() {
+    return true; // disable registration
     return this.get('preferencesLoading') || !this.get('registrantChanged');
   }.property('preferencesLoading', 'registrantChanged'),
 
