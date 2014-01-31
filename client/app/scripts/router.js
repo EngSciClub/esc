@@ -23,13 +23,14 @@ App.routes = [
 //  r('history', 'History', { icon: 'icon-time', hidden: true }),
   r('events', 'Events', { icon: 'icon-calendar', routes: [
     r('socials', 'Friday Night Socials'),
+    r('nocturne', 'Nocturne'),
+
 //    r('smoker', 'Book Smoker', { hidden: true }),
     r('dance', 'Dinner Dance', { path: 'dinnerdance', expand: false, routes: [
       r('index', '', { path: '/' }),
       r('register', 'Registration')
     ]})
 //    r('skitrip', 'Ski Trip', { hidden: true }),
-//    r('nocturne', 'Nocturne', { hidden: true }),
 //    r('kart', 'Mario Kart Ladder', { hidden: true }),
 //    r('foosball', 'Foosball Ladder', { hidden: true }),
 //    r('smash', 'Smash Ladder', { hidden: true })
