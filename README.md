@@ -36,6 +36,9 @@ Server and client code for the Engineering Science Club website.
 
 These instructions are meant for deployment to Heroku, where the website is hosted.
 
+Note: These instructions are old, you can now simply do `rake deploy[<remote name>]`
+to deploy the application.
+
 1. Branch onto `deploy/<ISO 8601 date>_<rev #>`. For example, the branches for the first and second 
    deploy of February 28, 2010 would be `deploy/2010-02-28` and `deploy/2010-02-28_2`, respectively.
 1. Remove `/public` from `.gitignore`.
