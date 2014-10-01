@@ -1,15 +1,15 @@
 class DanceRegistrant < ActiveRecord::Base
 
-  FROSH_YEAR = "1T7"
+  FROSH_YEAR = "1T8"
   FROSH_DISCOUNT = 5
-  EARLY_BIRD_TOTAL = 200
+  EARLY_BIRD_TOTAL = 100
   EARLY_BIRD_DISCOUNT = 5
-  DEFAULT_PRICE = 70
+  DEFAULT_PRICE = 75
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_EMAIL_UTORONTO_REGEX = /\A[\w+\-.]+@mail.utoronto.ca\z/i
 
-  TOTAL_TICKETS = 350
+  TOTAL_TICKETS = 300
 
   belongs_to :dance_table
 

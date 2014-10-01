@@ -2,18 +2,18 @@
     {{#base-card tagName="section"}}
         <h2><i class="icon-calendar icon-fixed-width"></i>Save the date!</h2>
         <p>
-            The dinner dance will take place on <strong>Friday, November 22nd, 2013</strong>. Doors open at 6:30pm.
+            The dinner dance will take place on <strong>Friday October 31st, 2014</strong>. Doors open at 6:00pm.
         </p>
     {{/base-card}}
     {{#base-card tagName="section"}}
         <h2><i class="icon-map-marker icon-fixed-width"></i>How do I get there?</h2>
         <p>
-            The event is taking place at the <strong><a href="http://goo.gl/maps/v7YjT" target="_blank">Grand Baccus Banquet Hall</a></strong> at 2155 McNicoll Avenue.
+            The event is taking place at the <strong><a href="https://goo.gl/maps/dPvZe" target="_blank">Atlantis Pavilion</a></strong> at 955 Lakeshore Boulevard West.
         </p>
-        <ul class="icons-ul icons-list">
+        <ul class="icons-ul icons-list"> 
             <li>
-                <i class="icon-li icon-arrow-right"></i>
-                Busing will be provided from Convocation Hall to the venue at 5:45pm, 6:00pm, 6:15pm, 6:30pm.
+                <i class="icon-li icons-arrow-right">
+                Busing will be provided from Convocation Hall to the venue starting at 5:30 until 6:30pm.
             </li>
             <li>
                 <i class="icon-li icon-arrow-left"></i>
@@ -22,8 +22,8 @@
         </ul>
         {{!-- This is a custom embed map, go to mapsengine using the EngSci Club login to edit --}}
         <div class="map-wrapper">
-            <a href="http://goo.gl/NuUHiE" target="_blank"></a>
-            <iframe src='http://a.tiles.mapbox.com/v3/engsci.map-jhdb0o05.html#15/43.813627362530575/-79.29455280303955' class="map"></iframe>
+            <a href="https://goo.gl/maps/dPvZe" target="_blank"></a>
+            <iframe width='100%' height='500px' frameBorder='0' src='https://a.tiles.mapbox.com/v4/engsciclub.jkig6e95/attribution,share.html?access_token=pk.eyJ1IjoiZW5nc2NpY2x1YiIsImEiOiJEMld5cjZNIn0.c3PXs6KcIsAfaFra2oQIrA'></iframe>
         </div>
     {{/base-card}}
     {{#base-card tagName="section"}}
@@ -42,6 +42,10 @@
     {{#base-card tagName="section" class="sponsors"}}
         <h2><i class="icon-food icon-fixed-width"></i>Menu</h2>
         <div class="menu">
+            <h3>Menu under Planning</h3>
+            <p> the menu is currently being selected. Come back October 5th for the details!</hp>
+            </br></br>
+            <!--
             <h3>Salad</h3>
             <p>
                 Baby Spinach & Fris&eacute;e Lettuce with Dried Cranberries, Mandarin Orange & Toasted Almonds Drizzled with a Citrus Poppyseed Dressing
@@ -60,53 +64,47 @@
             <h3>Dessert</h3>
             <p>
                 Apple Caramel Cheesecake served with Warm Vanilla Cream Sauce
-            </p>
+            </p>-->
         </div>
         <div class="footnote">
-            <h3>Notes</h3>
+            <h3>Notes</h3>            
             <p>
-                Dietary restrictions can be accomodated. The beef is halal and may also be served without the
-                Portobello sauce as a gluten-free option. Please let us know when registering your ticket.
+                Dietary restrictions can be accomodated - please tell the exec at the time of purchase.
             </p>
+            <!--  
             <p>
                 Fruit can be served in place of the cheesecake for dessert. Please let us know if you'd like this
                 option when registering.
             </p>
+            -->
         </div>
     {{/base-card}}
     {{#base-card tagName="section"}}
         <h2><i class="icon-ticket icon-fixed-width"></i>How do I buy a ticket?</h2>
         <p>
             You can purchase a ticket from any of the EngSci Club execs, class reps or dinner dance directors
-            ({{#link-to "about"}}see photos{{/link-to}}), starting on Monday October 7th.
+            in the EngSci Office during your lunch, starting on Wednesday October 1st.
         </p>
         <h3>Pricing</h3>
         {{#if remaining}}
             <p>
-                First 200 tickets are early bird. There are {{remaining}} early bird tickets remaining.
+                Tickets are discounted for early bird and F!rosh.
             </p>
             <div class="row">
                 <div class="pricing col left">
-                    <span class="price">$60</span> <br>
+                    <span class="price">$70</span> <br>
                     for F!rosh <br>
-                    (Early Bird)
                 </div>
                 <div class="pricing col right">
-                    <span class="price">$65</span> <br>
+                    <span class="price">$70</span> <br>
                     for others <br>
                     (Early Bird)
                 </div>
             </div>
         {{/if}}
         <div class="row">
-            <div class="pricing col left">
-                <span class="price">$65</span> <br>
-                for F!rosh <br>
-                {{#if remaining}}(Regular){{/if}}
-            </div>
             <div class="pricing col right">
-                <span class="price">$70</span> <br>
-                for others <br>
+                <span class="price">$75</span> <br>
                 {{#if remaining}}(Regular){{/if}}
             </div>
         </div>
