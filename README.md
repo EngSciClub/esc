@@ -10,7 +10,10 @@ Server and client code for the Engineering Science Club website.
 
 - Ruby, Bundler
 - Node.js and Node Package Manager
+  - Grunt CLI
+  - Bower
 - Foreman
+- Postgres
 
 
 ## Setup
