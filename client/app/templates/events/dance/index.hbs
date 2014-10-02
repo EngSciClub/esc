@@ -29,11 +29,10 @@
     {{#base-card tagName="section"}}
         <h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
         <p>
-            Looking to register your ticket? Click below to register your ticket or change your
-            preferences.
+            Looking to register your ticket? Come back next Monday to choose your meal, register tables, and more!
         </p>
         {{#link-to "events.dance.register"}}
-            <button type="button" class="primary big register-button">Registration & Seating</button>
+            <button type="button" class="alt big register-button" disabled>Registration & Seating</button>
         {{/link-to}}
     {{/base-card}}
 </div>
@@ -103,7 +102,7 @@
             </div>
         {{/if}}
         <div class="row">
-            <div class="pricing col right">
+            <div class="pricing full col">
                 <span class="price">$75</span> <br>
                 {{#if remaining}}(Regular){{/if}}
             </div>
