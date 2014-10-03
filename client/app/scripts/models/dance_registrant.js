@@ -19,7 +19,7 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   validatesEmail: Ember.validates('email', Ember.Validator.notEmpty, function(property, forced) {
     var year = this.get('year') || '';
     var email = this.get('email') || '';
-    if (forced && year === '1T7' && email.indexOf('@mail.utoronto.ca') < 0) {
+    if (forced && year === '1T8' && email.indexOf('@mail.utoronto.ca') < 0) {
       this.set('errors.email', {
         message: 'F!rosh must use utoronto email.',
         css: 'error'
@@ -45,7 +45,7 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   ticketNumber: Ember.attr(Number),
   validatesTicketNumber: Ember.validates('ticketNumber', Ember.Validator.notEmpty, function(property, forced) {
     var number = this.get('ticketNumber');
-    if (isNaN(window.parseInt(number, 10)) || number <= 0 || number > 350) {
+    if (isNaN(window.parseInt(number, 10)) || number <= 0 || number > 300) {
       this.set('errors.ticketNumber', {
         message: 'Invalid ticket number.',
         css: 'error'
@@ -109,5 +109,5 @@ App.DanceRegistrant.adapter = Ember.RESTAdapter.create();
 App.DanceRegistrant.camelizeKeys = true;
 
 App.DanceRegistrant.yearList = [
-  '1T7', '1T6', '1T5', '1T4', 'PEY', '1T3+PEY', 'Guest'
+  '1T8', '1T7', '1T6', '1T5', 'PEY', '1T4+PEY', 'Guest'
 ];

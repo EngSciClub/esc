@@ -2,7 +2,7 @@ class DanceRegistrant < ActiveRecord::Base
 
   FROSH_YEAR = "1T8"
   FROSH_DISCOUNT = 5
-  EARLY_BIRD_TOTAL = 100
+  EARLY_BIRD_TOTAL = 50
   EARLY_BIRD_DISCOUNT = 5
   DEFAULT_PRICE = 75
 
@@ -29,7 +29,7 @@ class DanceRegistrant < ActiveRecord::Base
             },
             format: { with: VALID_EMAIL_REGEX, message: "Invalid email address format." }
   validates :year,
-            inclusion: { in: %w(1T7 1T6 1T5 1T4 PEY 1T3+PEY Guest), message: "Not a valid year." }
+            inclusion: { in: %w(1T8 1T7 1T6 1T5 PEY 1T4+PEY Guest), message: "Not a valid year." }
   validates :ticket_number,
             numericality: {
                 only_integer: true,
@@ -78,11 +78,11 @@ class DanceRegistrant < ActiveRecord::Base
     existing_registrant = DanceRegistrant.find_by email: email
     if year == FROSH_YEAR && existing_registrant.nil? && VALID_EMAIL_UTORONTO_REGEX =~ email
       price -= FROSH_DISCOUNT
-    end
-
+    else
     # Check if they're eligible for early bird discount.
     if eligible_for_early_bird?
       price -= EARLY_BIRD_DISCOUNT
+    end
     end
 
     price
