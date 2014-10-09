@@ -31,7 +31,7 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
     return true;
   }),
 
-  // Year (1T7, 1T6, 1T5, 1T4, PEY, 1T3+PEY, Guest)
+  // Year ('1T8', '1T7', '1T6', '1T5', 'PEY', '1T4+PEY', 'Guest')
   year: Ember.attr(/* String */),
   validatesYear: Ember.validates('year', Ember.Validator.notEmpty),
 

@@ -29,10 +29,10 @@
     {{#base-card tagName="section"}}
         <h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
         <p>
-            Looking to register your ticket? Come back soon to choose your meal, register tables, and more!
+            Looking to register your ticket? Click below to register your ticket or change your preferences.
         </p>
         {{#link-to "events.dance.register"}}
-            <button type="button" class="alt big register-button" disabled>Registration & Seating</button>
+            <button type="button" class="primary big register-button">Registration & Seating</button>
         {{/link-to}}
     {{/base-card}}
 </div>
@@ -58,12 +58,13 @@
             <h3>Entr&eacute;e</h3>
             <p>
                 (MAIN)<br />
-                Grilled 10oz Rib Eye Steak* With Peppercorn Sauce <br />
-                served with seasonal vegetables and mashed potatoes
+                Grilled 10oz Rib Eye Steak* <br />
+                served with with peppercorn sauce, seasonal vegetables and mashed potatoes
             </p>
             <p>
                 (VEGETARIAN)<br />
-                Portabello Mushroom & Goat Cheese Strudel with Buttery Asparagus
+                Portabello Mushroom & Goat Cheese Strudel <br />
+                with buttery asparagus
             </p>
             <hr>
             <h3>Dessert</h3>
@@ -109,6 +110,7 @@
                 </div>
             <div class="pricing col right">
                 <span class="price">$75</span> <br>
+                    for others <br>
                 {{#if remaining}}(Regular){{/if}}
             </div>
         </div>

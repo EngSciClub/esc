@@ -20,7 +20,7 @@ App.DanceTableComponent = Ember.Component.extend({
     var registrants = this.get('table.registrants');
     var registrant = this.get('registrant');
 
-    if (!registrants.contains(registrant) && registrants.get('length') < 8) {
+    if (!registrants.contains(registrant) && registrants.get('length') < 10) {
       this.sendAction('action', this.get('table.id'));
     }
     return false;

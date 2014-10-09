@@ -57,7 +57,7 @@ class DanceRegistrant < ActiveRecord::Base
             on: :update
   validates :entree_choice,
             inclusion: {
-                in: ["MAIN - Grilled Beef Tenderloin", "VEGAN - Vegetable Ratatouille"],
+                in: ["MAIN - Grilled Rib Eye Steak", "VEGETARIAN - Portabello Mushroom and Goat Cheese Strudel"],
                 message: "Not a valid entree choice."
             },
             on: :update
