@@ -29,7 +29,7 @@ class DanceRegistrant < ActiveRecord::Base
             },
             format: { with: VALID_EMAIL_REGEX, message: "Invalid email address format." }
   validates :year,
-            inclusion: { in: %w(1T8 1T7 1T6 1T5 PEY 1T4+PEY Guest), message: "Not a valid year." }
+            inclusion: { in: %w(1T8 1T7 1T6 1T5 PEY 1T4+PEY Guest 1T4), message: "Not a valid year." }
   validates :ticket_number,
             numericality: {
                 only_integer: true,
