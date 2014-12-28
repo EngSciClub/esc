@@ -17,10 +17,10 @@ class Api::DanceRegistrantsController < ApplicationController
   end
 
   def update
-    render json: {
-        error: { email: ["No more changes are allowed for this email."] }
-    }, status: 401
-    return
+    #render json: {
+    #    error: { email: ["No more changes are allowed for this email."] }
+    #}, status: 401
+    #return
 
     p = ActionController::Parameters.new params[:dance_registrant]
     permitted = p.permit(:email, :ticket_number)
