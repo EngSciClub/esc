@@ -12,12 +12,12 @@
         </p>
         <ul class="icons-ul icons-list"> 
             <li>
-                <i class="icon-li icons-arrow-right">
-                Busing will be provided from Convocation Hall to the venue starting at 5:30 until 6:30pm.
+                <i class="icon-li icon-arrow-right"></i>
+                Busing will be provided from Convocation Hall to the venue, leaving every 30 minutes from 5:00 pm to 7:00 pm inclusive.
             </li>
             <li>
                 <i class="icon-li icon-arrow-left"></i>
-                Busing will be provided from the venue back to campus starting at midnight until 1:30am.
+                Busing will be provided from the venue back to campus, leaving every 30 minutes from 11:00 pm to 1:00 am inclusive.
             </li>
         </ul>
         {{!-- This is a custom embed map, go to mapsengine using the EngSci Club login to edit --}}
@@ -29,11 +29,10 @@
     {{#base-card tagName="section"}}
         <h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
         <p>
-            Looking to register your ticket? Click below to register your ticket or change your
-            preferences.
+            Hope you're all ready for the event!
         </p>
         {{#link-to "events.dance.register"}}
-            <button type="button" class="primary big register-button">Registration & Seating</button>
+            <button type="button" class="alt big register-button" disabled >Registration & Seating</button>
         {{/link-to}}
     {{/base-card}}
 </div>
@@ -42,41 +41,43 @@
     {{#base-card tagName="section" class="sponsors"}}
         <h2><i class="icon-food icon-fixed-width"></i>Menu</h2>
         <div class="menu">
-            <h3>Menu under Planning</h3>
-            <p> the menu is currently being selected. Come back October 5th for the details!</hp>
-            </br></br>
-            <!--
-            <h3>Salad</h3>
+            <h3>Hor D'Oeuvres (Available before the main dinner)</h3>
             <p>
-                Baby Spinach & Fris&eacute;e Lettuce with Dried Cranberries, Mandarin Orange & Toasted Almonds Drizzled with a Citrus Poppyseed Dressing
+                Sesame Crusted Chicken Satay<br />
+                Classic Greek Spanakopita<br />
+                Crispy Vegetable Spring Rolls with Chili Plum Sauce<br />
+                Coconut Shrimp with Pineapple Spiked Ketchup<br />
+                Candy Table<br />
+            </p>
+            <hr>
+            <h3>Appetizer</h3>
+            <p>
+                Farfalle Alfredo with Aged Parmesan & Roasted Garlic Cream Sauce
             </p>
             <hr>
             <h3>Entr&eacute;e</h3>
             <p>
-                (MAIN) <br>
-                Grilled Beef Tenderloin Medallion with Portobello Peppercorn Sauce*
+                (MAIN)<br />
+                Grilled 10oz Rib Eye Steak* <br />
+                served with with peppercorn sauce, seasonal vegetables and mashed potatoes
             </p>
             <p>
-                (VEGAN) <br>
-                Vegetable Ratatouille: Variety of fresh vegetables stewed in tomato sauce and served over warm flakey puff pastry
+                (VEGETARIAN)<br />
+                Portabello Mushroom & Goat Cheese Strudel <br />
+                with buttery asparagus
             </p>
             <hr>
             <h3>Dessert</h3>
             <p>
-                Apple Caramel Cheesecake served with Warm Vanilla Cream Sauce
-            </p>-->
+                Chocolate Ganache Gateaux with a Vanilla Bean Cream
+            </p>
         </div>
         <div class="footnote">
             <h3>Notes</h3>            
             <p>
-                Dietary restrictions can be accomodated - please tell the exec at the time of purchase.
+                All adults are given 5 drink tickets, and all attendees get unlimited pop & juice.
+                *Steak is cooked Medium.
             </p>
-            <!--  
-            <p>
-                Fruit can be served in place of the cheesecake for dessert. Please let us know if you'd like this
-                option when registering.
-            </p>
-            -->
         </div>
     {{/base-card}}
     {{#base-card tagName="section"}}
@@ -103,8 +104,13 @@
             </div>
         {{/if}}
         <div class="row">
+            <div class="pricing col left">
+                    <span class="price">$70</span> <br>
+                    for F!rosh <br>
+                </div>
             <div class="pricing col right">
                 <span class="price">$75</span> <br>
+                    for others <br>
                 {{#if remaining}}(Regular){{/if}}
             </div>
         </div>

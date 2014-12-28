@@ -18,7 +18,7 @@ App.EventsDanceIndexController = App.Controller.extend({
 App.EventsDanceRegisterController = App.Controller.extend({
   email: '',
   ticketNumber: '',
-  mealOptions: ['MAIN - Grilled Beef Tenderloin', 'VEGAN - Vegetable Ratatouille'],
+  mealOptions: ['MAIN - Grilled Rib Eye Steak', 'VEGETARIAN - Portabello Mushroom and Goat Cheese Strudel'],
 
   info: Ember.Object.extend({
     visible: false,
@@ -58,7 +58,7 @@ App.EventsDanceRegisterController = App.Controller.extend({
   },
 
   preferencesDisabled: function() {
-    return true; // disable registration
+    return true; //disable registration
     return this.get('preferencesLoading') || !this.get('registrantChanged');
   }.property('preferencesLoading', 'registrantChanged'),
 
