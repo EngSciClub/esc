@@ -4,3 +4,9 @@ development:
   host: localhost
   username: bfung
   password: password
+test:
+  adapter: postgresql
+  database: esc
+  host: localhost
+  username: bfung
+  password: password

@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106085208) do
+ActiveRecord::Schema.define(version: 20150102032431) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -45,31 +48,36 @@ ActiveRecord::Schema.define(version: 20131106085208) do
     t.datetime "updated_at"
   end
 
-  create_table "ladder_users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password"
-    t.integer  "matches_played"
-    t.integer  "points"
-    t.integer  "last_match_played"
+  create_table "ladder_match_buffers", force: true do |t|
+    t.string   "player1"
+    t.string   "player2"
+    t.datetime "date_of_game"
+    t.integer  "winner"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "ladder_matches_buffer", force: true do |t|
-    t.string   "player_1"
-    t.string   "player_2"
+  create_table "ladder_matches", force: true do |t|
+    t.string   "player1"
+    t.string   "player2"
+    t.datetime "date_of_game"
     t.integer  "winner"
-	t.datetime "match_date"
-    t.datetime "system_input_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "ladder_matches", force: true do |t|
-    t.string   "player_1"
-    t.string   "player_2"
-    t.integer  "winner"
-	t.datetime "match_date"
-    t.datetime "system_input_date"
-  end	
-	
+  create_table "ladder_users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+    t.integer  "points"
+    t.integer  "matches_played"
+    t.integer  "last_match_played"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "password_digest"
+  end
+
+  add_index "ladder_users", ["email"], name: "index_ladder_users_on_email", unique: true, using: :btree
+
 end
