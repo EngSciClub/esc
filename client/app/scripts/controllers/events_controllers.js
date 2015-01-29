@@ -71,7 +71,7 @@ App.EventsDanceRegisterController = App.Controller.extend({
       self.fetchTablesAndUserPromise().then(function(data) {
         self.set('loginLoading', false);
         if (Ember.isEmpty(data)) {
-          // Ticket not activated.
+          // Ticket not activa/ted.
           self.set('loginErrors', true);
         } else {
           self.resolveRegistrantFromData()(data);
@@ -133,4 +133,24 @@ App.EventsDanceRegisterController = App.Controller.extend({
              'registrant.entreeChoice',
              'registrant.isOver19',
              'registrant.dietaryRestrictions')
+});
+
+App.EventsLadderIndexController = App.Controller.extend({
+	
+/*  init: function() {
+    this._super.apply(this, arguments);
+
+    // Set the number of early bird tickets.
+    var self = this;
+    App.DanceRegistrant.getEarlyBirdRemaining().then(function(remaining) {
+      self.set('remaining', remaining > 0 ? remaining : null);
+    });
+  }*/ //ToDo - Write Controller (KLBF)
+});
+
+App.EventsLadderRegisterController = App.Controller.extend({
+	//TODO - Write Controller (KLBF)
+});
+App.EventsLadderSubmitController = App.Controller.extend({
+	//TODO - Write Controller (KLBF)
 });

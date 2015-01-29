@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="full col">
+        {{#base-card tagName="section" class="only-heading"}}
+            <h1>Registration</h1>
+        {{/base-card}}
+    </div>
+    <div class="full col">
+        {{#base-card tagName="section"}}
+            <h2>Sign Up for the Foosball Ladder!</h2>
+						<p> Registration began on: <strong>February 1, 2015</strong> </p>
+            <form class="centered">
+                <label {{bind-attr for="view.name.elementId"}}>Registrant's Name</label>
+                {{input value=name class=errors.name.css type="text" placeholder="Jane Doe" viewName="name"}}
+
+                <label {{bind-attr for="view.username.elementId"}}>Registrant's Username</label>
+                {{input value=username class=errors.name.css type="text" placeholder="JDoe_123" viewName="name"}}
+
+                <label {{bind-attr for="view.email.elementId"}}>Registrant's email (UToronto)</label>
+                {{input value=email class=errors.email.css type="text" placeholder="someone@mail.utoronto.ca" viewName="email"}}
+
+                <label {{bind-attr for="view.password.elementId"}}>Password </label>
+                {{input value=password class=errors.password.css type="password" placeholder="password" viewName="password"}}
+								
+								<label {{bind-attr for="view.password.elementId"}}>Confirm Password </label>
+                {{input value=confirmation class=errors.confirmation.css type="password" placeholder="confirmation" viewName="confirmation"}}
+								
+                <div class="button-wrapper">
+                    <button {{action checkOrActivate}} type="submit" {{bind-attr class=":primary formButtonLoading:loading"}}>
+                           Register
+                    </button>
+                </div>
+                <div {{bind-attr class=":info-wrapper info.visible:active"}}>
+                    <div {{bind-attr class=":info info.good:good info.error:error"}}>
+                        {{#if info.good}}
+                            <h3>You successfully registered {{oldModel.name}}!</h3>
+                            <p>
+                                Make sure you keep the password and username on hand - you'll need them to submit your matches. <br />
+                            </p>
+                        {{/if}}
+
+                        {{#if info.error}}
+                            <h3>Oops, something went wrong!</h3>
+                            <p>
+                                Check the above fields highlighted in red. The server indicated that
+                                there were errors with the submitted information:
+                            </p>
+                            <ul>
+                                {{#if errors.name}}
+                                    <li>{{errors.name.message}}</li>
+                                {{/if}}
+                                {{#if errors.email}}
+                                    <li>{{errors.email.message}}</li>
+                                {{/if}}
+                                {{#if errors.password}}
+                                    <li>{{errors.password.message}}</li>
+                                {{/if}}
+                            </ul>
+														<p>
+																If the error persists, contact the Webmaster at <a href="mailto:engsci.website+ladder@gmail.com"> 
+																engsci.website+ladder@gmail.com</a>
+														</p>
+                        {{/if}}
+                    </div>
+                </div>
+            </form>
+        {{/base-card}}
+    </div>
+</div>
