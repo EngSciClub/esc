@@ -9,9 +9,9 @@
     {{#base-card tagName="section"}}
         <h2><i class="icon-list-ol icon-fixed-width"></i>What are the rules?</h2>
         <p>
-					The ladder is set up as an ELO system with base scores of 2500. These will be reset for each ladder, and will have a rolling 	
-					registration during the course of the ladder. Matches are done at your leisure - submit the results of each match through the form
-					{{#link-to "events.ladder.register"}}here{{/link-to}}.<br />
+					The ladder is set up as an ELO system with base scores of 1500. These rankings will be reset for each ladder, and will have a 
+					rollingregistration during the course of the ladder. Matches are done at your leisure - submit the results of each match through 
+					the form {{#link-to "events.ladder.submit"}}here{{/link-to}}.<br />
 					The specific rules for the game are as follows:
         </p>
 				<h3>Foosball</h3>
@@ -46,6 +46,18 @@
 <div class="half right col">
 	{{#base-card tagName="section"}}
 		<h2>Standings</h2>		
-		{{!--TODO: Write the recall code for the people in play --}}
+			{{#if ladder_users.length}}			
+				<table>
+				{{#each player in ladder_users}}
+                <tr>
+                    <td>{{_view.contentIndex}}</td>
+										<td>{{player.username}}</td>
+										<td>{{player.points}}</td>
+                </tr>
+      	{{/each}}
+				</table>
+			{{else}}
+				<p>There aren't any people registered yet!		
+			{{/if}}
 	{{/base-card}}
 </div>

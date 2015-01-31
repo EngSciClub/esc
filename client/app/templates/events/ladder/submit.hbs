@@ -19,7 +19,10 @@
                 {{input value=email class=errors.player2.css type="text" placeholder="JSmith123" viewName="player2"}}
 
                 <label {{bind-attr for="view.winner.elementId"}}>Winner</label>
-                {{input value=email class=errors.winner.css type="text" placeholder="1 or 2" viewName="winner"}}
+								{{view Ember.Select contentBinding=winnerOptions
+                                valueBinding=ladder_match.winner
+                                prompt="-"
+                                viewName="winner"}}
 
                 <label {{bind-attr for="view.password.elementId"}}>Password (Player 1)</label>
                 {{input value=ticketNumber class=errors.password.css type="password" placeholder="Password" viewName="password"}}

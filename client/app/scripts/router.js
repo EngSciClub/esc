@@ -18,6 +18,9 @@ App.routes = [
   r('redirect.dance', '', { path: '/dinnerdance', hidden: true }),
   r('redirect.dance.register', '', { path: '/dinnerdance/register', hidden: true }),
   r('redirect.nocturne', '', { path: '/nocturne', hidden: true }),
+  r('redirect.ladder', '', { path: '/ladder', hidden: true }),
+  r('redirect.ladder.register', '', { path: '/ladder/register', hidden: true }),
+  r('redirect.ladder.submit', '', { path: '/ladder/submit', hidden: true }),
 
   r('index', 'Announcements', { icon: 'icon-bullhorn', path: '/' }),
   r('about', 'About', { icon: 'icon-info-sign' }),

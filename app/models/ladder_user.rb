@@ -2,9 +2,15 @@ class LadderUser < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_EMAIL_UTORONTO_REGEX = /\A[\w+\-.]+@mail.utoronto.ca\z/i
-	STARTING_POINTS = 2500
+	STARTING_POINTS = 1500
 
 	validates :name,
+						presence: true,
+            length: {
+                maximum: 50,
+                too_long: "Name is too long."
+            }
+	validates :username,
 						presence: true,
             length: {
                 maximum: 50,
@@ -37,6 +43,9 @@ class LadderUser < ActiveRecord::Base
 		#TO-DO: develop match access history if needed, highly doubted though.	
 	end
 	def modify_score(points)
-		self.user = self.user + points
+		self.points = self.points + points
+	end
+	def match_played_increment
+		self.matches_played = self.matches_played + 1
 	end
 end

@@ -59,7 +59,7 @@ App.EventsDanceRegisterController = App.Controller.extend({
 
   preferencesDisabled: function() {
     return true; //disable registration
-    return this.get('preferencesLoading') || !this.get('registrantChanged');
+    //return this.get('preferencesLoading') || !this.get('registrantChanged');
   }.property('preferencesLoading', 'registrantChanged'),
 
   actions: {
@@ -71,7 +71,7 @@ App.EventsDanceRegisterController = App.Controller.extend({
       self.fetchTablesAndUserPromise().then(function(data) {
         self.set('loginLoading', false);
         if (Ember.isEmpty(data)) {
-          // Ticket not activa/ted.
+          // Ticket not activated.
           self.set('loginErrors', true);
         } else {
           self.resolveRegistrantFromData()(data);
@@ -136,7 +136,6 @@ App.EventsDanceRegisterController = App.Controller.extend({
 });
 
 App.EventsLadderIndexController = App.Controller.extend({
-	
 /*  init: function() {
     this._super.apply(this, arguments);
 
@@ -149,8 +148,28 @@ App.EventsLadderIndexController = App.Controller.extend({
 });
 
 App.EventsLadderRegisterController = App.Controller.extend({
-	//TODO - Write Controller (KLBF)
+	setupController: function(controller, model) {
+    this._super.apply(this, arguments);
+
+    var ladder_user = controller.get('model');
+    if (Ember.isNone(ladder_user)) {
+      ladder_user = App.LadderUser.create();
+      controller.set('model', ladder_user);
+    }
+  }	
+	//Create Model for Ladder User for registration purposes
 });
 App.EventsLadderSubmitController = App.Controller.extend({
-	//TODO - Write Controller (KLBF)
+	
+  winnerOptions: ['1', '2'],
+	setupController: function(controller, model) {
+    this._super.apply(this, arguments);
+
+    var ladder_match = controller.get('model');
+    if (Ember.isNone(ladder_user)) {
+      ladder_match = App.LadderMatch.create();
+      controller.set('model', ladder_match);
+    }
+  }	
+	//Create Ladder Match Model for match submission
 });

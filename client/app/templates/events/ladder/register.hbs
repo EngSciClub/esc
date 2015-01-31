@@ -13,7 +13,7 @@
                 {{input value=name class=errors.name.css type="text" placeholder="Jane Doe" viewName="name"}}
 
                 <label {{bind-attr for="view.username.elementId"}}>Registrant's Username</label>
-                {{input value=username class=errors.name.css type="text" placeholder="JDoe_123" viewName="name"}}
+                {{input value=username class=errors.name.css type="text" placeholder="JDoe_123" viewName="username"}}
 
                 <label {{bind-attr for="view.email.elementId"}}>Registrant's email (UToronto)</label>
                 {{input value=email class=errors.email.css type="text" placeholder="someone@mail.utoronto.ca" viewName="email"}}
@@ -22,7 +22,7 @@
                 {{input value=password class=errors.password.css type="password" placeholder="password" viewName="password"}}
 								
 								<label {{bind-attr for="view.password.elementId"}}>Confirm Password </label>
-                {{input value=confirmation class=errors.confirmation.css type="password" placeholder="confirmation" viewName="confirmation"}}
+                {{input value=password_confirmation class=errors.password_confirmation.css type="password" placeholder="confirmation" viewName="password_confirmation"}}
 								
                 <div class="button-wrapper">
                     <button {{action checkOrActivate}} type="submit" {{bind-attr class=":primary formButtonLoading:loading"}}>

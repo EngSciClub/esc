@@ -4,7 +4,6 @@ App.LadderUser = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   id: Ember.attr(Number),
   createdAt: Ember.attr(Date),
 
-
   /* Meta */
 
   // Full name
@@ -32,6 +31,11 @@ App.LadderUser = Ember.Model.extend(Ember.Validator.ValidatesModel, {
 
   // Password (not stored on client and not passed from server).
   password: Ember.attr(/* String */),
+  validatesPassword: Ember.validates('password', Ember.Validator.notEmpty),
+
+	// Confirmation for Password (not storred on client)
+	password_confirmation: Ember.attr(/* String */),
+  validatesPasswordConfirmation: Ember.validates('password_confirmation', Ember.Validator.notEmpty),
 
   /* Registrant Information */
 
@@ -54,10 +58,10 @@ App.LadderUser.reopenClass({
 });
 
 App.LadderUser.url = '/api/ladder_users';
-App.LadderUser.rootKey = 'ladder_users';
-App.LadderUser.collectionKey = 'ladder_usesrs';
+App.LadderUser.rootKey = 'ladder_user';
+App.LadderUser.collectionKey = 'ladder_users';
 App.LadderUser.adapter = Ember.RESTAdapter.create();
 App.LadderUser.camelizeKeys = true;
 
-App.LadderUser.ScoreInitial = 2500;
+App.LadderUser.ScoreInitial = 1500;
 

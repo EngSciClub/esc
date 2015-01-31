@@ -26,4 +26,8 @@ class LadderMatch < ActiveRecord::Base
 			errors.add(:date_of_game, "can't be in the future")
 		end
 	end
+
+	def self.point_calculate(elo1, elo2)
+		return 1/(1+10**((elo1-elo2)
+	end
 end
