@@ -148,28 +148,99 @@ App.EventsLadderIndexController = App.Controller.extend({
 });
 
 App.EventsLadderRegisterController = App.Controller.extend({
-	setupController: function(controller, model) {
-    this._super.apply(this, arguments);
+	registrantChanged: true,
+  formButtonLoading: false,
 
-    var ladder_user = controller.get('model');
-    if (Ember.isNone(ladder_user)) {
-      ladder_user = App.LadderUser.create();
-      controller.set('model', ladder_user);
+	info: Ember.Object.extend({
+    visible: false,
+    good: false,
+    error: false,
+    neutral: function() {
+      return !this.get('good') && !this.get('error');
+    }.property('good', 'error'),
+
+    show: function(type) {
+      this.set('visible', true);
+      this.set('good', type === 'good');
+      this.set('error', type === 'error');
+    },
+
+    hide: function() {
+      this.set('visible', false);
+      this.set('good', false);
+      this.set('error', false);
     }
-  }	
+  }).create(),
+
+  oldModel: null,
+  actions: {
+    ladderUserActivate: function() {
+      var self = this;
+      var model = self.get('model');
+		      // Perform client side validations.
+			console.log('Start validations');
+      //model.validate();
+			console.log('Finished Validations');
+      if (!Ember.isNone(model.get('errors'))) {
+				console.log('Whoops');
+        return;
+      }
+			console.log('No errors');
+      // Remove the previous model, we're registering someone else now
+      // and don't need the information anymore.
+      self.set('oldModel', null);
+
+      // Begin the loader as we make requests.
+      self.set('formButtonLoading', true);
+      self.get('info').hide();
+			console.log ('prep for saving');
+			//Saving User
+      var promise;
+      promise = model.save().then(function(data) {
+        self.set('oldModel', self.get('model'));
+        self.set('model', App.LadderUser.create({}));
+        self.get('info').show('good');
+        console.log('DID WE GET HERE?');
+      });
+
+      // Apply errors on failure.
+      promise.fail(model.applyErrors()).then(function() {
+        if (!Ember.isNone(model.get('errors'))) {
+          self.get('info').show('error');
+					console.log('errors');
+        }
+
+        // We're done now so stop loading.
+        self.set('formButtonLoading', false);
+      });
+    }
+  }
 	//Create Model for Ladder User for registration purposes
 });
-App.EventsLadderSubmitController = App.Controller.extend({
-	
-  winnerOptions: ['1', '2'],
-	setupController: function(controller, model) {
-    this._super.apply(this, arguments);
 
-    var ladder_match = controller.get('model');
-    if (Ember.isNone(ladder_user)) {
-      ladder_match = App.LadderMatch.create();
-      controller.set('model', ladder_match);
+App.EventsLadderSubmitController = App.Controller.extend({
+	info: Ember.Object.extend({
+    visible: false,
+    good: false,
+    error: false,
+    neutral: function() {
+      return !this.get('good') && !this.get('error');
+    }.property('good', 'error'),
+
+    show: function(type) {
+      this.set('visible', true);
+      this.set('good', type === 'good');
+      this.set('error', type === 'error');
+    },
+
+    hide: function() {
+      this.set('visible', false);
+      this.set('good', false);
+      this.set('error', false);
     }
-  }	
+  }).create(),
+
+  oldModel: null,
+  winnerOptions: ['1', '2'],
 	//Create Ladder Match Model for match submission
 });

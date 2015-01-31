@@ -25,12 +25,15 @@
                 {{input value=password_confirmation class=errors.password_confirmation.css type="password" placeholder="confirmation" viewName="password_confirmation"}}
 								
                 <div class="button-wrapper">
-                    <button {{action checkOrActivate}} type="submit" {{bind-attr class=":primary formButtonLoading:loading"}}>
-                           Register
+                    <button {{action ladderUserActivate}} type="submit" {{bind-attr class=":primary formButtonLoading:loading"}}>
+                            Register
                     </button>
                 </div>
                 <div {{bind-attr class=":info-wrapper info.visible:active"}}>
                     <div {{bind-attr class=":info info.good:good info.error:error"}}>
+												{{#if info.neutral}}
+                            <h3>Looks like {{username}} is free for registration.</h3>
+                        {{/if}}
                         {{#if info.good}}
                             <h3>You successfully registered {{oldModel.name}}!</h3>
                             <p>
@@ -48,11 +51,17 @@
                                 {{#if errors.name}}
                                     <li>{{errors.name.message}}</li>
                                 {{/if}}
+																{{#if errors.username}}
+                                    <li>{{errors.username.message}}</li>
+                                {{/if}}
                                 {{#if errors.email}}
                                     <li>{{errors.email.message}}</li>
                                 {{/if}}
                                 {{#if errors.password}}
                                     <li>{{errors.password.message}}</li>
+                                {{/if}}
+																{{#if errors.password_confirmaton}}
+                                    <li>{{errors.password_confirmation.message}}</li>
                                 {{/if}}
                             </ul>
 														<p>
