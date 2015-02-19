@@ -38,8 +38,6 @@ App.LadderUser = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   validatesPasswordConfirmation: Ember.validates('password_confirmation', Ember.Validator.notEmpty),
 
   /* Registrant Information */
-
-  userScore: Ember.attr(Number)
 	
 	/* Initial functions if Necessary*/
 });

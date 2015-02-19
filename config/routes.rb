@@ -18,8 +18,8 @@ App::Application.routes.draw do
 
       resources :dance_registrants
       resources :dance_tables
-			resources :ladder_user
-			resources :ladder_match
+			resources :ladder_users
+			resources :ladder_matches
     end
 
     scope constraints: lambda{|req| !req.session[:access_token].blank? } do

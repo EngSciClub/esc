@@ -1,4 +1,4 @@
-class Api::LadderMatchController < ApplicationController
+class Api::LadderMatchesController < ApplicationController
   def index
 		matches = LadderMatch.includes(:player1, :player2)
     render json: {
