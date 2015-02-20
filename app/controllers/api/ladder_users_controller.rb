@@ -3,10 +3,9 @@ class Api::LadderUsersController < ApplicationController
 	p = ActionController::Parameters.new params
     permitted = p.permit(:name, :username, :password, :password_confirmation, :email)
 
-    if permitted[:name] && !permitted[:name].blank? &&permitted[:username] && !permitted[:username].blank? &&permitted		[:email] && !permitted[:email].blank? && permitted[:password] && !permitted[:password].blank? && permitted[:password_confirmation] && !permitted[:password_confirmation].blank? 
+    if permitted[:username] && !permitted[:username].blank? 
       render json: {
-       	ladder_users: LadderUser.where("name = ? AND username = ? AND lower(email) = ?",
-                                                 permitted[:name], permitted[:username], permitted =[:email].downcase)
+       	ladder_users: LadderUser.where("username = ?", permitted[:username])
       }
       return
     end
@@ -27,10 +26,10 @@ class Api::LadderUsersController < ApplicationController
     render json: { ladder_user: user }
   end
   def update
-		#TODO (barryklfung) - invoke class commands to change points
+		#TODO (barryklfung) (P1) - invoke class commands to change points
   end
 
   def retrieve
-		#TODO (barryklfung) - retrieve all postgreSQL data from list of users, sort by number of points, list top 10/20 (adapt as needed)
+		#TODO (barryklfung) (P1)- retrieve all postgreSQL data from list of users, sort by number of points, list top 10/20 (adapt as needed) - Might be able to do this merely with Ember instead.
   end
 end

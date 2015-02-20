@@ -26,7 +26,7 @@ class LadderUser < ActiveRecord::Base
             format: { with: VALID_EMAIL_UTORONTO_REGEX, message: "Invalid email address format." },
             uniqueness: { case_sensitive: false, message: "This email has been used already."}
   validate :password,
-            presence: {on: create},
+            presence: {on: create, message: "You must have a password."},
             length: { 
                 minimum: 7, message: "This password must be at least 7 characters long."
             }

@@ -18,8 +18,8 @@
                 <label {{bind-attr for="view.player2.elementId"}}>Player 2's username</label>
                 {{input value=model.player2 class=model.errors.player2.css type="text" placeholder="JSmith123" viewName="player2"}}
 
-                <label {{bind-attr for="view.dateOfMatch.elementId"}}>Date of Match</label>
-                {{input value=model.date_of_match class=model.errors.dateOfMatch.css type="date" viewName="dateOfMatch"}}
+               {{!--<label {{bind-attr for="view.date_of_match.elementId"}}>Date of Match</label>
+                {{input value=model.date_of_match class=model.errors.dateOfMatch.css type="date" viewName="date_of_match"}}--}}
 
                 <label {{bind-attr for="view.winner.elementId"}}>Winner</label>
 								{{view Ember.Select contentBinding=winnerOptions
@@ -28,7 +28,7 @@
                                 viewName="winner"}}
 
                 <label {{bind-attr for="view.password.elementId"}}>Password (Player 1)</label>
-                {{input value=model. class=model.errors.password.css type="password" placeholder="Password" viewName="password"}}
+                {{input value=model.password class=model.errors.password.css type="password" placeholder="Password" viewName="password"}}
 
                 <div class="button-wrapper">
                     <button {{action submitMatch}} type="submit" {{bind-attr class=":primary formButtonLoading:loading"}}>
@@ -51,14 +51,17 @@
                                 there were errors with the submitted information:
                             </p>
                             <ul>
-                                {{#if errors.name}}
-                                    <li>{{errors.name.message}}</li>
+                                {{#if model.errors.player1}}
+                                    <li>{{model.errors.player1.message}}</li>
                                 {{/if}}
-                                {{#if errors.email}}
-                                    <li>{{errors.email.message}}</li>
+                                {{#if model.errors.player2}}
+                                    <li>{{model.errors.player2.message}}</li>
                                 {{/if}}
-                                {{#if errors.password}}
-                                    <li>{{errors.password.message}}</li>
+                                {{#if model.errors.dateOfMatch}}
+                                    <li>{{model.errors.dateOfMatch.message}}</li>
+                                {{/if}}
+                                {{#if model.errors.password}}
+                                    <li>{{model.errors.password.message}}</li>
                                 {{/if}}
                             </ul>
 														<p>

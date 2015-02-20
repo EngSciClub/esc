@@ -137,15 +137,8 @@ App.EventsDanceRegisterController = App.Controller.extend({
 });
 
 App.EventsLadderIndexController = App.Controller.extend({
-/*  init: function() {
-    this._super.apply(this, arguments);
-
-    // Set the number of early bird tickets.
-    var self = this;
-    App.DanceRegistrant.getEarlyBirdRemaining().then(function(remaining) {
-      self.set('remaining', remaining > 0 ? remaining : null);
-    });
-  }*/ //ToDo - Write Controller (KLBF)
+	//TO-DO (P4)- Write Controller (KLBF) 
+	// Must: be able to manipulate the scores if necessary. Maybe can show all users. Maybe not necessary. Later To-Do
 });
 
 App.EventsLadderRegisterController = App.Controller.extend({
@@ -247,7 +240,7 @@ App.EventsLadderSubmitController = App.Controller.extend({
   }).create(),
 
   oldModel: null,
-  winnerOptions: ['1', '2'],
+  winnerOptions: ["1", "2"],
   
   actions: {
     submitMatch: function() {

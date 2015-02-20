@@ -1,3 +1,7 @@
+App.EventsLadderIndexRoute = App.ApplicationRoute.extend({
+ //TO-DO (KLBF) Write Retrieval code for accessing all users
+});
+
 App.EventsLadderRegisterRoute = App.ApplicationRoute.extend({
   setupController: function(controller, model) {
     this._super.apply(this, arguments);
@@ -9,13 +13,14 @@ App.EventsLadderRegisterRoute = App.ApplicationRoute.extend({
     }
   }
 });
+
 App.EventsLadderSubmitRoute = App.ApplicationRoute.extend({
   setupController: function(controller, model) {
     this._super.apply(this, arguments);
 
     var match = controller.get('model');
     if (Ember.isNone(match)) {
-      match = App.Match.create();
+      match = App.LadderMatch.create();
       controller.set('model', match);
     }
   }

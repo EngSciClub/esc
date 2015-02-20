@@ -6,7 +6,22 @@ class Api::LadderMatchesController < ApplicationController
     }
   end
   def create
-    #To-Do: matchcreation
+    p = ActionController::Parameters.new params[:ladder_match]
+    permitted = p.permit(:player1,:player2, :date_of_match, :winner, :password)
+    match = LadderMatch.new permitted
+	player1 = LadderUser.find_by(username: params[:player1])
+	match.errors.add(:password, 'This player (1) and password combination is invalid')
+
+	unless match.valid? && player1.try(:authenticate, params[:password])
+	  unless player1.try(:authenticate, params[:password])
+	    match.errors.add(:password, 'This player (1) and password combination is invalid')
+	  end
+      render json: { errors: match.errors }, status: 400 and return
+    end
+    
+    #TO-DO (KLBF) (P1): match calculations and manipulations
+    match.save!
+    render json: { ladder_match: match }
   end  
 
   def update_player
@@ -14,6 +29,6 @@ class Api::LadderMatchesController < ApplicationController
   end
 
   def point_calculate
-		
+	#Calculate points - not sure if htis command should be in controlelrs or the model itself.	
   end
 end
