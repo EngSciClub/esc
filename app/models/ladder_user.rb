@@ -28,7 +28,7 @@ class LadderUser < ActiveRecord::Base
   validate :password,
             presence: {on: create},
             length: { 
-                minimum: 7, message: "This password must be at least 7 characters long"
+                minimum: 7, message: "This password must be at least 7 characters long."
             }
   has_secure_password
   before_create do
