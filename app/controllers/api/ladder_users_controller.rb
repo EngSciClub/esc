@@ -24,7 +24,7 @@ class Api::LadderUsersController < ApplicationController
       render json: { errors: user.errors }, status: 400 and return
     end
     user.save!
-    render json: { ladder_user: user }
+    render json: { ladder_user: user } and return
   end
   def update
 		#TODO (barryklfung) - invoke class commands to change points

@@ -182,9 +182,9 @@ App.EventsLadderRegisterController = App.Controller.extend({
       var self = this;
       var model = self.get('model');
 		    // Perform client side validations.
-			//console.log('Start validations');
-			//model.validate();
-			//console.log('Finished Validations');
+			console.log('Start validations');
+			model.validate();
+			console.log('Finished Validations');
       if (!Ember.isNone(model.get('errors'))) {
 				console.log('Whoops');
         return;
@@ -213,7 +213,7 @@ App.EventsLadderRegisterController = App.Controller.extend({
           self.get('info').show('error');
 					console.log('errors');
         }
-
+		
         // We're done now so stop loading.
         self.set('formButtonLoading', false);
       });
@@ -222,6 +222,8 @@ App.EventsLadderRegisterController = App.Controller.extend({
   
   observesRegistrant: function() {
     this.get('info').hide();
+	var model = this.get('model');
+	model.set('errors', null);
   }.observes('model.name',
              'model.username',
              'model.email',
