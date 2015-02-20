@@ -1,3 +1,4 @@
+require 'json'
 class Api::LadderMatchesController < ApplicationController
   def index
     matches = LadderMatch.includes(:player1, :player2)
@@ -7,13 +8,13 @@ class Api::LadderMatchesController < ApplicationController
   end
   def create
     p = ActionController::Parameters.new params[:ladder_match]
-    permitted = p.permit(:player1,:player2, :date_of_match, :winner, :password)
+    permitted = p.permit(:player1,:player2, :date_of_match, :winner)#, :password)
     match = LadderMatch.new permitted
-	player1 = LadderUser.find_by(username: params[:player1])
-	match.errors.add(:password, 'This player (1) and password combination is invalid')
-
-	unless match.valid? && player1.try(:authenticate, params[:password])
-	  unless player1.try(:authenticate, params[:password])
+	@player1 = LadderUser.find_by(username: p[:player1])
+	//logger.debug "player1_check: #{@player1.to_json}"
+	match.password = p[:password]
+	unless match.valid? && @player1.try(:authenticate, match.password)
+	  unless @player1.try(:authenticate, match.password)
 	    match.errors.add(:password, 'This player (1) and password combination is invalid')
 	  end
       render json: { errors: match.errors }, status: 400 and return
