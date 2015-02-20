@@ -181,15 +181,16 @@ App.EventsLadderRegisterController = App.Controller.extend({
     ladderUserActivate: function() {
       var self = this;
       var model = self.get('model');
-		    // Perform client side validations.
-			console.log('Start validations');
-			model.validate();
-			console.log('Finished Validations');
+      // Perform client side validations.
+      console.log('Start validations');
+      model.validate();
+      console.log('Finished Validations');
       if (!Ember.isNone(model.get('errors'))) {
-				console.log('Whoops');
+        console.log('Whoops');
+        self.get('info').show('error');
         return;
       }
-			console.log('No errors');
+      console.log('No errors');
       // Remove the previous model, we're registering someone else now
       // and don't need the information anymore.
       self.set('oldModel', null);
@@ -197,8 +198,8 @@ App.EventsLadderRegisterController = App.Controller.extend({
       // Begin the loader as we make requests.
       self.set('formButtonLoading', true);
       self.get('info').hide();
-			console.log ('prep for saving');
-			//Saving User
+      console.log ('prep for saving');
+      //Saving User
       var promise;
       promise = model.save().then(function(data) {
         self.set('oldModel', self.get('model'));
@@ -206,12 +207,11 @@ App.EventsLadderRegisterController = App.Controller.extend({
         self.get('info').show('good');
         console.log('DID WE GET HERE?');
       });
-
-      // Apply errors on failure.
       promise.fail(model.applyErrors()).then(function() {
-        if (!Ember.isNone(model.get('errors'))) {
+        if (!Ember.isNone(model.get('errors'))&&model.get('errors')!={}) {
           self.get('info').show('error');
-					console.log('errors');
+          var errorlog = JSON.parse(JSON.stringify(model.get('errors')));
+          console.log(errorlog);
         }
 		
         // We're done now so stop loading.

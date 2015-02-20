@@ -14,8 +14,9 @@ class LadderUser < ActiveRecord::Base
             presence: true,
             length: {
                 maximum: 50,
-                too_long: "Name is too long."
-            }
+                too_long: "Userame is too long."
+            },
+            uniqueness: { case_sensitive: false, message: "This username has been used already."}
   validates :email,
             presence: true,
             length: {
@@ -23,13 +24,11 @@ class LadderUser < ActiveRecord::Base
                 too_long: "Email is too long."
             },
             format: { with: VALID_EMAIL_UTORONTO_REGEX, message: "Invalid email address format." },
-            uniqueness: { case_sensitive: false }
-  validate :password, 
+            uniqueness: { case_sensitive: false, message: "This email has been used already."}
+  validate :password,
+            presence: {on: create},
             length: { 
-                minimum: 7,
-                too_short: "Passwords must be 7-20 characters long.",
-                maximum: 20,
-                too_long: "Passwords must be 7-20 characters long."
+                minimum: 7, message: "This password must be at least 7 characters long"
             }
   has_secure_password
   before_create do

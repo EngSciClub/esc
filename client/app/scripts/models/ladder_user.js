@@ -21,7 +21,7 @@ App.LadderUser = Ember.Model.extend(Ember.Validator.ValidatesModel, {
     this.set('errors.email', null);
 		if (forced && email.indexOf('@mail.utoronto.ca') < 0) {
       this.set('errors.email', {
-        message: 'Users must use utoronto email.',
+        message: 'Users must use their UToronto email.',
         css: 'error'
       });
       return false;
@@ -31,11 +31,11 @@ App.LadderUser = Ember.Model.extend(Ember.Validator.ValidatesModel, {
 
   // Password (not stored on client and not passed from server).
   password: Ember.attr(/* String */),
-  validatesPassword: Ember.validates('password', Ember.Validator.notEmpty),
+  //validatesPassword: Ember.validates('password', Ember.Validator.notEmpty),
 
   // Confirmation for Password (not storred on client)
   password_confirmation: Ember.attr(/* String */),
-  validatesPasswordConfirmation: Ember.validates('password_confirmation', Ember.Validator.notEmpty),
+  //validatesPasswordConfirmation: Ember.validates('password_confirmation', Ember.Validator.notEmpty),
 
   /* Registrant Information */
 	
