@@ -23,6 +23,7 @@ class Api::LadderUsersController < ApplicationController
       render json: { errors: user.errors }, status: 400 and return
     end
     user.save!
+    #TODO (barryklfung) (P2) - Mailers for registration
     render json: { ladder_user: user }
   end
   def update

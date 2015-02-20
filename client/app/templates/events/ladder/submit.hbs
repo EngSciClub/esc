@@ -40,8 +40,8 @@
                         {{#if info.good}}
                             <h3>Match Submitted</h3>
                             <p>
-															Match has been submitted! You should receive an email with verification soon.                            
-														</p>
+								Match has been submitted! You should receive an email with verification soon.                            
+							</p>
                         {{/if}}
 
                         {{#if info.error}}
@@ -60,14 +60,17 @@
                                 {{#if model.errors.dateOfMatch}}
                                     <li>{{model.errors.dateOfMatch.message}}</li>
                                 {{/if}}
+                                {{#if model.errors.winner}}
+                                    <li>{{model.errors.winner.message}}</li>
+                                {{/if}}
                                 {{#if model.errors.password}}
                                     <li>{{model.errors.password.message}}</li>
                                 {{/if}}
                             </ul>
-														<p>
-																If the error persists, contact the Webmaster at <a href="mailto:engsci.website+ladder@gmail.com"> 
-																engsci.website+ladder@gmail.com</a>
-														</p>
+                            <p>
+                                If the error persists, contact the Webmaster at <a href="mailto:engsci.website+ladder@gmail.com">
+                                engsci.website+ladder@gmail.com</a>
+                            </p>
                         {{/if}}
                     </div>
                 </div>

@@ -20,11 +20,11 @@ App.LadderMatch = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   
   // Email address used when signing up.
   winner: Ember.attr(/* String */),
-  validatesWinner: Ember.validates('winner', Ember.Validator.notEmpty),
+  //validatesWinner: Ember.validates('winner', Ember.Validator.notEmpty),
 
   // Password (not stored on client and not passed from server).
   password: Ember.attr(/* String */),
-  validatesPassword: Ember.validates('password', Ember.Validator.notEmpty),
+  //validatesPassword: Ember.validates('password', Ember.Validator.notEmpty),
 
 });
 

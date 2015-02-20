@@ -137,7 +137,7 @@ App.EventsDanceRegisterController = App.Controller.extend({
 });
 
 App.EventsLadderIndexController = App.Controller.extend({
-	//TO-DO (P4)- Write Controller (KLBF) 
+	//TO-DO (P4)- Write Controller (barryklfung) 
 	// Must: be able to manipulate the scores if necessary. Maybe can show all users. Maybe not necessary. Later To-Do
 });
 
@@ -246,12 +246,19 @@ App.EventsLadderSubmitController = App.Controller.extend({
     submitMatch: function() {
       var self = this;
       var model = self.get('model');
+      var errorlog;
       // Perform client side validations.
       model.validate();
       if (!Ember.isNone(model.get('errors'))) {
         self.get('info').show('error');
+        errorlog = JSON.parse(JSON.stringify(model.get('errors')));
+         console.log('Client-side Validation Errors');
+         console.log(errorlog);
         return;
       }
+      errorlog = JSON.parse(JSON.stringify(model.get('errors')));
+      console.log ('This should be empty');
+      console.log(errorlog);
       // Remove the previous model, we're registering someone else now
       // and don't need the information anymore.
       self.set('oldModel', null);
@@ -263,14 +270,22 @@ App.EventsLadderSubmitController = App.Controller.extend({
       var promise;
       promise = model.save().then(function(data) {
         self.set('oldModel', self.get('model'));
+        console.log('Model has been saved');
         self.set('model', App.LadderMatch.create({}));
+        console.log('Model has been saved');
         self.get('info').show('good');
+        console.log('Model has been saved');
       });
+      var modelcheck = JSON.parse(JSON.stringify(model));
+      console.log('Checking if Model has been replaced');
+      console.log(modelcheck);
       promise.fail(model.applyErrors()).then(function() {
+        errorlog = JSON.parse(JSON.stringify(model.get('errors')));
+        console.log(errorlog);
         if (!Ember.isNone(model.get('errors'))&&model.get('errors')!=={}) {
           self.get('info').show('error');
-          //var errorlog = JSON.parse(JSON.stringify(model.get('errors')));
-          //console.log(errorlog);
+          errorlog = JSON.parse(JSON.stringify(model.get('errors')));
+          console.log(errorlog);
         }
 		
         // We're done now so stop loading.
@@ -289,6 +304,4 @@ App.EventsLadderSubmitController = App.Controller.extend({
              'model.player2',
              'model.winner',
              'model.password')
-	//Create Model for Ladder User for registration purposes
-	//Create Ladder Match Model for match submission
 });

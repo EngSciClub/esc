@@ -39,7 +39,7 @@ class LadderUser < ActiveRecord::Base
     true
   end
   def access_match_history
-    #TO-DO: develop match access history if needed, highly doubted though.	
+    #TO-DO (P3): develop match access history if needed, highly doubted though.	
   end
   def modify_score(points)
     self.points = self.points + points

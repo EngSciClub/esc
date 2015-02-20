@@ -1,5 +1,5 @@
 App.EventsLadderIndexRoute = App.ApplicationRoute.extend({
- //TO-DO (KLBF) Write Retrieval code for accessing all users
+ //TO-DO (barryklfung) (P1) Write Retrieval code for accessing all users
 });
 
 App.EventsLadderRegisterRoute = App.ApplicationRoute.extend({

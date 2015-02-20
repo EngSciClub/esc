@@ -14,7 +14,7 @@ App.LadderUser = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   username: Ember.attr(/* String */),
   validatesUsername: Ember.validates('username', Ember.Validator.notEmpty),
 
-  // Email address used when signing up.
+  // Email address used to send match notifications.
   email: Ember.attr(/* String */),
   validatesEmail: Ember.validates('email', Ember.Validator.notEmpty, function(property, forced) {
     var email = this.get('email') || '';
