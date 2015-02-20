@@ -1,5 +1,6 @@
 require('scripts/controllers/base_controllers');
 require('scripts/models/base_controllers');
+require('scripts/models/ladder_users');
 
 App.EventsDanceIndexController = App.Controller.extend({
   remaining: null,
@@ -148,9 +149,11 @@ App.EventsLadderIndexController = App.Controller.extend({
 });
 
 App.EventsLadderRegisterController = App.Controller.extend({
-	registrantChanged: true,
-  formButtonLoading: false,
-
+	formButtonLoading: false,
+	formButtonDisabled: function() {
+    // Disable the form button during loading and if there are validations to fix.
+    return this.get('formButtonLoading') || !Ember.isNone(this.get('model.errors'));
+  }.property('formButtonLoading', 'model.errors'),
 	info: Ember.Object.extend({
     visible: false,
     good: false,
@@ -173,14 +176,15 @@ App.EventsLadderRegisterController = App.Controller.extend({
   }).create(),
 
   oldModel: null,
+  
   actions: {
     ladderUserActivate: function() {
       var self = this;
       var model = self.get('model');
-		      // Perform client side validations.
-			console.log('Start validations');
-      //model.validate();
-			console.log('Finished Validations');
+		    // Perform client side validations.
+			//console.log('Start validations');
+			//model.validate();
+			//console.log('Finished Validations');
       if (!Ember.isNone(model.get('errors'))) {
 				console.log('Whoops');
         return;
@@ -214,7 +218,15 @@ App.EventsLadderRegisterController = App.Controller.extend({
         self.set('formButtonLoading', false);
       });
     }
-  }
+  },
+  
+  observesRegistrant: function() {
+    this.get('info').hide();
+  }.observes('model.name',
+             'model.username',
+             'model.email',
+             'model.password',
+             'model.password_confirmation')
 	//Create Model for Ladder User for registration purposes
 });
 

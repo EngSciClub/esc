@@ -10,19 +10,19 @@
 						<p> Registration began on: <strong>February 1, 2015</strong> </p>
             <form class="centered">
                 <label {{bind-attr for="view.name.elementId"}}>Registrant's Name</label>
-                {{input value=name class=errors.name.css type="text" placeholder="Jane Doe" viewName="name"}}
+                {{input value=model.name class=errors.name.css type="text" placeholder="Jane Doe" viewName="name"}}
 
                 <label {{bind-attr for="view.username.elementId"}}>Registrant's Username</label>
-                {{input value=username class=errors.name.css type="text" placeholder="JDoe_123" viewName="username"}}
+                {{input value=model.username class=errors.username.css type="text" placeholder="JDoe_123" viewName="username"}}
 
                 <label {{bind-attr for="view.email.elementId"}}>Registrant's email (UToronto)</label>
-                {{input value=email class=errors.email.css type="text" placeholder="someone@mail.utoronto.ca" viewName="email"}}
+                {{input value=model.email class=errors.email.css type="text" placeholder="someone@mail.utoronto.ca" viewName="email"}}
 
                 <label {{bind-attr for="view.password.elementId"}}>Password </label>
-                {{input value=password class=errors.password.css type="password" placeholder="password" viewName="password"}}
+                {{input value=model.password class=errors.password.css type="password" placeholder="password" viewName="password"}}
 								
-								<label {{bind-attr for="view.password.elementId"}}>Confirm Password </label>
-                {{input value=password_confirmation class=errors.password_confirmation.css type="password" placeholder="confirmation" viewName="password_confirmation"}}
+				<label {{bind-attr for="view.password_confirmation.elementId"}}>Confirm Password </label>
+                {{input value=model.password_confirmation class=errors.password_confirmation.css type="password" placeholder="confirmation" viewName="password_confirmation"}}
 								
                 <div class="button-wrapper">
                     <button {{action ladderUserActivate}} type="submit" {{bind-attr class=":primary formButtonLoading:loading"}}>
@@ -31,9 +31,6 @@
                 </div>
                 <div {{bind-attr class=":info-wrapper info.visible:active"}}>
                     <div {{bind-attr class=":info info.good:good info.error:error"}}>
-												{{#if info.neutral}}
-                            <h3>Looks like {{username}} is free for registration.</h3>
-                        {{/if}}
                         {{#if info.good}}
                             <h3>You successfully registered {{oldModel.name}}!</h3>
                             <p>
@@ -51,7 +48,7 @@
                                 {{#if errors.name}}
                                     <li>{{errors.name.message}}</li>
                                 {{/if}}
-																{{#if errors.username}}
+                                {{#if errors.username}}
                                     <li>{{errors.username.message}}</li>
                                 {{/if}}
                                 {{#if errors.email}}
@@ -60,7 +57,7 @@
                                 {{#if errors.password}}
                                     <li>{{errors.password.message}}</li>
                                 {{/if}}
-																{{#if errors.password_confirmaton}}
+                                {{#if errors.password_confirmaton}}
                                     <li>{{errors.password_confirmation.message}}</li>
                                 {{/if}}
                             </ul>

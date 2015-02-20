@@ -33,13 +33,13 @@ App.LadderUser = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   password: Ember.attr(/* String */),
   validatesPassword: Ember.validates('password', Ember.Validator.notEmpty),
 
-	// Confirmation for Password (not storred on client)
-	password_confirmation: Ember.attr(/* String */),
+  // Confirmation for Password (not storred on client)
+  password_confirmation: Ember.attr(/* String */),
   validatesPasswordConfirmation: Ember.validates('password_confirmation', Ember.Validator.notEmpty),
 
   /* Registrant Information */
 	
-	/* Initial functions if Necessary*/
+/* Initial functions if Necessary*/
 });
 
 
