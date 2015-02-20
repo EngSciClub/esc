@@ -18,5 +18,9 @@
 # Ignore built client files
 /public
 
+#Ignore database configuration files
+/config/database.yml
+
+#Ignore environment
 .env
 *~
