@@ -19,10 +19,10 @@ class Api::LadderMatchesController < ApplicationController
 	  end
       render json: { errors: match.errors }, status: 400 and return
     end
-    match.save!
     #Point Manipulation & updates.
     @player2 = LadderUser.find_by(username: p[:player2])
-    update_players(@player1,@player2,match.winner,match.id)
+    match.points = update_players(@player1,@player2,match.winner,match.id).abs
+    match.save!
     #send that verification mail.
     LadderMailer.match_mail(match,@player1,@player2).deliver!
     render json: {ladder_match: match}
@@ -53,5 +53,6 @@ class Api::LadderMatchesController < ApplicationController
 	#Player-level updates
 	player1.match_update(p1points, id, winner == 1)
 	player2.match_update(p2points, id, winner == 2)
+	return p1points
   end
 end

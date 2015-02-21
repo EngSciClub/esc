@@ -17,7 +17,4 @@ class Api::LadderUsersController < ApplicationController
     render json: { ladder_user: user }
   end
   
-  def retrieve
-	#TO-DO P3 (barryklfung) - make specialized 
-  end
 end

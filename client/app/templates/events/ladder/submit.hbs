@@ -7,10 +7,10 @@
     <div class="full col">
         {{#base-card tagName="section"}}
             <h2>Match Submission</h2>
-						<p>
-							Report your matches through this form. If you can't remember your password, send an email to 
-							<a href="mailto:engsci.website+ladder@gmail.com">engsci.website+ladder@gmail.com</a>
-						</p>
+			<p>
+				Report your matches through this form. If you can't remember your password, send an email to 
+				<a href="mailto:engsci.website+ladder@gmail.com">engsci.website+ladder@gmail.com</a>
+			</p>
             <form class="centered">
                 <label {{bind-attr for="view.player1.elementId"}}>Player 1's username</label>
                 {{input value=model.player1 class=model.errors.player1.css type="text" placeholder="JDoe456" viewName="player1"}}
@@ -40,7 +40,7 @@
                         {{#if info.good}}
                             <h3>Match Submitted</h3>
                             <p>
-								Match has been submitted! You should receive an email with verification soon.                            
+								Match has been submitted! You should receive an automatic email summary of your submission in a few minutes.                            
 							</p>
                         {{/if}}
 

@@ -7,18 +7,18 @@
     <div class="full col">
         {{#base-card tagName="section"}}
             <h2>Sign Up for the Foosball Ladder!</h2>
-						<p> Registration began on: <strong>February 1, 2015</strong> </p>
+            <p> Registration began on: <strong>February 22, 2015</strong> </p>
             <form class="centered">
-                <label {{bind-attr for="view.name.elementId"}}>Registrant's Name</label>
+                <label {{bind-attr for="view.name.elementId"}}>Player's Name</label>
                 {{input value=model.name class=model.errors.name.css type="text" placeholder="Jane Doe" viewName="name"}}
 
-                <label {{bind-attr for="view.username.elementId"}}>Registrant's Username</label>
+                <label {{bind-attr for="view.username.elementId"}}>Player's Username</label>
                 {{input value=model.username class=model.errors.username.css type="text" placeholder="JDoe_123" viewName="username"}}
 
-                <label {{bind-attr for="view.email.elementId"}}>Registrant's email (UToronto)</label>
+                <label {{bind-attr for="view.email.elementId"}}>Players's email (UToronto)</label>
                 {{input value=model.email class=model.errors.email.css type="text" placeholder="someone@mail.utoronto.ca" viewName="email"}}
 
-                <label {{bind-attr for="view.password.elementId"}}>Password </label>
+                <label {{bind-attr for="view.password.elementId"}}>Password</label>
                 {{input value=model.password class=model.errors.password.css type="password" placeholder="password" viewName="password"}}
 								
 				<label {{bind-attr for="view.password_confirmation.elementId"}}>Confirm Password </label>

@@ -270,8 +270,8 @@ App.EventsLadderSubmitController = App.Controller.extend({
         self.get('info').show('good');
       });
       promise.fail(model.applyErrors()).then(function() {
-        errorlog = JSON.parse(JSON.stringify(model.get('errors')));
-        console.log(errorlog);
+        //errorlog = JSON.parse(JSON.stringify(model.get('errors')));
+        //console.log(errorlog);
         if (!Ember.isNone(model.get('errors'))&&model.get('errors')!=={}) {
           self.get('info').show('error');
         }
