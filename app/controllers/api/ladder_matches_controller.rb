@@ -8,7 +8,7 @@ class Api::LadderMatchesController < ApplicationController
   end
   def create
     p = ActionController::Parameters.new params[:ladder_match]
-    permitted = p.permit(:player1,:player2, :date_of_match, :winner)#, :password)
+    permitted = p.permit(:player1,:player2, :date_of_match, :winner)
     match = LadderMatch.new permitted
 	@player1 = LadderUser.find_by(username: p[:player1])
 	#logger.debug "player1_check: #{@player1.to_json}"
@@ -19,10 +19,9 @@ class Api::LadderMatchesController < ApplicationController
 	  end
       render json: { errors: match.errors }, status: 400 and return
     end
-    
     match.save!
-    @player2 = LadderUser.find_by(username: p[:player2])
     #Point Manipulation & updates.
+    @player2 = LadderUser.find_by(username: p[:player2])
     update_players(@player1,@player2,match.winner,match.id)
     #send that verification mail.
     LadderMailer.match_mail(match,@player1,@player2).deliver!

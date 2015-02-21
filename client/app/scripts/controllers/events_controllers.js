@@ -137,9 +137,9 @@ App.EventsDanceRegisterController = App.Controller.extend({
 });
 
 App.EventsLadderIndexController = App.Controller.extend({
-	//TO-DO (P4)- Write Controller (barryklfung) 
-	// Must: be able to manipulate the scores if necessary. Maybe can show all users. Maybe not necessary. Later To-Do
+	
 });
+
 
 App.EventsLadderRegisterController = App.Controller.extend({
 	formButtonLoading: false,

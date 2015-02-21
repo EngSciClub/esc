@@ -3,6 +3,9 @@ require('scripts/models/base_model');
 App.LadderUser = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   id: Ember.attr(Number),
   createdAt: Ember.attr(Date),
+  points: Ember.attr(Number),
+  matchesPlayed: Ember.attr(Number),
+  wins: Ember.attr(Number),
 
   /* Meta */
 

@@ -18,8 +18,8 @@
                 <label {{bind-attr for="view.player2.elementId"}}>Player 2's username</label>
                 {{input value=model.player2 class=model.errors.player2.css type="text" placeholder="JSmith123" viewName="player2"}}
 
-               {{!--<label {{bind-attr for="view.date_of_match.elementId"}}>Date of Match</label>
-                {{input value=model.date_of_match class=model.errors.dateOfMatch.css type="date" viewName="date_of_match"}}--}}
+                <label {{bind-attr for="view.date_of_match.elementId"}}>Date of Match</label>
+                {{input value=model.date_of_match class=model.errors.dateOfMatch.css type="date" viewName="date_of_match"}}
 
                 <label {{bind-attr for="view.winner.elementId"}}>Winner</label>
 								{{view Ember.Select contentBinding=winnerOptions

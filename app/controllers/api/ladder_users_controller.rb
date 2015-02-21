@@ -1,7 +1,7 @@
 class Api::LadderUsersController < ApplicationController
   def index
     render json: {
-    ladder_users: Ladder.all.order(points: :desc)
+    ladder_users: LadderUser.all.order(points: :desc)
     }
   end
 

@@ -48,10 +48,19 @@
 		<h2>Standings</h2>		
 			{{#if ladderUsers.length}}			
                 <table>
+				<thead>
+					<th>Rank</th>
+					<th>Name</th>
+					<th>Matches</th>
+					<th>Wins</th>
+					<th>Points</th>
+				</thead>
 				{{#each player in ladderUsers}}
                 <tr>
-                    <td>{{_view.contentIndex}}</td>
+                    <td>{{increment _view.contentIndex}}</td>
                     <td>{{player.name}}</td>
+                    <td>{{player.matchesPlayed}}</td>
+                    <td>{{player.wins}}</td>
                     <td>{{player.points}}</td>
                 </tr>
       	        {{/each}}

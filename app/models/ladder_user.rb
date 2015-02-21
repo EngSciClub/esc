@@ -43,7 +43,7 @@ class LadderUser < ActiveRecord::Base
 	self.points = self.points + points_modifier
 	self.matches_played = self.matches_played + 1
 	self.last_match_played = id
-	if (win = true)
+	if (win == true)
 		self.wins = self.wins + 1
 	end
 	self.save!

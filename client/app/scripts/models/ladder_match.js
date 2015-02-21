@@ -15,8 +15,8 @@ App.LadderMatch = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   validatesPlayer2: Ember.validates('player2', Ember.Validator.notEmpty),
   
   //Date of Match
-//  date_of_match: Ember.attr(Date),
-//  validatesDateOfMatch: Ember.validates('date_of_match', Ember.Validator.notEmpty),
+  date_of_match: Ember.attr(/*String*/),
+  //validatesDateOfMatch: Ember.validates('date_of_match', Ember.Validator.notEmpty),
   
   // Email address used when signing up.
   winner: Ember.attr(/* String */),

@@ -1,5 +1,9 @@
 App.EventsLadderIndexRoute = App.ApplicationRoute.extend({
- //TO-DO (barryklfung) (P1) Write Retrieval code for accessing all users
+	setupController: function(controller, model) {
+    this._super.apply(this, arguments);
+    var users = App.LadderUser.find()
+    controller.set('ladderUsers', users);
+  }
 });
 
 App.EventsLadderRegisterRoute = App.ApplicationRoute.extend({
