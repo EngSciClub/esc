@@ -66,15 +66,18 @@ App::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {host: 'www.engsci.skule.ca'}
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 25,
-    user_name: ENV["WEB_EMAIL"],
-    password: ENV["WEB_PASSWORD"],
+    address:              'smtp.sendgrid.net',
+    port:                 587,
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"],
+    domain: 'heroku.com',
     authentication: :plain,
     enable_starttls_auto: true  
     }
   config.action_mailer.raise_delivery_errors = true
+
 
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
