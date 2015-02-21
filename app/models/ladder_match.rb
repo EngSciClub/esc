@@ -27,7 +27,10 @@ class LadderMatch < ActiveRecord::Base
 		end
 	end
 	def check_match_quota
-		#TO-DO (barryklfung) (P1): Check that only 3 matches are played
+		matches_played = LadderMatch.where("player1 = ? AND player2 = ?", player1, player2).length + LadderMatch.where("player1 = ? AND player2 = ?", player2, player1).length
+		if (matches_played >= 3)
+			errors.add(:winner, "You've already played #{matches_played} matches against each other!")
+		end
 	end
 	def check_date_is_past
 		if date_of_match.present? && date_of_match > Date.today
@@ -36,6 +39,6 @@ class LadderMatch < ActiveRecord::Base
 	end
 	
 	def self.point_calculate(elo1, elo2)
-		return 1/(1+10**(elo1-elo2))
+		return 32*1/(1+10**((elo1 - elo2)/400))
 	end
 end

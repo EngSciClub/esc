@@ -2,7 +2,7 @@ class LadderUser < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_EMAIL_UTORONTO_REGEX = /\A[\w+\-.]+@mail.utoronto.ca\z/i
-  STARTING_POINTS = 1500
+  STARTING_POINTS = 1500 #0 if elo_notWLD = 0
 
   validates :name,
             presence: true,
@@ -14,7 +14,7 @@ class LadderUser < ActiveRecord::Base
             presence: true,
             length: {
                 maximum: 50,
-                too_long: "Userame is too long."
+                too_long: "Username is too long."
             },
             uniqueness: { case_sensitive: false, message: "This username has been used already."}
   validates :email,
@@ -35,16 +35,17 @@ class LadderUser < ActiveRecord::Base
     self.email.downcase!
     self.points = STARTING_POINTS
     self.matches_played = 0;
+    self.wins = 0;
     self.last_match_played = nil;
     true
   end
-  def access_match_history
-    #TO-DO (P3): develop match access history if needed, highly doubted though.	
-  end
-  def modify_score(points)
-    self.points = self.points + points
-  end
-  def match_played_increment
-    self.matches_played = self.matches_played + 1
+  def match_update (points_modifier, id, win)
+	self.points = self.points + points_modifier
+	self.matches_played = self.matches_played + 1
+	self.last_match_played = id
+	if (win = true)
+		self.wins = self.wins + 1
+	end
+	self.save!
   end
 end

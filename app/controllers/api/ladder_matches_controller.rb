@@ -20,18 +20,39 @@ class Api::LadderMatchesController < ApplicationController
       render json: { errors: match.errors }, status: 400 and return
     end
     
-    #TO-DO (barryklfung) (P1): match calculations (Point Manipulation, Increment Match, Last_Match_Played)
     match.save!
-    #TO-DO (barryklfung) (P1): Send Mailer to both players
-    match.password = '0'
+    @player2 = LadderUser.find_by(username: p[:player2])
+    #Point Manipulation & updates.
+    update_players(@player1,@player2,match.winner,match.id)
+    #send that verification mail.
+    LadderMailer.match_mail(match,@player1,@player2).deliver!
     render json: {ladder_match: match}
   end  
 
-  def update_player
-    #TO-DO (barryklfung) (P1): update player 1 using inbuilt commands, then player 2. build commands in LadderUserController
-  end
-
-  def point_calculate
-	#Calculate points - not sure if htis command should be in controllers or the model itself.	
+  def update_players(player1,player2,winner,id)
+	#Match level calculations, using match's class level methods
+	elo_notWLD = true
+	if (elo_notWLD)
+		if (winner == 1)
+			p1points = LadderMatch.point_calculate(player1.points, player2.points)
+			p2points = -p1points
+		else
+			p2points = LadderMatch.point_calculate(player2.points, player1.points)
+			p1points = -p2points
+		end
+	else
+		if (winner == 1)
+			p1points = 3
+			p2points = 0
+		else
+			p2points = 3
+			p1points = 0
+		end
+	end
+	#logger.debug "player 1 change in points #{p1points}"
+    #logger.debug "player 2 change in points #{p2points}"
+	#Player-level updates
+	player1.match_update(p1points, id, winner == 1)
+	player2.match_update(p2points, id, winner == 2)
   end
 end
