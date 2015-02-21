@@ -9,11 +9,11 @@ class Api::LadderUsersController < ApplicationController
     p = ActionController::Parameters.new params[:ladder_user]
     permitted = p.permit(:name, :username, :email, :password, :password_confirmation)
     user = LadderUser.new permitted
-    LadderMailer.signup_email(user).deliver!
 	unless user.valid?
       render json: { errors: user.errors }, status: 400 and return
     end
     user.save!
+    LadderMailer.signup_email(user).deliver!
     render json: { ladder_user: user }
   end
   
