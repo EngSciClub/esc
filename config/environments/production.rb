@@ -71,7 +71,7 @@ App::Application.configure do
     port:                 25,
     user_name: ENV["WEB_EMAIL"],
     password: ENV["WEB_PASSWORD"],
-    authentication: plain,
+    authentication: :plain,
     enable_starttls_auto: true  
     }
   config.action_mailer.raise_delivery_errors = true
