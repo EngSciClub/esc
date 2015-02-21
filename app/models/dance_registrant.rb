@@ -83,7 +83,7 @@ class DanceRegistrant < ActiveRecord::Base
     if eligible_for_early_bird?
       price -= EARLY_BIRD_DISCOUNT
     end
-    end
+  end
 
     price
   end

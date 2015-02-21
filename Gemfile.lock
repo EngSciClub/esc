@@ -33,6 +33,7 @@ GEM
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
     awesome_print (1.1.0)
+    bcrypt-ruby (3.0.1)
     builder (3.1.4)
     erubis (2.7.0)
     extlib (0.9.16)
@@ -119,6 +120,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bcrypt-ruby (~> 3.0.0)
   google-api-client
   pg
   rails (= 4.0.0)

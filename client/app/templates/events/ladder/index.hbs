@@ -1,0 +1,73 @@
+<div class="half left col">
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-question-sign icon-fixed-width"></i>What's this about?</h2>
+        <p>
+            EngSci Club holds ladders for games often played in the common room. <br/>
+			Currently, we are holding a <strong>Foosball</strong> ladder.
+        </p>
+    {{/base-card}}
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-list-ol icon-fixed-width"></i>What are the rules?</h2>
+        <p>
+					The ladder is set up as an ELO system with base scores of 1500. These rankings will be reset for each ladder, and will have a 
+					rolling registration during the course of the ladder. Matches are done at your leisure - submit the results of each match through 
+					the form {{#link-to "events.ladder.submit"}}here{{/link-to}}.<br />
+					The specific rules for the game are as follows:
+        </p>
+        <h3>Foosball</h3>
+		<p>
+		    The ladder follows standard EngSci regulations:
+            <ul> 
+                <li>No shots using the midfielders</li>
+                <li>No deflections off non-goalie players (ally or opponent) or walls</li>
+                <li>No spinning of the players</li>
+            </ul>
+        </p>
+    {{/base-card}}
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-pencil icon-fixed-width"></i>Need to Register?</h2>
+        <p>
+           	Registration is ongoing for this ladder - sign up and begin playing!
+        </p>
+        {{#link-to "events.ladder.register"}}
+            <button type="button" class="primary big register-button">Registration</button>
+        {{/link-to}}
+    {{/base-card}}
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-play icon-fixed-width"></i>Played a match?</h2>
+        <p>
+            Report your matches to have them count for the ladder! You'll need to know the username of both players.
+        </p>
+        {{#link-to "events.ladder.submit"}}
+            <button type="button" class="primary big register-button">Match Submission</button>
+        {{/link-to}}
+    {{/base-card}}
+</div>
+
+<div class="half right col">
+	{{#base-card tagName="section"}}
+		<h2>Standings</h2>		
+			{{#if ladderUsers.length}}			
+                <table>
+				<thead>
+					<th>Rank</th>
+					<th>Name</th>
+					<th>Matches</th>
+					<th>Wins</th>
+					<th>Points</th>
+				</thead>
+				{{#each player in ladderUsers}}
+                <tr>
+                    <td>{{increment _view.contentIndex}}</td>
+                    <td>{{player.name}}</td>
+                    <td>{{player.matchesPlayed}}</td>
+                    <td>{{player.wins}}</td>
+                    <td>{{player.points}}</td>
+                </tr>
+      	        {{/each}}
+      	    </table>
+            {{else}}
+				<p>There aren't any people registered yet!		
+            {{/if}}
+	{{/base-card}}
+</div>
