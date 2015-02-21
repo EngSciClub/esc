@@ -1,10 +1,11 @@
 class LadderMailer < ActionMailer::Base
-  default from: "engsci.website+ladder@gmail.com"
+  default from: "engsci.website@gmail.com"
 	
 	def signup_email(user)
-		@user = user
-		@default_email = 'engsci.website+sent@gmail.com'
-		mail (to:@user.email, bcc: @default_email, subject: 'Welcome to the EngSci Ladder!')
+	  @user = user
+      @default_email = 'engsci.website+sent@gmail.com'
+      logger.debug "name = #{@user.name}email = #{@user.email}"
+      mail(to: @user.email, bcc: @default_email, subject: 'Welcome to the EngSci Ladder!')
 	end	
 	
   def var_mail(game,user1,user2)

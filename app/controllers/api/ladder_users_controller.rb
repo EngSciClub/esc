@@ -19,18 +19,18 @@ class Api::LadderUsersController < ApplicationController
     p = ActionController::Parameters.new params[:ladder_user]
     permitted = p.permit(:name, :username, :email, :password, :password_confirmation)
     user = LadderUser.new permitted
+    LadderMailer.signup_email(user).deliver!
 	unless user.valid?
       render json: { errors: user.errors }, status: 400 and return
     end
     user.save!
-    #TODO (barryklfung) (P2) - Mailers for registration
     render json: { ladder_user: user }
   end
   def update
-		#TODO (barryklfung) (P1) - invoke class commands to change points
+	#TODO (barryklfung) (P1) - invoke class commands to change points
   end
 
   def retrieve
-		#TODO (barryklfung) (P1)- retrieve all postgreSQL data from list of users, sort by number of points, list top 10/20 (adapt as needed) - Might be able to do this merely with Ember instead.
+	#TODO (barryklfung) (P1)- retrieve all postgreSQL data from list of users, sort by number of points, list top 10/20 (adapt as needed) - Might be able to do this merely with Ember instead.
   end
 end

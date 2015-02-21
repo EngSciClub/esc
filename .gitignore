@@ -23,4 +23,5 @@
 
 #Ignore environment
 .env
+/config/initializers/app_env_var.rb
 *~
