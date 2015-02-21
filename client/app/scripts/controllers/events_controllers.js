@@ -290,6 +290,7 @@ App.EventsLadderSubmitController = App.Controller.extend({
   model.set('errors', null);
   }.observes('model.player1',
              'model.player2',
+             'model.date_of_match',
              'model.winner',
              'model.password')
 });

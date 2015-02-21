@@ -33,7 +33,7 @@ class LadderMatch < ActiveRecord::Base
 		end
 	end
 	def check_date_is_past
-		if date_of_match > Date.today
+		if date_of_match.beginning_of_day() > Date.today.end_of_day()
 			errors.add(:date_of_match, "The date can't be in the future.")
 		end
 	end
