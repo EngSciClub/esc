@@ -15,13 +15,13 @@ App.RedirectNocturneRoute = Ember.Route.extend({
 });
 
 App.RedirectLadderRoute = Ember.Route.extend({
-	redirect: function() { this.transitionTo('events.ladder'); }
+    redirect: function() { this.transitionTo('events.ladder'); }
 });
 
 App.RedirectLadderRegisterRoute = Ember.Route.extend({
-	redirect: function() { this.transitionTo('events.ladder.register'); }
+    redirect: function() { this.transitionTo('events.ladder.register'); }
 });
 
 App.RedirectLadderSubmitRoute = Ember.Route.extend({
-	redirect: function() { this.transitionTo('events.ladder.submit'); }
+    redirect: function() { this.transitionTo('events.ladder.submit'); }
 });
