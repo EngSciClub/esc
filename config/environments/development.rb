@@ -22,7 +22,8 @@ App::Application.configure do
     user_name: ENV["WEB_EMAIL"],
     password: ENV["WEB_PASSWORD"],
     authentication:       'plain',
-    enable_starttls_auto: true  }
+    enable_starttls_auto: true  
+  }
   config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.

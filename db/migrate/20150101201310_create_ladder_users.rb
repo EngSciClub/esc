@@ -4,8 +4,8 @@ class CreateLadderUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :password
-			t.integer :points      
-			t.integer :matches_played
+      t.integer :points      
+      t.integer :matches_played
       t.integer :last_match_played
       t.timestamps
     end

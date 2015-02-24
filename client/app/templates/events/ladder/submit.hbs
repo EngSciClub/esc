@@ -7,10 +7,10 @@
     <div class="full col">
         {{#base-card tagName="section"}}
             <h2>Match Submission</h2>
-			<p>
-				Report your matches through this form. If you can't remember your password, send an email to 
-				<a href="mailto:engsci.website+ladder@gmail.com">engsci.website+ladder@gmail.com</a>
-			</p>
+            <p>
+                Report your matches through this form. If you can't remember your password, send an email to 
+                <a href="mailto:engsci.website+ladder@gmail.com">engsci.website+ladder@gmail.com</a>
+            </p>
             <form class="centered">
                 <label {{bind-attr for="view.player1.elementId"}}>Player 1's username</label>
                 {{input value=model.player1 class=model.errors.player1.css type="text" placeholder="JDoe456" viewName="player1"}}
@@ -22,7 +22,7 @@
                 {{input value=model.date_of_match class=model.errors.dateOfMatch.css type="date" viewName="date_of_match"}}
 
                 <label {{bind-attr for="view.winner.elementId"}}>Winner</label>
-								{{view Ember.Select contentBinding=winnerOptions
+                                {{view Ember.Select contentBinding=winnerOptions
                                 valueBinding=model.winner
                                 prompt="-"
                                 viewName="winner"}}
@@ -32,7 +32,7 @@
 
                 <div class="button-wrapper">
                     <button {{action submitMatch}} type="submit" {{bind-attr class=":primary formButtonLoading:loading"}}>
-                           Match Submission
+                        Match Submission
                     </button>
                 </div>
                 <div {{bind-attr class=":info-wrapper info.visible:active"}}>
@@ -40,8 +40,8 @@
                         {{#if info.good}}
                             <h3>Match Submitted</h3>
                             <p>
-								Match has been submitted! You should receive an automatic email summary of your submission in a few minutes.                            
-							</p>
+                                Match has been submitted! You should receive an automatic email summary of your submission in a few minutes.                            
+                            </p>
                         {{/if}}
 
                         {{#if info.error}}

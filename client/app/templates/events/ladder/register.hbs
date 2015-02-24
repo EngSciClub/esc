@@ -20,13 +20,13 @@
 
                 <label {{bind-attr for="view.password.elementId"}}>Password</label>
                 {{input value=model.password class=model.errors.password.css type="password" placeholder="password" viewName="password"}}
-								
-				<label {{bind-attr for="view.password_confirmation.elementId"}}>Confirm Password </label>
+                                
+                <label {{bind-attr for="view.password_confirmation.elementId"}}>Confirm Password </label>
                 {{input value=model.password_confirmation class=model.errors.passwordConfirmation.css type="password" placeholder="confirmation" viewName="password_confirmation"}}
-								
+                                
                 <div class="button-wrapper">
                     <button {{action ladderUserActivate}} type="submit" {{bind-attr class=":primary formButtonLoading:loading"}}>
-                            Register
+                        Register
                     </button>
                 </div>
                 <div {{bind-attr class=":info-wrapper info.visible:active"}}>
@@ -37,7 +37,6 @@
                                 Make sure you keep your username and password on hand - you'll need them to submit your matches. <br />
                             </p>
                         {{/if}}
-
                         {{#if info.error}}
                             <h3>Oops, something went wrong!</h3>
                             <p>
@@ -62,13 +61,13 @@
                                 {{/if}}
                             </ul>
                             <p>
-                                If the error persists, contact the Webmaster at <a href="mailto:engsci.website+ladder@gmail.com"> 
-                                engsci.website+ladder@gmail.com</a>
+                                If the error persists, contact the Webmaster at 
+                                <a href="mailto:engsci.website+ladder@gmail.com">engsci.website+ladder@gmail.com</a>
                             </p>
                         {{/if}}
                     </div>
                 </div>
-                    {{#link-to "events.ladder"}}<i class="icon-hand-up icon-fixed-width"></i>Return to the ladder{{/link-to}}
+                {{#link-to "events.ladder"}}<i class="icon-hand-up icon-fixed-width"></i>Return to the ladder{{/link-to}}
             </form>
         {{/base-card}}
     </div>

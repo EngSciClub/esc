@@ -28,11 +28,11 @@ App.routes = [
   r('events', 'Events', { icon: 'icon-calendar', routes: [
     r('socials', 'Friday Night Socials'),
     r('nocturne', 'Nocturne'),
-		r('ladder', 'Ladder', { path: 'ladder', expand: false, routes: [
+	r('ladder', 'Ladder', { path: 'ladder', expand: false, routes: [
       r('index', '', { path: '/' }),
       r('register', 'Registration'),
-			r('submit', 'Match Submission')
-		]}),
+      r('submit', 'Match Submission')
+    ]}),
 
 //    r('smoker', 'Book Smoker', { hidden: true }),
     r('dance', 'Dinner Dance', { path: 'dinnerdance', expand: false, routes: [

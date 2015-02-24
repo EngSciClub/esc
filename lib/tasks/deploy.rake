@@ -9,10 +9,8 @@ task :deploy, :remote do |t, args|
     # Filter out unnecessary branches
     branches.select! { |branch| branch.starts_with?("deploy/#{deploy_version}") }
    	
-		suffixes ||=[]
-		for branch in branches
-			suffixes << branch.split("_")[-1].to_i
-		end
+    suffixes ||= []
+	branches.each{ |branch| suffixes << branch.split("_")[-1].to_i }
 
 		suffixes.sort!
     # Update the deploy_version based on if there are any existing branches.

@@ -137,17 +137,18 @@ App.EventsDanceRegisterController = App.Controller.extend({
 });
 
 App.EventsLadderIndexController = App.Controller.extend({
-	
+    
 });
 
 
 App.EventsLadderRegisterController = App.Controller.extend({
-	formButtonLoading: false,
-	formButtonDisabled: function() {
-    // Disable the form button during loading and if there are validations to fix.
-    return this.get('formButtonLoading') || !Ember.isNone(this.get('model.errors'));
-  }.property('formButtonLoading', 'model.errors'),
-	info: Ember.Object.extend({
+    formButtonLoading: false,
+    formButtonDisabled: function() {
+      // Disable the form button during loading and if there are validations to fix.
+      return this.get('formButtonLoading') || !Ember.isNone(this.get('model.errors'));
+    }.property('formButtonLoading', 'model.errors'),
+    
+    info: Ember.Object.extend({
     visible: false,
     good: false,
     error: false,
@@ -196,11 +197,9 @@ App.EventsLadderRegisterController = App.Controller.extend({
       });
       promise.fail(model.applyErrors()).then(function() {
         if (!Ember.isNone(model.get('errors'))&&model.get('errors')!=={}) {
-		  //var errorlog = JSON.parse(JSON.stringify(model.get('errors')));
-          //console.log(errorlog);
           self.get('info').show('error');
         }
-		
+        
         // We're done now so stop loading.
         self.set('formButtonLoading', false);
       });
@@ -209,18 +208,18 @@ App.EventsLadderRegisterController = App.Controller.extend({
   
   observesRegistrant: function() {
     this.get('info').hide();
-	var model = this.get('model');
-	model.set('errors', null);
+    var model = this.get('model');
+    model.set('errors', null);
   }.observes('model.name',
              'model.username',
              'model.email',
              'model.password',
              'model.password_confirmation')
-	//Create Model for Ladder User for registration purposes
+    //Create Model for Ladder User for registration purposes
 });
 
 App.EventsLadderSubmitController = App.Controller.extend({
-	info: Ember.Object.extend({
+    info: Ember.Object.extend({
     visible: false,
     good: false,
     error: false,
@@ -248,7 +247,6 @@ App.EventsLadderSubmitController = App.Controller.extend({
     submitMatch: function() {
       var self = this;
       var model = self.get('model');
-      var errorlog;
       // Perform client side validations.
       model.validate();
       if (!Ember.isNone(model.get('errors'))) {
@@ -270,19 +268,15 @@ App.EventsLadderSubmitController = App.Controller.extend({
         self.get('info').show('good');
       });
       promise.fail(model.applyErrors()).then(function() {
-        //errorlog = JSON.parse(JSON.stringify(model.get('errors')));
-        //console.log(errorlog);
         if (!Ember.isNone(model.get('errors'))&&model.get('errors')!=={}) {
           self.get('info').show('error');
         }
-		
+        
         // We're done now so stop loading.
         self.set('formButtonLoading', false);
       });
     }
   },
-  
-  
   
   observesRegistrant: function() {
   this.get('info').hide();

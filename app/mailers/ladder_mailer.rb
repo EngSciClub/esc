@@ -13,5 +13,5 @@ class LadderMailer < ActionMailer::Base
     @game = game
     @default_email = 'engsci.website+sent@gmail.com'
     mail(to: [@user1.email, @user2.email], bcc: @default_email, subject: 'Ladder Game Submission Report')
-	end
+  end
 end

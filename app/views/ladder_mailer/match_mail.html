@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <p>Thanks for reporting your game! This is an automatic email summary of your submission:<br/>
-    </p>
-		<ul>
-			<li>Player 1: <%= @user1.name %></li>
-			<li>Player 2: <%= @user2.name %></li>
-			<li>Date: <%= @game.date_of_match.strftime("%B #{@game.date_of_match.day.ordinalize}, %Y") %></li>
-			<li>Winner: Player <%= @game.winner %></li>
-		</ul>
-    <p>
-      If there is something wrong with this result, please reply to this email and we will try to resolve this as soon as possible.
-    </p>
-    <p>
-			Have a great day! <br/>
-			-EngSci Website
-		</p>
-  </body>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+        <p>Thanks for reporting your game! This is an automatic email summary of your submission:</p>
+        <ul>
+            <li>Player 1: <%= @user1.name %></li>
+            <li>Player 2: <%= @user2.name %></li>
+            <li>Date: <%= @game.date_of_match.strftime("%B #{@game.date_of_match.day.ordinalize}, %Y") %></li>
+            <li>Winner: Player <%= @game.winner %></li>
+        </ul>
+        </br>
+        <p>If there is something wrong with this result, please reply to this email and we will try to resolve this as soon as possible.</p>
+        <p>
+            Have a great day!</br>
+            -EngSci Website
+        </p>
+    </body>
 </html>
