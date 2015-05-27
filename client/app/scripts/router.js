@@ -18,6 +18,9 @@ App.routes = [
   r('redirect.dance', '', { path: '/dinnerdance', hidden: true }),
   r('redirect.dance.register', '', { path: '/dinnerdance/register', hidden: true }),
   r('redirect.nocturne', '', { path: '/nocturne', hidden: true }),
+  r('redirect.ladder', '', { path: '/ladder', hidden: true }),
+  r('redirect.ladder.register', '', { path: '/ladder/register', hidden: true }),
+  r('redirect.ladder.submit', '', { path: '/ladder/submit', hidden: true }),
 
   r('index', 'Announcements', { icon: 'icon-bullhorn', path: '/' }),
   r('about', 'About', { icon: 'icon-info-sign' }),
@@ -25,6 +28,11 @@ App.routes = [
   r('events', 'Events', { icon: 'icon-calendar', routes: [
     r('socials', 'Friday Night Socials'),
     r('nocturne', 'Nocturne'),
+	r('ladder', 'Ladder', { path: 'ladder', expand: false, routes: [
+      r('index', '', { path: '/' }),
+      r('register', 'Registration'),
+      r('submit', 'Match Submission')
+    ]}),
 
 //    r('smoker', 'Book Smoker', { hidden: true }),
     r('dance', 'Dinner Dance', { path: 'dinnerdance', expand: false, routes: [

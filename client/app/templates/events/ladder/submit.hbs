@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="full col">
+        {{#base-card tagName="section" class="only-heading"}}
+            <h1>Match Submission</h1>
+        {{/base-card}}
+    </div>
+    <div class="full col">
+        {{#base-card tagName="section"}}
+            <h2>Match Submission</h2>
+            <p>
+                Report your matches through this form. If you can't remember your password, send an email to 
+                <a href="mailto:engsci.website+ladder@gmail.com">engsci.website+ladder@gmail.com</a>
+            </p>
+            <form class="centered">
+                <label {{bind-attr for="view.player1.elementId"}}>Player 1's username</label>
+                {{input value=model.player1 class=model.errors.player1.css type="text" placeholder="JDoe456" viewName="player1"}}
+
+                <label {{bind-attr for="view.player2.elementId"}}>Player 2's username</label>
+                {{input value=model.player2 class=model.errors.player2.css type="text" placeholder="JSmith123" viewName="player2"}}
+
+                <label {{bind-attr for="view.date_of_match.elementId"}}>Date of Match</label>
+                {{input value=model.date_of_match class=model.errors.dateOfMatch.css type="date" viewName="date_of_match"}}
+
+                <label {{bind-attr for="view.winner.elementId"}}>Winner</label>
+                                {{view Ember.Select contentBinding=winnerOptions
+                                valueBinding=model.winner
+                                prompt="-"
+                                viewName="winner"}}
+
+                <label {{bind-attr for="view.password.elementId"}}>Password (Player 1)</label>
+                {{input value=model.password class=model.errors.password.css type="password" placeholder="Password" viewName="password"}}
+
+                <div class="button-wrapper">
+                    <button {{action submitMatch}} type="submit" {{bind-attr class=":primary formButtonLoading:loading"}}>
+                        Match Submission
+                    </button>
+                </div>
+                <div {{bind-attr class=":info-wrapper info.visible:active"}}>
+                    <div {{bind-attr class=":info info.good:good info.error:error"}}>
+                        {{#if info.good}}
+                            <h3>Match Submitted</h3>
+                            <p>
+                                Match has been submitted! You should receive an automatic email summary of your submission in a few minutes.                            
+                            </p>
+                        {{/if}}
+
+                        {{#if info.error}}
+                            <h3>Oops, something went wrong!</h3>
+                            <p>
+                                Check the above fields highlighted in red. The server indicated that
+                                there were errors with the submitted information:
+                            </p>
+                            <ul>
+                                {{#if model.errors.player1}}
+                                    <li>{{model.errors.player1.message}}</li>
+                                {{/if}}
+                                {{#if model.errors.player2}}
+                                    <li>{{model.errors.player2.message}}</li>
+                                {{/if}}
+                                {{#if model.errors.dateOfMatch}}
+                                    <li>{{model.errors.dateOfMatch.message}}</li>
+                                {{/if}}
+                                {{#if model.errors.winner}}
+                                    <li>{{model.errors.winner.message}}</li>
+                                {{/if}}
+                                {{#if model.errors.password}}
+                                    <li>{{model.errors.password.message}}</li>
+                                {{/if}}
+                            </ul>
+                            <p>
+                                If the error persists, contact the Webmaster at <a href="mailto:engsci.website+ladder@gmail.com">
+                                engsci.website+ladder@gmail.com</a>
+                            </p>
+                        {{/if}}
+                    </div>
+                </div>
+                {{#link-to "events.ladder"}}<i class="icon-hand-up icon-fixed-width"></i>Return to the ladder{{/link-to}}
+            </form>
+        {{/base-card}}
+    </div>
+</div>

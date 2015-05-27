@@ -109,5 +109,5 @@ App.DanceRegistrant.adapter = Ember.RESTAdapter.create();
 App.DanceRegistrant.camelizeKeys = true;
 
 App.DanceRegistrant.yearList = [
-  '1T8', '1T7', '1T6', '1T5', 'PEY', '1T4+PEY', 'Guest' , '1T4'
+  '1T8', '1T7', '1T6', '1T5', 'PEY', '1T4+PEY', 'Guest'
 ];

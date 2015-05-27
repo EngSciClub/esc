@@ -8,11 +8,14 @@ task :deploy, :remote do |t, args|
 
     # Filter out unnecessary branches
     branches.select! { |branch| branch.starts_with?("deploy/#{deploy_version}") }
-    branches.sort!
+   	
+    suffixes ||= []
+	branches.each{ |branch| suffixes << branch.split("_")[-1].to_i }
 
+		suffixes.sort!
     # Update the deploy_version based on if there are any existing branches.
-    deploy_version += if branches.length > 1
-                        "_" + (branches[-1].split("_")[-1].to_i + 1).to_s
+    deploy_version += if suffixes.length > 0
+                        "_" + (suffixes[-1] + 1).to_s
                       elsif branches.length == 1
                         "_2"
                       else
