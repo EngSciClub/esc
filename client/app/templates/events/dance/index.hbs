@@ -2,42 +2,32 @@
     {{#base-card tagName="section"}}
         <h2><i class="icon-calendar icon-fixed-width"></i>Save the date!</h2>
         <p>
-            The dinner dance will take place on <strong>Friday November 27th, 2015</strong>. {{!--Doors open at 6:00pm.}}
+            The dinner dance will take place on <strong>Friday November 27th, 2015</strong>. {{!--Doors open at 6:00pm. --}}
         </p>
     {{/base-card}}
     {{#base-card tagName="section"}}
         <h2><i class="icon-map-marker icon-fixed-width"></i>Details</h2>
         
         <p>
-            The event is taking place at the <strong><a href="https://goo.gl/maps/dPvZe" target="_blank">Atlantis Pavilion</a></strong> at 955 Lakeshore Boulevard West.
+            The event is taking place at the <strong><a href="https://goo.gl/i77VR2kL7nC2" target="_blank">Casa Loma</a></strong> at 1 Austin Terrace.
         </p>
         <ul class="icons-ul icons-list"> 
             <li>
                 <i class="icon-li icon-arrow-right"></i>
-                Busing will be provided from Convocation Hall to the venue, leaving every 30 minutes from 5:00 pm to 7:00 pm inclusive.
+                Busing will be provided from Convocation Hall to the venue.
             </li>
             <li>
                 <i class="icon-li icon-arrow-left"></i>
-                Busing will be provided from the venue back to campus, leaving every 30 minutes from 11:00 pm to 1:00 am inclusive.
+                Busing will be provided from the venue back to campus.
             </li>
         </ul>
         {{!-- This is a custom embed map, go to mapsengine using the EngSci Club login to edit --}}
-		{{!--<div class="map-wrapper">
-            <a href="https://goo.gl/maps/dPvZe" target="_blank"></a>
-            <iframe width='100%' height='500px' frameBorder='0' src='https://a.tiles.mapbox.com/v4/engsciclub.jkig6e95/attribution,share.html?access_token=pk.eyJ1IjoiZW5nc2NpY2x1YiIsImEiOiJEMld5cjZNIn0.c3PXs6KcIsAfaFra2oQIrA'></iframe>
-        </div> --}}
-    {{/base-card}}
-    {{#base-card tagName="section"}}
-        <h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
-        <p>
-            Registration will open after tickets are available.
-        </p>
-        {{#link-to "events.dance.register"}}
-            <button type="button" class="alt big register-button" disabled >Registration & Seating</button>
-        {{/link-to}}
+		<div class="map-wrapper">
+            <a href="https://goo.gl/maps/i77VR2kL7nC2" target="_blank"></a>
+            <iframe width='100%' height='500px' frameBorder='0' src='https://a.tiles.mapbox.com/v4/engsciclub.njf9jg3m/attribution,zoompan,zoomwheel,geocoder,share.html?access_token=pk.eyJ1IjoiZW5nc2NpY2x1YiIsImEiOiJEMld5cjZNIn0.c3PXs6KcIsAfaFra2oQIrA'></iframe>
+        </div>
     {{/base-card}}
 </div>
-
 <div class="half right col">
     {{#base-card tagName="section" class="sponsors"}}
         <h2><i class="icon-food icon-fixed-width"></i>Menu</h2>
@@ -82,7 +72,17 @@
                 *Steak is cooked Medium.
             </p> --}}
         </div>
-    {{/base-card}}{{!--
+    {{/base-card}}
+    {{#base-card tagName="section"}}
+        <h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
+        <p>
+            Registration will open after tickets are available.
+        </p>
+        {{#link-to "events.dance.register"}}
+            <button type="button" class="alt big register-button" disabled >Registration & Seating</button>
+        {{/link-to}}
+    {{/base-card}}
+    {{!--
     {{#base-card tagName="section"}}
         <h2><i class="icon-ticket icon-fixed-width"></i>How do I buy a ticket?</h2>
         <p>
