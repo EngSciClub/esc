@@ -9,7 +9,7 @@
         <h2><i class="icon-map-marker icon-fixed-width"></i>Details</h2>
         
         <p>
-            The event is taking place at the <strong><a href="https://goo.gl/i77VR2kL7nC2" target="_blank">Casa Loma</a></strong> at 1 Austin Terrace.
+            The event is taking place at <strong><a href="https://goo.gl/i77VR2kL7nC2" target="_blank">Casa Loma</a></strong> at 1 Austin Terrace.
         </p>
         <ul class="icons-ul icons-list"> 
             <li>
@@ -76,13 +76,12 @@
     {{#base-card tagName="section"}}
         <h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
         <p>
-            Registration will open after tickets are available.
+            Registration will open after the dance details are finalized.
         </p>
         {{#link-to "events.dance.register"}}
             <button type="button" class="alt big register-button" disabled >Registration & Seating</button>
         {{/link-to}}
     {{/base-card}}
-    {{!--
     {{#base-card tagName="section"}}
         <h2><i class="icon-ticket icon-fixed-width"></i>How do I buy a ticket?</h2>
         <p>
@@ -105,7 +104,7 @@
                     (Early Bird)
                 </div>
             </div>
-        {{/if}}
+        {{else}}
         <div class="row">
             <div class="pricing col left">
                     <span class="price">$70</span> <br>
@@ -114,9 +113,9 @@
             <div class="pricing col right">
                 <span class="price">$75</span> <br>
                     for others <br>
-                {{#if remaining}}(Regular){{/if}}
             </div>
         </div>
+        {{/if}}
     {{/base-card}}
 </div>
 
@@ -130,13 +129,19 @@
         </div>
         <hr>
         <div class="logos">
+            <a href="http://engsci.utoronto.ca" target="_blank">
+                <img align="middle" src="/images/events/dance/engsci.jpg">
+            </a>
+            <a href="http://www.utias.utoronto.ca" target="_blank">
+                <img align="middle" src="/images/events/dance/utias.jpg">
+            </a>
+            <hr>
             <a href="http://ibbme.utoronto.ca/" target="_blank">
-                <img src="/images/events/dance/ibbme.png">
+                <img align="middle" src="/images/events/dance/ibbme.png">
             </a>
             <a href="http://ece.utoronto.ca" target="_blank">
-                <img src="/images/events/dance/ece.png">
+                <img align="middle" src="/images/events/dance/ece.png">
             </a>
         </div>
     {{/base-card}}
 </div>
---}}
