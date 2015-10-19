@@ -7,6 +7,7 @@ App::Application.routes.draw do
       end
 
       match "/dance_registrants/early_bird_remaining", to: "dance_registrants#early_bird_remaining", via: :get
+      match "/dance_registrants/frosh_discounts_remaining", to: "dance_registrants#frosh_discounts_remaining", via: :get
       match "/dance_registrants/register", to: "dance_registrants#register", via: :post
       match "/dance_registrants/login", to: "dance_registrants#login", via: :post
 

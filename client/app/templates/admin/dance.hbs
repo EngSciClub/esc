@@ -46,8 +46,14 @@
                             </p>
                             {{#if earlyBirdRemaining}}
                                 <p>
-                                    For your reference, there are: <strong>{{earlyBirdRemaining}}</strong> early bird tickets left.
+                                    For your reference, there are: {{#if froshDiscountsRemaining}}<strong>{{froshDiscountsRemaining}}</strong> F!rosh tickets and {{/if}}<strong>{{earlyBirdRemaining}}</strong> early bird tickets left.
                                 </p>
+							{{else}}
+								{{#if froshDiscountsRemaining}}
+								<p>
+									For your reference, there are: <strong>{{froshDiscountsRemaining}}</strong> F!rosh tickets remaining.
+								</p>
+								{{/if}}
                             {{/if}}
                         {{/if}}
 
@@ -59,8 +65,14 @@
                             </p>
                             {{#if earlyBirdRemaining}}
                                 <p>
-                                    For your reference, there are: <strong>{{earlyBirdRemaining}}</strong> early bird tickets left.
+                                    For your reference, there are: {{#if froshDiscountsRemaining}}<strong>{{froshDiscountsRemaining}}</strong> F!rosh tickets and {{/if}}<strong>{{earlyBirdRemaining}}</strong> early bird tickets left.
                                 </p>
+							{{else}}
+								{{#if froshDiscountsRemaining}}
+								<p>
+									For your reference, there are: <strong>{{froshDiscountsRemaining}}</strong> F!rosh tickets remaining.
+								</p>
+								{{/if}}
                             {{/if}}
                         {{/if}}
 

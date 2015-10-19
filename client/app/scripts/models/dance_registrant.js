@@ -1,6 +1,7 @@
 require('scripts/models/base_model');
 
 App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
+  errors: null,
   id: Ember.attr(Number),
   createdAt: Ember.attr(Date),
 
@@ -19,19 +20,18 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   validatesEmail: Ember.validates('email', Ember.Validator.notEmpty, function(property, forced) {
     var year = this.get('year') || '';
     var email = this.get('email') || '';
-    if (forced && year === '1T8' && email.indexOf('@mail.utoronto.ca') < 0) {
+    if (forced && year === '1T9' && email.indexOf('@mail.utoronto.ca') < 0) {
       this.set('errors.email', {
         message: 'F!rosh must use utoronto email.',
         css: 'error'
       });
       return false;
     }
-
     this.set('errors.email', null);
     return true;
   }),
 
-  // Year ('1T8', '1T7', '1T6', '1T5', 'PEY', '1T4+PEY', 'Guest')
+  // Year ('1T9', '1T8', '1T7', '1T6', 'PEY', '1T5+PEY', 'Guest')
   year: Ember.attr(/* String */),
   validatesYear: Ember.validates('year', Ember.Validator.notEmpty),
 
@@ -99,6 +99,15 @@ App.DanceRegistrant.reopenClass({
 
       return data.remaining;
     });
+  },
+  getFroshDiscountsRemaining: function() {
+    return this.adapter.ajax(this.url + '/frosh_discounts_remaining').then(function(data) {
+      if (Ember.isNone(data) || Ember.isNone(data.remaining)) {
+        throw 'Cannot fetch remaining count.';
+      }
+
+      return data.remaining;
+    });
   }
 });
 
@@ -109,5 +118,5 @@ App.DanceRegistrant.adapter = Ember.RESTAdapter.create();
 App.DanceRegistrant.camelizeKeys = true;
 
 App.DanceRegistrant.yearList = [
-  '1T8', '1T7', '1T6', '1T5', 'PEY', '1T4+PEY', 'Guest'
+  '1T9', '1T8', '1T7', '1T6', 'PEY', '1T5+PEY', 'Guest'
 ];

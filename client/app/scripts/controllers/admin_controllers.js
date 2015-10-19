@@ -3,6 +3,7 @@ require('scripts/controllers/base_controllers');
 
 App.AdminDanceController = App.ObjectController.extend({
   earlyBirdRemaining: null,
+  froshDiscountRemaining: null,
   ticketPrice: null,
 
   registrantChanged: true,
@@ -44,6 +45,7 @@ App.AdminDanceController = App.ObjectController.extend({
       // Perform client side validations.
       model.validate();
       if (!Ember.isNone(model.get('errors'))) {
+		self.get('info').show('error');
         return;
       }
 
@@ -62,6 +64,10 @@ App.AdminDanceController = App.ObjectController.extend({
         App.DanceRegistrant.getEarlyBirdRemaining().then(function(remaining) {
           self.set('earlyBirdRemaining', remaining);
         });
+        
+        App.DanceRegistrant.getFroshDiscountsRemaining().then(function(remaining){ // barryklfung - added reference to frosh discounts remaining
+		  self.set('froshDiscountsRemaining', remaining);
+		});
 
         promise = model.checkTicketPricing().then(function(data) {
           self.set('ticketPrice', data.price);
@@ -74,10 +80,21 @@ App.AdminDanceController = App.ObjectController.extend({
           self.set('model', App.DanceRegistrant.create({}));
           self.set('registrantChanged', true);
           self.get('info').show('good');
-
-          if (self.get('earlyBirdRemaining') > 0) {
+			
+		  App.DanceRegistrant.getFroshDiscountsRemaining().then(function(remaining){ //KLBF added separate frosh counters
+			  self.set('froshDiscountsRemaining', remaining > 0 ? remaining : null);
+		  });
+		  App.DanceRegistrant.getEarlyBirdRemaining().then(function(remaining) {
+		      self.set('earlyBirdRemaining', remaining > 0 ? remaining : null);
+		  });
+		  /*(if (self.get('oldModel').get('year') === '1T9'){ //KLBF separate earlybird from frosh
+			if (self.get('froshDiscountsRemaining') > 0){
+				self.decrementProperty('froshDiscountsRemaining');
+			}
+		  }
+          else if (self.get('earlyBirdRemaining') > 0){
             self.decrementProperty('earlyBirdRemaining');
-          }
+          }*/
         });
       }
 

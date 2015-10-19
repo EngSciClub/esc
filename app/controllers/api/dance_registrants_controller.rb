@@ -51,4 +51,10 @@ class Api::DanceRegistrantsController < ApplicationController
       remaining: DanceRegistrant.early_bird_remaining?
     }
   end
+  
+  def frosh_discounts_remaining
+    render json: {
+      remaining: DanceRegistrant.frosh_discounts_remaining?
+    }
+  end
 end

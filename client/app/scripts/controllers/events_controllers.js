@@ -10,6 +10,9 @@ App.EventsDanceIndexController = App.Controller.extend({
 
     // Set the number of early bird tickets.
     var self = this;
+    App.DanceRegistrant.getFroshDiscountsRemaining().then(function(remaining){ //KLBF added separate frosh counters
+	  self.set('frosh_remaining', remaining > 0 ? remaining : null);
+	});
     App.DanceRegistrant.getEarlyBirdRemaining().then(function(remaining) {
       self.set('remaining', remaining > 0 ? remaining : null);
     });
