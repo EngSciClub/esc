@@ -9,7 +9,7 @@
         <h2><i class="icon-map-marker icon-fixed-width"></i>Details</h2>
         
         <p>
-            The event is taking place at <strong><a href="https://goo.gl/i77VR2kL7nC2" target="_blank">Casa Loma</a></strong> at 1 Austin Terrace.
+            The event is taking place at <strong><a href="https://goo.gl/maps/i77VR2kL7nC2" target="_blank">Casa Loma</a></strong> at 1 Austin Terrace.
         </p>
         <ul class="icons-ul icons-list"> 
             <li>
@@ -89,32 +89,40 @@
             in the EngSci Office during your lunch, starting on Wednesday October 1st.
         </p>
         <h3>Pricing</h3>
-        {{#if remaining}}
+        {{#if either}}
             <p>
-                Tickets are discounted for early bird and F!rosh.
+                Limited tickets are discounted for early bird and F!rosh.
             </p>
             <div class="row">
-                <div class="pricing col left">
-                    <span class="price">$70</span> <br>
-                    for F!rosh <br>
-                </div>
-                <div class="pricing col right">
-                    <span class="price">$70</span> <br>
-                    for others <br>
-                    (Early Bird)
-                </div>
+				{{#if frosh_remaining}}
+					<div class="pricing col left">
+						<span class="price">$65</span> <br>
+						for F!rosh <br>
+					</div>
+				{{else}}
+					<div class="pricing col right">
+						<span class="price">$70</span> <br>
+						(regular)<br>
+					</div>
+				{{/if}}
+				{{#if remaining}}                
+					<div class="pricing col right">
+						<span class="price">$65</span> <br>
+						for others <br>
+						(Early Bird)
+					</div>
+				{{else}}
+					<div class="pricing col right">
+						<span class="price">$70</span> <br>
+						for others <br>
+					</div>
+				
+				{{/if}}
             </div>
         {{else}}
-        <div class="row">
-            <div class="pricing col left">
-                    <span class="price">$70</span> <br>
-                    for F!rosh <br>
-                </div>
-            <div class="pricing col right">
-                <span class="price">$75</span> <br>
-                    for others <br>
-            </div>
-        </div>
+				<div class="pricing" style="width:100%">
+					 <span class="price">$70</span>
+				</div>
         {{/if}}
     {{/base-card}}
 </div>
