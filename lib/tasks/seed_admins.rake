@@ -14,9 +14,10 @@ namespace :db do
     Admin.create(email: 'cyang1130@gmail.com', name: 'Charlie Yang', authorized_routes: ['*'])
     Admin.create(email: 'safalman12@gmail.com', name: 'Salman Khan', authorized_routes: ['*'])
     Admin.create(email: 'steveo9976@gmail.com', name: 'Stephen Xu', authorized_routes: ['*'])
-    Admin.create(email: 'Emerson_sPlaceholderEmail@gmail.com', name: 'Emerson Grabke', authorized_routes: ['*'])
+    Admin.create(email: 'dudewiththeattitude@gmail.com', name: 'Emerson Grabke', authorized_routes: ['*'])
     Admin.create(email: 'sharonravindran1993@gmail.com', name: 'Sharon Ravindran', authorized_routes: ['*'])
 		Admin.create(email: 'isyed.kamran@gmail.com', name: 'Syed Kamran', authorized_routes: ['*'])
+
   end
 
 end

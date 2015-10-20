@@ -13,7 +13,8 @@ App::Application.routes.draw do
 
       #All sessions should be able to access this function
       get "/ladder_match/point_calculate", to: 'ladder_match#point_calculate'
-
+	  
+	  resources :admins
       resources :dance_registrants
       resources :dance_tables
       resources :ladder_users

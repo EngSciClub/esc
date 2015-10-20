@@ -12,11 +12,11 @@ App.EventsDanceIndexController = App.Controller.extend({
     var self = this;
     App.DanceRegistrant.getFroshDiscountsRemaining().then(function(remaining){ //KLBF added separate frosh counters
 	  self.set('frosh_remaining', remaining > 0 ? remaining : null);
-	  if (remaining){ self.set('either', true); }
+      if (remaining){ self.set('either', true); }
 	});
     App.DanceRegistrant.getEarlyBirdRemaining().then(function(remaining) {
       self.set('remaining', remaining > 0 ? remaining : null);
-  	  if (remaining){ self.set('either', true); }
+      if (remaining){ self.set('either', true); }
     });
   }
 });
