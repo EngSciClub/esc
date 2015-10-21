@@ -11,4 +11,10 @@ class Api::AdminsController < ApplicationController
       admin: nil
     }
   end
+  
+  def show
+	render json:{
+	  admin: nil
+	}
+  end
 end
