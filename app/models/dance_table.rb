@@ -1,6 +1,6 @@
 class DanceTable < ActiveRecord::Base
 
-  TABLE_SIZE = 10
+  TABLE_SIZE = 9
 
   has_many :registrants, class_name: "DanceRegistrant", foreign_key: "table_number"
 
