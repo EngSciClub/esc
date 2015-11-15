@@ -9,7 +9,7 @@
 DanceTable.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence! DanceTable.table_name
 
-num_reserved = 2
+num_reserved = 1
 for i in (1..DanceTable.num_tables)
   DanceTable.create(reserved: i > DanceTable.num_tables - num_reserved)
 end

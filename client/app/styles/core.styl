@@ -400,6 +400,12 @@ p {
 
 /* Misc */
 
-::-webkit-scrollbar {
+div.scroll{
+  height: 18em;
+  overflow-y:scroll;
+  display: block;
+}
+
+:not(.scroll)::-webkit-scrollbar {
   display: none;
 }

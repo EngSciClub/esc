@@ -4,6 +4,15 @@
         <p>
             The dinner dance will take place on <strong>Friday November 27th, 2015</strong>. {{!--Doors open at 6:00pm. --}}
         </p>
+	{{/base-card}}
+	{{#base-card tagName="section"}}
+	<h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
+	<p>
+		Registration is open! Get your information in before Wednesday, November 25th.
+	</p>
+	{{#link-to "events.dance.register"}}
+		<button type="button" class="primary big register-button">Registration & Seating</button>
+	{{/link-to}}
     {{/base-card}}
     {{#base-card tagName="section"}}
         <h2><i class="icon-map-marker icon-fixed-width"></i>Details</h2>
@@ -32,56 +41,34 @@
     {{#base-card tagName="section" class="sponsors"}}
         <h2><i class="icon-food icon-fixed-width"></i>Menu</h2>
         <div class="menu">
-			Under Planning
-        {{!--
-            <h3>Hor D'Oeuvres (Available before the main dinner)</h3>
-            <p>	
-                Sesame Crusted Chicken Satay<br />
-                Classic Greek Spanakopita<br />
-                Crispy Vegetable Spring Rolls with Chili Plum Sauce<br />
-                Coconut Shrimp with Pineapple Spiked Ketchup<br />
-                Candy Table<br />
-            </p>
-            <hr>
             <h3>Appetizer</h3>
             <p>
-                Farfalle Alfredo with Aged Parmesan & Roasted Garlic Cream Sauce
+                Roasted Butternut Squash Soup, Maple Cr&egrave;me Fraiche
             </p>
             <hr>
             <h3>Entr&eacute;e</h3>
             <p>
                 (MAIN)<br />
-                Grilled 10oz Rib Eye Steak* <br />
-                served with with peppercorn sauce, seasonal vegetables and mashed potatoes
+                Baked Boneless Chicken Breast<br />
+                served with a lemon herb crust in a white wine sauce
             </p>
             <p>
                 (VEGETARIAN)<br />
-                Portabello Mushroom & Goat Cheese Strudel <br />
-                with buttery asparagus
+                Herb grilled Cauliflower Steak, Eggplant Caponata, Fire Roasted Pepper Coulis, Fingerling Potato and Seasonal Vegetables
             </p>
             <hr>
             <h3>Dessert</h3>
             <p>
-                Chocolate Ganache Gateaux with a Vanilla Bean Cream
+                Chocolate Baci Truffle Bombe, Raspberry Coulis, and Frangelico Cream
             </p>
         </div>
         <div class="footnote">
             <h3>Notes</h3>            
             <p>
-                All adults are given 5 drink tickets, and all attendees get unlimited pop & juice.
-                *Steak is cooked Medium.
-            </p> --}}
+                All dinners include 2 drink tickets, redeemable for alcoholic and non-alcoholic beverages
+            </p>
         </div>
-    {{/base-card}}
-    {{#base-card tagName="section"}}
-        <h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
-        <p>
-            Registration will open after the dance details are finalized.
-        </p>
-        {{#link-to "events.dance.register"}}
-            <button type="button" class="alt big register-button" disabled >Registration & Seating</button>
-        {{/link-to}}
-    {{/base-card}}
+    {{/base-card}}{{!--
     {{#base-card tagName="section"}}
         <h2><i class="icon-ticket icon-fixed-width"></i>How do I buy a ticket?</h2>
         <p>
@@ -123,7 +110,7 @@
 					 <span class="price">$70</span>
 				</div>
         {{/if}}
-    {{/base-card}}
+    {{/base-card}} --}}
 </div>
 
 <div class="full col">

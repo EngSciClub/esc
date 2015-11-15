@@ -45,7 +45,7 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   ticketNumber: Ember.attr(Number),
   validatesTicketNumber: Ember.validates('ticketNumber', Ember.Validator.notEmpty, function(property, forced) {
     var number = this.get('ticketNumber');
-    if (isNaN(window.parseInt(number, 10)) || number <= 0 || number > 300) {
+    if (isNaN(window.parseInt(number, 10)) || number <= 0 || number > 280) {
       this.set('errors.ticketNumber', {
         message: 'Invalid ticket number.',
         css: 'error'

@@ -17,8 +17,8 @@
                 <div class="description">
                     Use the email address that you provided when buying your ticket.
                     Don't remember which email address you used? Email
-                    <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
-                    with your ticket number for help.
+                    <a href="mailto:engsci+dinnerdance@gmail.com" target="_blank" tabindex="-1">engsci+dinnerdance@gmail.com</a>
+                    with your ticket number and name for help.
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
                             Has your ticket been activated yet? It may take up to 24 hours to
                             activate your ticket. If you've waited over 24 hours and you still
                             cannot register, contact
-                            <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                            <a href="mailto:engsci+dinnerdance@gmail.com" target="_blank" tabindex="-1">engsci+dinnerdance@gmail.com</a>
                             with your information for help.
                         </p>
                     {{!--{{/if}}--}}
@@ -59,7 +59,7 @@
                         <h3>Oops! This ticket has already been registered.</h3>
                         <p>
                             Is this an error? If so, contact
-                            <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                           <a href="mailto:engsci+dinnerdance@gmail.com" target="_blank" tabindex="-1">engsci+dinnerdance@gmail.com</a>
                             with your information for help.
                         </p>
                     {{/if}}
@@ -67,7 +67,7 @@
                         <h3>Oops, your username and password are incorrect.</h3>
                         <p>
                             Please check again. If you can't login, we can reset your password. Contact
-                            <a href="mailto:engsci+dinnerdance@g.skule.ca" target="_blank" tabindex="-1">engsci@skule.ca</a>
+                            <a href="mailto:engsci+dinnerdance@gmail.com" target="_blank" tabindex="-1">engsci+dinnerdance@gmail.com</a>
                             with your information for help.
                         </p>
                     {{/if}}
@@ -94,7 +94,7 @@
             <div class="description-wrapper" tabindex="-1">
                 <div class="description">
                     <p>
-                        If you have any questions or concerns about dietary restrictions and the dinner, please email dinnerdance@engsci.skule.ca
+                        If you have any questions or concerns about dietary restrictions and the dinner, please email engsci@g.skule.ca
                     </p>
                 </div>
             </div>
@@ -111,7 +111,7 @@
         <p>
             Please select a table to sit at.
         </p>
-        <div class="row">
+        <div class="row scroll">
             {{#each table in tables}}
                 <div class="table quarter col">
                     {{dance-table table=table registrant=registrant action="changeTable"}}
@@ -123,13 +123,13 @@
         <h2><i class="icon-save icon-fixed-width"></i>Save your preferences.</h2>
         <p>
             Make sure everything above is correct and click save below to save your preferences.
-            Note that you will have until <strong>October 24th 10:00am</strong> to update your
+            Note that you will have until <strong>November 25th, 5:00 PM</strong> to update your
             preferences.
         </p>
         <div class="button-wrapper">
-            <button {{action savePreferences}} type="submit" {{bind-attr class=":alt :big :register-button preferencesLoading:loading" disabled=preferencesDisabled}}>
-                {{!--Save Preferences--}}
-                It's past the deadline silly EngSci!
+            <button {{action savePreferences}} type="submit" {{bind-attr class=":primary :big :register-button preferencesLoading:loading" disabled=preferencesDisabled}}>
+                Save Preferences
+                {{!-- It's past the deadline silly EngSci! --}}
             </button>
         </div>
         <div {{bind-attr class=":info-wrapper :save-info-wrapper info.visible:active"}}>
@@ -145,7 +145,7 @@
                     <h3>Oops, something went wrong!</h3>
                     <p>
                         Check above to see if you have uncompleted fields. If you are having trouble
-                        email <a href="mailto:engsci@skule.ca" target="_blank">engsci@skule.ca</a> for help.
+                        email <a href="mailto:engsci+dinnerdance@gmail.com" target="_blank" tabindex="-1">engsci+dinnerdance@gmail.com</a> for help.
                     </p>
                 {{/if}}
             </div>
