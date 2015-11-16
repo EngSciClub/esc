@@ -10,7 +10,7 @@ class DanceRegistrant < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_EMAIL_UTORONTO_REGEX = /\A[\w+\-.]+@mail.utoronto.ca\z/i
 
-  TOTAL_TICKETS = 280
+  TOTAL_TICKETS = 310
 
   belongs_to :dance_table
 
