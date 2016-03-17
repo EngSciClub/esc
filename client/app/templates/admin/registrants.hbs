@@ -1,0 +1,30 @@
+<div class="full col">
+    {{#base-card tagName="section"}}
+        <h1>View all registrants.</h1>
+    {{/base-card}}
+    {{#base-card tagName="section"}}
+        <h2>List of Registrants</h2>
+        {{#if danceRegistrants.length}}
+            <table>
+                <thead>
+                    <th>Ticket Number</th>
+                    <th></th>
+                    <th>Matches</th>
+                    <th>Wins</th>
+                    <th>Points</th>
+                </thead>
+                {{#each player in ladderUsers}}
+                    <tr>
+                        <td>{{increment _view.contentIndex}}</td>
+                        <td>{{player.name}}</td>
+                        <td>{{player.matchesPlayed}}</td>
+                        <td>{{player.wins}}</td>
+                        <td>{{player.points}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+            {{else}}
+                <p>There aren't any people registered yet!</p>
+            {{/if}}
+     {{/base-card}}
+</div>
