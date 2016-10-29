@@ -1,16 +1,16 @@
 class DanceRegistrant < ActiveRecord::Base
 
-  FROSH_YEAR = "1T9"
+  FROSH_YEAR = "2T0"
   FROSH_DISCOUNT = 5
-  FROSH_TOTAL = 25
+  FROSH_TOTAL = 260
   EARLY_BIRD_TOTAL = 50
-  EARLY_BIRD_DISCOUNT = 5
+  EARLY_BIRD_DISCOUNT = 10
   DEFAULT_PRICE = 70
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_EMAIL_UTORONTO_REGEX = /\A[\w+\-.]+@mail.utoronto.ca\z/i
 
-  TOTAL_TICKETS = 310
+  TOTAL_TICKETS = 260
 
   belongs_to :dance_table
 
@@ -30,7 +30,7 @@ class DanceRegistrant < ActiveRecord::Base
             },
             format: { with: VALID_EMAIL_REGEX, message: "Invalid email address format." }
   validates :year,
-            inclusion: { in: %w(1T9 1T8 1T7 1T6 PEY 1T5+PEY Guest), message: "Not a valid year." }
+            inclusion: { in: %w(2T0 1T9 1T8 1T7 PEY 1T6+PEY Guest), message: "Not a valid year." }
   validates :ticket_number,
             numericality: {
                 only_integer: true,
@@ -58,7 +58,7 @@ class DanceRegistrant < ActiveRecord::Base
             on: :update
   validates :entree_choice,
             inclusion: {
-                in: ['MAIN - Baked Boneless Chicken Breast', 'VEGETARIAN - Veggie Steak, Caponata, and Sides'],
+                in: ['CHICKEN - Chicken piccata', 'HALAL CHICKEN - Chicken piccata', 'VEGETARIAN - Stuffed bell pepper with quinoa'],
                 message: "Not a valid entree choice."
             },
             on: :update
@@ -104,7 +104,7 @@ class DanceRegistrant < ActiveRecord::Base
   
   def eligible_for_frosh_dicount?
     existing_registrant = DanceRegistrant.find_by email: email
-	(DanceRegistrant.where(year: FROSH_YEAR).count < FROSH_TOTAL) && (self.year == FROSH_YEAR) && existing_registrant.nil? && VALID_EMAIL_UTORONTO_REGEX =~ email #barryklfung - moved F!rosh eligibility to function
+	(DanceRegistrant.where(year: FROSH_YEAR).count < FROSH_TOTAL) && (self.year == FROSH_YEAR) && existing_registrant.nil? #&& VALID_EMAIL_UTORONTO_REGEX =~ email #barryklfung - moved F!rosh eligibility to function
   end
   
   def ticket_number_unique

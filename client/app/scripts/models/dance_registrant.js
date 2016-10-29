@@ -20,7 +20,7 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   validatesEmail: Ember.validates('email', Ember.Validator.notEmpty, function(property, forced) {
     var year = this.get('year') || '';
     var email = this.get('email') || '';
-    if (forced && year === '1T9' && email.indexOf('@mail.utoronto.ca') < 0) {
+    if (forced && year === '2T1' && email.indexOf('@mail.utoronto.ca') < 0) { //remove the forced mail.utoronto.ca for usability.
       this.set('errors.email', {
         message: 'F!rosh must use utoronto email.',
         css: 'error'
@@ -31,7 +31,7 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
     return true;
   }),
 
-  // Year ('1T9', '1T8', '1T7', '1T6', 'PEY', '1T5+PEY', 'Guest')
+  // Year ('2T0', '1T9', '1T8', '1T7', 'PEY', '1T6+PEY', 'Guest')
   year: Ember.attr(/* String */),
   validatesYear: Ember.validates('year', Ember.Validator.notEmpty),
 
@@ -45,7 +45,7 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   ticketNumber: Ember.attr(Number),
   validatesTicketNumber: Ember.validates('ticketNumber', Ember.Validator.notEmpty, function(property, forced) {
     var number = this.get('ticketNumber');
-    if (isNaN(window.parseInt(number, 10)) || number <= 0 || number > 280) {
+    if (isNaN(window.parseInt(number, 10)) || number <= 0 || number > 260) {
       this.set('errors.ticketNumber', {
         message: 'Invalid ticket number.',
         css: 'error'
@@ -118,5 +118,5 @@ App.DanceRegistrant.adapter = Ember.RESTAdapter.create();
 App.DanceRegistrant.camelizeKeys = true;
 
 App.DanceRegistrant.yearList = [
-  '1T9', '1T8', '1T7', '1T6', 'PEY', '1T5+PEY', 'Guest'
+  '2T0','1T9', '1T8', '1T7', 'PEY', '1T6+PEY', 'Guest'
 ];

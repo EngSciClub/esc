@@ -24,7 +24,7 @@ App.EventsDanceIndexController = App.Controller.extend({
 App.EventsDanceRegisterController = App.Controller.extend({
   email: '',
   ticketNumber: '',
-  mealOptions: ['MAIN - Baked Boneless Chicken Breast', 'VEGETARIAN - Veggie Steak, Caponata, and Sides'],
+  mealOptions: ['CHICKEN - Chicken piccata', 'HALAL CHICKEN - Chicken piccata', 'VEGETARIAN - Stuffed bell pepper with quinoa'],
 
   info: Ember.Object.extend({
     visible: false,
