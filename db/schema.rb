@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311001710) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20161029180614) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -40,6 +37,8 @@ ActiveRecord::Schema.define(version: 20150311001710) do
     t.datetime "updated_at"
     t.boolean  "is_early_bird"
     t.float    "amount_paid"
+    t.string   "transport_to"
+    t.string   "transport_from"
   end
 
   create_table "dance_tables", force: true do |t|

@@ -4,8 +4,7 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
   errors: null,
   id: Ember.attr(Number),
   createdAt: Ember.attr(Date),
-
-
+  
   /* Meta */
 
   // Full name
@@ -37,6 +36,7 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
 
   // Password (not stored on client and not passed from server).
   password: Ember.attr(/* String */),
+
 
   // The id admin who registered the user.
   registeredBy: Ember.belongsTo(App.Admin, { key: 'registered_by_id', embedded: false}),
@@ -74,6 +74,10 @@ App.DanceRegistrant = Ember.Model.extend(Ember.Validator.ValidatesModel, {
 
   // Which entree the user has chosen.
   entreeChoice: Ember.attr(/* String */),
+	
+  transportTo: Ember.attr(/* String */),
+  
+  transportFrom: Ember.attr(/* String */),
 
   // Which table number the user has chosen.
   tableNumber: Ember.attr(Number),
@@ -116,7 +120,6 @@ App.DanceRegistrant.rootKey = 'dance_registrant';
 App.DanceRegistrant.collectionKey = 'dance_registrants';
 App.DanceRegistrant.adapter = Ember.RESTAdapter.create();
 App.DanceRegistrant.camelizeKeys = true;
-
 App.DanceRegistrant.yearList = [
   '2T0','1T9', '1T8', '1T7', 'PEY', '1T6+PEY', 'Guest'
 ];

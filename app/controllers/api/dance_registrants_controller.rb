@@ -29,7 +29,7 @@ class Api::DanceRegistrantsController < ApplicationController
       registrant = DanceRegistrant.where("lower(email) = ? AND ticket_number = ?",
                                          permitted[:email].downcase, permitted[:ticket_number]).first
       # Now that we've found the registrant, update their properties.
-      permitted = p.permit(:table_number, :is_over19, :dietary_restrictions, :entree_choice)
+      permitted = p.permit(:table_number, :is_over19, :dietary_restrictions, :entree_choice, :transport_to, :transport_from)
       permitted[:is_over19] ||= false
 
       if registrant

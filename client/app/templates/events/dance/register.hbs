@@ -104,6 +104,16 @@
                                 valueBinding=registrant.entreeChoice
                                 prompt="-"
                                 viewName="entree"}}
+			<label {{bind-attr for="view.transportTo.elementId"}}>How are you getting to the venue?</label>
+            {{view Ember.Select contentBinding=transportToOptions
+                                valueBinding=registrant.transportTo
+                                prompt="-"
+                                viewName="transportTo"}}
+			<label {{bind-attr for="view.transportFrom.elementId"}}>How are you getting back from the venue?</label>
+            {{view Ember.Select contentBinding=transportFromOptions
+                                valueBinding=registrant.transportFrom
+                                prompt="-"
+                                viewName="transportFrom"}}
         </form>
     {{/base-card}}
     {{#base-card tagName="section"}}

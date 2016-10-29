@@ -24,7 +24,9 @@ App.EventsDanceIndexController = App.Controller.extend({
 App.EventsDanceRegisterController = App.Controller.extend({
   email: '',
   ticketNumber: '',
-  mealOptions: ['CHICKEN - Chicken piccata', 'HALAL CHICKEN - Chicken piccata', 'VEGETARIAN - Stuffed bell pepper with quinoa'],
+  mealOptions: ['CHICKEN - Chicken piccata', 'HALAL CHICKEN - Chicken piccata', 'VEGETARIAN - Stuffed bell pepper with quinoa', 'GLUTEN-FREE CHICKEN - Chicken piccata',  'GLUTEN-FREE VEGETARIAN - Stuffed bell pepper with quinoa', 'DAIRY-FREE CHICKEN - Chicken piccata',  'DAIRY-FREE VEGETARIAN - Stuffed bell pepper with quinoa'],
+  transportToOptions: ['Bus from Campus', 'Other'],
+  transportFromOptions: ['Bus to Campus (1AM Arrival)', 'Bus to Campus (1:30AM Arrival)', 'Bus to Campus (2AM Arrival)', 'Bus to Downsview Station (12AM Arrival)', 'Bus to Finch Station (12AM Arrival)', 'Other'],
 
   info: Ember.Object.extend({
     visible: false,
@@ -138,6 +140,8 @@ App.EventsDanceRegisterController = App.Controller.extend({
   }.observes('registrant.tableNumber',
              'registrant.entreeChoice',
              'registrant.isOver19',
+             'registrant.transportTo',
+             'registrant.transportFrom',
              'registrant.dietaryRestrictions')
 });
 

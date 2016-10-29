@@ -58,10 +58,23 @@ class DanceRegistrant < ActiveRecord::Base
             on: :update
   validates :entree_choice,
             inclusion: {
-                in: ['CHICKEN - Chicken piccata', 'HALAL CHICKEN - Chicken piccata', 'VEGETARIAN - Stuffed bell pepper with quinoa'],
+                in: ['CHICKEN - Chicken piccata', 'HALAL CHICKEN - Chicken piccata', 'VEGETARIAN - Stuffed bell pepper with quinoa', 'GLUTEN-FREE CHICKEN - Chicken piccata',  'GLUTEN-FREE VEGETARIAN - Stuffed bell pepper with quinoa', 'DAIRY-FREE CHICKEN - Chicken piccata',  'DAIRY-FREE VEGETARIAN - Stuffed bell pepper with quinoa'],
                 message: "Not a valid entree choice."
             },
             on: :update
+  validates :transport_to,
+            inclusion: {
+                in: ['Bus from Campus', 'Other'],
+                message: "Not a valid choice."
+            },
+            on: :update
+  validates :transport_from,
+            inclusion: {
+                in: ['Bus to Campus (1AM Arrival)', 'Bus to Campus (1:30AM Arrival)', 'Bus to Campus (2AM Arrival)', 'Bus to Downsview Station (12AM Arrival)', 'Bus to Finch Station (12AM Arrival)', 'Other'],
+                message: "Not a valid choice."
+            },
+            on: :update
+
   validate :ticket_number_unique, on: :create  # Use our own method so we can test before on save.
   validate :table_not_full, on: :update
 
