@@ -10,8 +10,13 @@ App.EventsDanceIndexController = App.Controller.extend({
 
     // Set the number of early bird tickets.
     var self = this;
+    App.DanceRegistrant.getFroshDiscountsRemaining().then(function(remaining){ //KLBF added separate frosh counters
+	  self.set('frosh_remaining', remaining > 0 ? remaining : null);
+      if (remaining){ self.set('either', true); }
+	});
     App.DanceRegistrant.getEarlyBirdRemaining().then(function(remaining) {
       self.set('remaining', remaining > 0 ? remaining : null);
+      if (remaining){ self.set('either', true); }
     });
   }
 });
@@ -19,7 +24,7 @@ App.EventsDanceIndexController = App.Controller.extend({
 App.EventsDanceRegisterController = App.Controller.extend({
   email: '',
   ticketNumber: '',
-  mealOptions: ['MAIN - Grilled Rib Eye Steak', 'VEGETARIAN - Portabello Mushroom and Goat Cheese Strudel'],
+  mealOptions: ['MAIN - Baked Boneless Chicken Breast', 'VEGETARIAN - Veggie Steak, Caponata, and Sides'],
 
   info: Ember.Object.extend({
     visible: false,
@@ -59,8 +64,8 @@ App.EventsDanceRegisterController = App.Controller.extend({
   },
 
   preferencesDisabled: function() {
-    return true; //disable registration
-    //return this.get('preferencesLoading') || !this.get('registrantChanged');
+    //return true; //disable registration
+    return this.get('preferencesLoading') || !this.get('registrantChanged');
   }.property('preferencesLoading', 'registrantChanged'),
 
   actions: {

@@ -1,7 +1,7 @@
 App.EventsLadderIndexRoute = App.ApplicationRoute.extend({
   setupController: function(controller, model) {
     this._super.apply(this, arguments);
-    var users = App.LadderUser.find()
+    var users = App.LadderUser.find();
     controller.set('ladderUsers', users);
   }
 });

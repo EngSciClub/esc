@@ -2,23 +2,28 @@
     {{#base-card tagName="section"}}
         <h2><i class="icon-calendar icon-fixed-width"></i>Save the date!</h2>
         <p>
-            The dinner dance will take place on <strong>Friday November 27th, 2015</strong>. {{!--Doors open at 6:00pm. --}}
+            The dinner dance took place on <strong>Friday November 27th, 2015</strong>. {{!--Doors open at 6:00pm. --}}
         </p>
+	{{/base-card}}
+	{{#base-card tagName="section"}}
+	<h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
+	<p>
+		The event is now past - Hope to see you next year!
+	</p>
+	{{#link-to "events.dance.register"}}
+		<button type="button" class="alt big register-button" disabled>Registration & Seating</button>
+	{{/link-to}}
     {{/base-card}}
     {{#base-card tagName="section"}}
         <h2><i class="icon-map-marker icon-fixed-width"></i>Details</h2>
         
         <p>
-            The event is taking place at the <strong><a href="https://goo.gl/i77VR2kL7nC2" target="_blank">Casa Loma</a></strong> at 1 Austin Terrace.
+            The event is taking place at <strong><a href="https://goo.gl/maps/i77VR2kL7nC2" target="_blank">Casa Loma</a></strong> at 1 Austin Terrace.
         </p>
         <ul class="icons-ul icons-list"> 
             <li>
                 <i class="icon-li icon-arrow-right"></i>
-                Busing will be provided from Convocation Hall to the venue.
-            </li>
-            <li>
-                <i class="icon-li icon-arrow-left"></i>
-                Busing will be provided from the venue back to campus.
+                The venue is a short walk <strong>from Dupont Station</strong>, up Spadina Rd, past the Baldwin steps. Click <a href="https://www.google.ca/maps/dir/Dupont+Station+-+Northbound+Platform,+Toronto,+ON/Casa+Loma,+1+Austin+Terrace,+Toronto,+ON+M5R+1X8/@43.6768362,-79.4110154,17z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x882b349940ae5fa3:0xe6706015465faa91!2m2!1d-79.406805!2d43.6747726!1m5!1m1!1s0x882b349dcf25a1b3:0x617cc8c102d6584f!2m2!1d-79.4094439!2d43.6780371!3e2">here</a> for directions.
             </li>
         </ul>
         {{!-- This is a custom embed map, go to mapsengine using the EngSci Club login to edit --}}
@@ -27,99 +32,81 @@
             <iframe width='100%' height='500px' frameBorder='0' src='https://a.tiles.mapbox.com/v4/engsciclub.njf9jg3m/attribution,zoompan,zoomwheel,geocoder,share.html?access_token=pk.eyJ1IjoiZW5nc2NpY2x1YiIsImEiOiJEMld5cjZNIn0.c3PXs6KcIsAfaFra2oQIrA'></iframe>
         </div>
     {{/base-card}}
-    
 </div>
-
 <div class="half right col">
     {{#base-card tagName="section" class="sponsors"}}
         <h2><i class="icon-food icon-fixed-width"></i>Menu</h2>
         <div class="menu">
-			Under Planning
-        {{!--
-            <h3>Hor D'Oeuvres (Available before the main dinner)</h3>
-            <p>	
-                Sesame Crusted Chicken Satay<br />
-                Classic Greek Spanakopita<br />
-                Crispy Vegetable Spring Rolls with Chili Plum Sauce<br />
-                Coconut Shrimp with Pineapple Spiked Ketchup<br />
-                Candy Table<br />
-            </p>
-            <hr>
             <h3>Appetizer</h3>
             <p>
-                Farfalle Alfredo with Aged Parmesan & Roasted Garlic Cream Sauce
+                Roasted Butternut Squash Soup, Maple Cr&egrave;me Fraiche
             </p>
             <hr>
             <h3>Entr&eacute;e</h3>
             <p>
                 (MAIN)<br />
-                Grilled 10oz Rib Eye Steak* <br />
-                served with with peppercorn sauce, seasonal vegetables and mashed potatoes
+                Baked Boneless Chicken Breast<br />
+                served with a lemon herb crust in a white wine sauce
             </p>
             <p>
                 (VEGETARIAN)<br />
-                Portabello Mushroom & Goat Cheese Strudel <br />
-                with buttery asparagus
+                Herb grilled Cauliflower Steak, Eggplant Caponata, Fire Roasted Pepper Coulis, Fingerling Potato and Seasonal Vegetables
             </p>
             <hr>
             <h3>Dessert</h3>
             <p>
-                Chocolate Ganache Gateaux with a Vanilla Bean Cream
+                Chocolate Baci Truffle Bombe, Raspberry Coulis, and Frangelico Cream
             </p>
         </div>
         <div class="footnote">
             <h3>Notes</h3>            
             <p>
-                All adults are given 5 drink tickets, and all attendees get unlimited pop & juice.
-                *Steak is cooked Medium.
-            </p> --}}
+                All dinners include 2 drink tickets, redeemable for 2 alcoholic or 4 non-alcoholic beverages
+            </p>
         </div>
-    {{/base-card}}
-    {{#base-card tagName="section"}}
-        <h2><i class="icon-pencil icon-fixed-width"></i>Bought your ticket?</h2>
-        <p>
-            Registration will open after tickets are available.
-        </p>
-        {{#link-to "events.dance.register"}}
-            <button type="button" class="alt big register-button" disabled >Registration & Seating</button>
-        {{/link-to}}
-    {{/base-card}}
-    {{!--
+    {{/base-card}}{{!--
     {{#base-card tagName="section"}}
         <h2><i class="icon-ticket icon-fixed-width"></i>How do I buy a ticket?</h2>
         <p>
-            You can purchase a ticket from any of the EngSci Club execs, class reps or dinner dance directors
-            in the EngSci Office during your lunch, starting on Wednesday October 1st.
+            You can purchase a ticket from any of the EngSci Club execs, in the EngSci Office during your lunch, starting on the week of October 26th, 2015.
         </p>
         <h3>Pricing</h3>
-        {{#if remaining}}
+        {{#if either}}
             <p>
-                Tickets are discounted for early bird and F!rosh.
+                Limited tickets are discounted for early bird and F!rosh.
             </p>
             <div class="row">
-                <div class="pricing col left">
-                    <span class="price">$70</span> <br>
-                    for F!rosh <br>
-                </div>
-                <div class="pricing col right">
-                    <span class="price">$70</span> <br>
-                    for others <br>
-                    (Early Bird)
-                </div>
+				{{#if frosh_remaining}}
+					<div class="pricing col left">
+						<span class="price">$65</span> <br>
+						for F!rosh <br>
+					</div>
+				{{else}}
+					<div class="pricing col right">
+						<span class="price">$70</span> <br>
+						(regular)<br>
+					</div>
+				{{/if}}
+				{{#if remaining}}                
+					<div class="pricing col right">
+						<span class="price">$65</span> <br>
+						for others <br>
+						(Early Bird)
+					</div>
+				{{else}}
+					<div class="pricing col right">
+						<span class="price">$70</span> <br>
+						for others <br>
+					</div>
+				
+				{{/if}}
             </div>
+        {{else}}
+				<div class="pricing" style="width:100%">
+					 <span class="price">$70</span>
+				</div>
         {{/if}}
-        <div class="row">
-            <div class="pricing col left">
-                    <span class="price">$70</span> <br>
-                    for F!rosh <br>
-                </div>
-            <div class="pricing col right">
-                <span class="price">$75</span> <br>
-                    for others <br>
-                {{#if remaining}}(Regular){{/if}}
-            </div>
-        </div>
-    {{/base-card}}
+    {{/base-card}} --}}
 </div>
 
 <div class="full col">
@@ -132,13 +119,19 @@
         </div>
         <hr>
         <div class="logos">
+            <a href="http://engsci.utoronto.ca" target="_blank">
+                <img align="middle" src="/images/events/dance/engsci.jpg">
+            </a>
+            <a href="http://www.utias.utoronto.ca" target="_blank">
+                <img align="middle" src="/images/events/dance/utias.jpg">
+            </a>
+            <hr>
             <a href="http://ibbme.utoronto.ca/" target="_blank">
-                <img src="/images/events/dance/ibbme.png">
+                <img align="middle" src="/images/events/dance/ibbme.png">
             </a>
             <a href="http://ece.utoronto.ca" target="_blank">
-                <img src="/images/events/dance/ece.png">
+                <img align="middle" src="/images/events/dance/ece.png">
             </a>
         </div>
     {{/base-card}}
 </div>
---}}

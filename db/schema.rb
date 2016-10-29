@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221052947) do
+ActiveRecord::Schema.define(version: 20150311001710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,5 +72,13 @@ ActiveRecord::Schema.define(version: 20150221052947) do
   end
 
   add_index "ladder_users", ["email"], name: "index_ladder_users_on_email", unique: true, using: :btree
+
+  create_table "suggestions", force: true do |t|
+    t.string   "name"
+    t.string   "mailfrom"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

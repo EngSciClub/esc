@@ -30,3 +30,6 @@ end
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+# Heroku requires rails_12factor in order to log properly
+gem 'rails_12factor'

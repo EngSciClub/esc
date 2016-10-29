@@ -7,12 +7,14 @@ App::Application.routes.draw do
       end
 
       match "/dance_registrants/early_bird_remaining", to: "dance_registrants#early_bird_remaining", via: :get
+      match "/dance_registrants/frosh_discounts_remaining", to: "dance_registrants#frosh_discounts_remaining", via: :get
       match "/dance_registrants/register", to: "dance_registrants#register", via: :post
       match "/dance_registrants/login", to: "dance_registrants#login", via: :post
 
       #All sessions should be able to access this function
       get "/ladder_match/point_calculate", to: 'ladder_match#point_calculate'
-
+	  
+	  resources :admins
       resources :dance_registrants
       resources :dance_tables
       resources :ladder_users

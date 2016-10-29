@@ -47,5 +47,8 @@ App.AdminDanceRoute = App.AdminBaseRoute.extend({
       registrant = App.DanceRegistrant.create();
       controller.set('model', registrant);
     }
+    var id = 0;
+    id = controller.get("currentAdmin").get("id");
+    controller.set("admin", App.Admin.find(id).get("admin"));
   }
 });

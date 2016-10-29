@@ -13,5 +13,10 @@ class Api::Admin::AdminsController < Api::AdminsController
       admin: get_admin
     }
   end
-
+  
+  def show
+	render json:{
+	   admin: ::Admin.find(params[:id])
+	}
+  end
 end
